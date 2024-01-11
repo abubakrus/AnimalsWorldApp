@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">AnimalsWorldApp</string>
+    <string name="ani">Ani</string>
+    <string name="hello">Hello.</string>
+    <string name="nice_day">Have a nice day</string>
+    <string name="animal">Animal</string>
+    <string name="welcome">Welcome to the \n animal world</string>
+    <string name="first_onboarding_descripition">You will learn a lot of new \nthings about the animal world.\nLearn and play</string>
+    <string name="first_onboarding_title">Animal world</string>
+    <string name="second_onboarding_title">Discover animals</string>
+    <string name="second_onboarding_descripition">Get closer to nature with our \nanimals study app</string>
+    <string name="third_onboarding_descripition">Learn something new for \nyourself while sitting at home</string>
+    <string name="third_onboarding_title">Animal app</string>
+    <string name="lets_go">Lets Go</string>
+    <string name="whats_next">What’ts next ?</string>
+    <string name="next">Next</string>
+    <string name="got_it">Got it ?</string>
+    <string name="get_started">Get Started</string>
+    <string name="start">Start</string>
+    <string name="refresh">Refresh\n</string>
+    <string name="home">Home</string>
+    <string name="recomentation_flora">Recommendation Flora</string>
+    <string name="recomentation_fauna">Recommendation Fauna</string>
+    <string name="recomentation_mountain">Recommendation Mountain</string>
+    <string name="all_fauna">All Fauna</string>
+    <string name="fauna">Fauna</string>
+    <string name="all_mountain">All mountain</string>
+    <string name="mountain">Mountain</string>
+    <string name="edit">Edit</string>
+    <string name="change_theme">Change theme</string>
+    <string name="type_users">Type User\'s</string>
+    <string name="edit_profile">Edit ptofile</string>
+    <string name="language">Language</string>
+
+
+
+    <string name="following">Following</string>
+    <string name="email_hint">abubukir@gmail.com</string>
+    <string name="your_email">Your Email</string>
+    <string name="name_hint">Bob</string>
+    <string name="your_name">Your Name</string>
+    <string name="lastName_hint">Gaziev</string>
+    <string name="your_lastName">Your LastName</string>
+    <string name="about_hint">Desing</string>
+    <string name="about_me">About Me</string>
+    <string name="forest">Forest</string>
+    <string name="all_forest">All Forest</string>
+
+</resources>

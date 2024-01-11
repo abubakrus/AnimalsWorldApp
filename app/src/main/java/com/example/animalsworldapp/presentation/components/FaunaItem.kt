@@ -1,0 +1,103 @@
+package com.example.animalsworldapp.presentation.components
+
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import com.example.animalsworldapp.presentation.extensions.SpacerHeight
+import com.example.animalsworldapp.presentation.models.Fauna
+import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
+import com.example.animalsworldapp.presentation.theme.ExtraSpacing
+import com.example.animalsworldapp.presentation.theme.MediumSpacing
+import com.example.animalsworldapp.presentation.theme.NobileBold
+import com.example.animalsworldapp.presentation.theme.SmallSpacing
+
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun FaunaItem(
+    fauna: Fauna
+) {
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        AsyncImage(
+            model = fauna.backgroundImage,
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(480.dp)
+                .padding(horizontal = SmallSpacing)
+                .padding(16.dp)
+                .clip(
+                    RoundedCornerShape(
+                        topStart = 16.dp,
+                        topEnd = 16.dp,
+                        bottomStart = 25.dp,
+                        bottomEnd = 25.dp
+                    )
+                ),
+        )
+        Column(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .width(340.dp)
+                .height(120.dp)
+                .padding(bottom = ExtraSpacing)
+                .clip(
+                    RoundedCornerShape(
+                        topStart = 25.dp,
+                        topEnd = 25.dp,
+                        bottomStart = 25.dp,
+                        bottomEnd = 25.dp
+                    )
+                )
+                .background(Color.Transparent.copy(alpha = 0.45f))
+                .padding(horizontal = ExtraLargeSpacing),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.Start
+        ) {
+            Text(
+                modifier = Modifier,
+                text = fauna.name,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontSize = 24.sp,
+                    color = Color.White,
+                    fontFamily = NobileBold
+                )
+            )
+            SpacerHeight(MediumSpacing)
+            Text(
+                modifier = Modifier,
+                text = fauna.location,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontSize = 16.sp,
+                    color = Color.White,
+                    fontFamily = NobileBold
+                )
+            )
+
+        }
+    }
+}
