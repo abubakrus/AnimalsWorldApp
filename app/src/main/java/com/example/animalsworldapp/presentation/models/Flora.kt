@@ -28,7 +28,7 @@ data class Flora(
 }
 
 
-fun FloraDomain.toMountain() = this.run {
+fun FloraDomain.toFlora() = this.run {
     if (this == FloraDomain.unknown) return@run Flora.unknown
     Flora(
         id = id,

@@ -8,6 +8,7 @@ import com.example.animalsworldapp.domain.usecases.flora_usecase.FetchFloraByIdU
 import com.example.animalsworldapp.domain.usecases.forests.FetchForestByIdUseCase
 import com.example.animalsworldapp.domain.usecases.mountain_usecase.FetchMountainByIdUseCase
 import com.example.animalsworldapp.presentation.models.toFauna
+import com.example.animalsworldapp.presentation.models.toFlora
 import com.example.animalsworldapp.presentation.models.toForest
 import com.example.animalsworldapp.presentation.models.toMountain
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -77,7 +78,7 @@ class DetailScreenViewModel @Inject constructor(
 
                 ItemDetailType.FLORA -> {
                     val floraDetail = fetchFloraByIdUseCase.fetchFloraById(id)
-                    ContentType.FloraContent(floraDetail.data!!.toMountain())
+                    ContentType.FloraContent(floraDetail.data!!.toFlora())
                 }
 
                 ItemDetailType.MAUNTAIN -> {

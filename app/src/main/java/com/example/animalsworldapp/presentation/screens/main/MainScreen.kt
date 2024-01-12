@@ -86,23 +86,29 @@ fun LoadedMainScreen(
                 faunaList = uiState.fauna,
                 navigateToDetails = {
                     navigateToDetails(ItemDetailType.FAUNA, it)
-                }
+                },
             )
         }
 
         item {
             HeadingText(text = stringResource(id = R.string.mountain),
                 navigateToAllShow = { navigateToAllMountain() })
-            HorizontalPagerForMountain(mountainList = uiState.mountain, navigateToDetails = {
-                navigateToDetails(ItemDetailType.MAUNTAIN, it)
-            })
+            HorizontalPagerForMountain(
+                mountainList = uiState.mountain,
+                navigateToDetails = {
+                    navigateToDetails(ItemDetailType.MAUNTAIN, it)
+                },
+            )
         }
         item {
             HeadingText(text = stringResource(id = R.string.forest),
                 navigateToAllShow = { navigateToForest() })
-            HorizontalPagerForForest(forestList = uiState.forest, navigateToDetails = {
-                navigateToDetails(ItemDetailType.FOREST, it)
-            })
+            HorizontalPagerForForest(
+                forestList = uiState.forest,
+                navigateToDetails = {
+                    navigateToDetails(ItemDetailType.FOREST, it)
+                },
+            )
         }
     }
 }

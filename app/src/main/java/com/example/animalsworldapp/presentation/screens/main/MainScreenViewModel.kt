@@ -12,6 +12,7 @@ import com.example.animalsworldapp.presentation.models.Flora
 import com.example.animalsworldapp.presentation.models.Forest
 import com.example.animalsworldapp.presentation.models.Mountain
 import com.example.animalsworldapp.presentation.models.toFauna
+import com.example.animalsworldapp.presentation.models.toFlora
 import com.example.animalsworldapp.presentation.models.toForest
 import com.example.animalsworldapp.presentation.models.toMountain
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -55,7 +56,7 @@ class MainScreenViewModel @Inject constructor(
                     mountain = fetchLimitMountain(),
                     forest = fetchLimitForest()
                 )
-            Log.i("Abubakir", "fauna = ${contentState.fauna.size}")
+            Log.i("Abubakir", "fauna = ${contentState.flora.size}")
             _uiStateFlow.tryEmit(contentState)
         }
     }
@@ -76,7 +77,7 @@ class MainScreenViewModel @Inject constructor(
     }
 
     private suspend fun fetchAllFlora(): List<Flora> {
-        val flora = fetchAllFloraUseCase().map { it.toMountain() }
+        val flora = fetchAllFloraUseCase().map { it.toFlora() }
         delay(2_000)
         return flora
     }

@@ -5,16 +5,16 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface FloraService {
-    @GET("Mountain")
+    @GET("Flora")
     suspend fun getLimitedData(
         @Query("limit") limit: Int
     ): FloraResponse
 
-    @GET("Mountain")
+    @GET("Flora")
     suspend fun fetchFloraById(
         @Query("where") params: String
     ): FloraResponse
 
-    @GET("Mountain")
+    @GET("Flora")
     suspend fun fetchAllFlora(): FloraResponse
 }
