@@ -15,10 +15,10 @@ import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.components.HeadingText
 import com.example.animalsworldapp.presentation.components.TabBar
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
-import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.screens.detail.ItemDetailType
 import com.example.animalsworldapp.presentation.screens.main.models.HorizontalPagerForForest
 import com.example.animalsworldapp.presentation.screens.main.models.HorizontalPagerForMountain
+import com.example.animalsworldapp.presentation.screens.main.models.LoadingScreenMain
 import com.example.animalsworldapp.presentation.screens.main.models.MainScreenHorizontalFlora
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 
@@ -41,7 +41,12 @@ fun MainScreen(
         )
     }) { innerPaddings ->
         when (uiState) {
-            is MainScreenUiState.Loading -> LoadingScreen()
+            is MainScreenUiState.Loading -> LoadingScreenMain(
+                modifier = modifier.padding(
+                    innerPaddings
+                )
+            )
+
             is MainScreenUiState.Loaded -> LoadedMainScreen(
                 uiState = uiState,
                 modifier = modifier
