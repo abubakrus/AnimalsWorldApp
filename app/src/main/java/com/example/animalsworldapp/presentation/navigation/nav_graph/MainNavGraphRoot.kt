@@ -48,11 +48,9 @@ const val MAIN_NAV_GRAPH_ROUTE = "main_nav_graph_route"
 @Composable
 fun MainNavGraphRoot() {
     val navHostController = rememberNavController()
-    Scaffold(
-        bottomBar = {
-            AppBottomNavigation(navController = navHostController)
-        }
-    ) { innerPaddings ->
+    Scaffold(bottomBar = {
+        AppBottomNavigation(navController = navHostController)
+    }) { innerPaddings ->
         NavHost(
             modifier = Modifier.padding(bottom = innerPaddings.calculateBottomPadding()),
             navController = navHostController,
@@ -74,7 +72,64 @@ fun MainNavGraphRoot() {
                     },
                     navigateToForest = {
                         navHostController.navigate(AllForestDestination.route())
-                    }
+                    },
+                )
+            }
+
+            composable(
+                route = DetailDestination.routeWithArgs(),
+                arguments = DetailDestination.arguments
+            ) { backStackEntry ->
+                val type = backStackEntry.arguments?.getInt(TYPE_ARGUMENT_KEY) ?: -1
+                val id = backStackEntry.arguments?.getString(ID_ARGUMENT_KEY)
+                val viewModel: DetailScreenViewModel = hiltViewModel()
+                viewModel.init(ItemDetailType.findByType(type), id)
+                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+                DetailScreen(
+                    uiState = uiState,
+                    navHostController = navHostController,
+                )
+            }
+//            composable(
+//                route = DetailFaunaDestinations.route(),
+//                arguments = DetailFaunaDestinations.arguments
+//            ) {
+//                val viewModel: DetailFaunaViewModel = hiltViewModel()
+//                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+//
+//                DetailFaunaScreen(
+//                    uiState = uiState,
+//                    navigateBackStack = {
+//                        navHostController.navigateUp()
+//                    },
+//                    onClickVoice = { /*TODO*/ }
+//                )
+//            }
+            composable(BottomTab.Search.route) {
+                val viewModel: SearchViewModel = hiltViewModel()
+                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+                SearchScreen(
+                    uiState = uiState, onValueChange = {}, navHostController = navHostController
+                )
+            }
+            composable(BottomTab.PROFILE.route) {
+                val viewModel: ProfileViewModel = hiltViewModel()
+                val navCommand by viewModel.navCommandFlow.collectAsStateWithLifecycle(initialValue = null)
+
+                LaunchedEffect(key1 = navCommand) {
+                    if (navCommand != null) navHostController.navigate(navCommand!!)
+                }
+
+                ProfileScreen(onEvent = viewModel::onEvent)
+            }
+            composable(EDIT_PROFILE_ROUTE) {
+                val viewModel: EditProfileViewModel = hiltViewModel()
+                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+                EditProfileScreen(
+                    uiState = uiState,
+                    onEvent = viewModel::onEvent,
+                    navHostController = navHostController,
                 )
             }
             composable(AllFaunaDestination.route()) {
@@ -97,61 +152,14 @@ fun MainNavGraphRoot() {
                 val viewModel: SearchViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 SearchScreen(
-                    uiState = uiState,
-                    onValueChange = {},
-                    navHostController = navHostController
+                    uiState = uiState, onValueChange = {}, navHostController = navHostController
                 )
             }
             composable(SearchDestination.route()) {
                 val viewModel: SearchViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 SearchScreen(
-                    uiState = uiState,
-                    onValueChange = {},
-                    navHostController = navHostController
-                )
-            }
-            composable(
-                route = DetailDestination.routeWithArgs(),
-                arguments = DetailDestination.arguments
-            ) { backStackEntry ->
-                val type = backStackEntry.arguments?.getInt(TYPE_ARGUMENT_KEY) ?: -1
-                val id = backStackEntry.arguments?.getString(ID_ARGUMENT_KEY)
-                val viewModel: DetailScreenViewModel = hiltViewModel()
-                viewModel.init(ItemDetailType.findByType(type), id)
-                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                DetailScreen(
-                    uiState = uiState,
-                    navHostController = navHostController,
-                )
-            }
-            composable(BottomTab.Search.route) {
-                val viewModel: SearchViewModel = hiltViewModel()
-                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                SearchScreen(
-                    uiState = uiState,
-                    onValueChange = {},
-                    navHostController = navHostController
-                )
-            }
-            composable(BottomTab.PROFILE.route) {
-                val viewModel: ProfileViewModel = hiltViewModel()
-                val navCommand by viewModel.navCommandFlow.collectAsStateWithLifecycle(initialValue = null)
-
-                LaunchedEffect(key1 = navCommand) {
-                    if (navCommand != null) navHostController.navigate(navCommand!!)
-                }
-
-                ProfileScreen(onEvent = viewModel::onEvent)
-            }
-            composable(EDIT_PROFILE_ROUTE) {
-                val viewModel: EditProfileViewModel = hiltViewModel()
-                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
-                EditProfileScreen(
-                    uiState = uiState,
-                    onEvent = viewModel::onEvent,
-                    navHostController = navHostController,
+                    uiState = uiState, onValueChange = {}, navHostController = navHostController
                 )
             }
         }

@@ -1,4 +1,4 @@
-package com.example.animalsworldapp.presentation.screens.detail_fauna.models
+package com.example.animalsworldapp.presentation.screens.detail.models
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -30,7 +30,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.animalsworldapp.presentation.models.Fauna
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.LargeSpacing
 import com.example.animalsworldapp.presentation.theme.LexendDeca
@@ -41,9 +40,12 @@ import com.example.animalsworldapp.presentation.theme.SmallSpacing
 
 @Composable
 fun FaunaDetailItem(
-    fauna: Fauna,
-    navigateBackStack: () -> Unit,
     onClickVoice: () -> Unit,
+    backgroundImage: String,
+    location: String,
+    name: String,
+    about: String,
+    navigateBackStack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -56,7 +58,7 @@ fun FaunaDetailItem(
                 .fillMaxWidth()
                 .padding(MediumSpacing)
                 .clip(RoundedCornerShape(35.dp)),
-            model = fauna.backgroundImage,
+            model = backgroundImage,
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
@@ -73,6 +75,20 @@ fun FaunaDetailItem(
                 tint = Color.White
             )
         }
+        Card(
+            modifier = Modifier
+                .size(45.dp)
+                .clickable { onClickVoice() }
+                .clip(CircleShape),
+            shape = CardDefaults.shape,
+        ) {
+            Icon(
+                modifier = Modifier,
+                imageVector = Icons.Default.KeyboardVoice,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.background
+            )
+        }
         Column(
             modifier = Modifier.padding(top = 490.dp, start = LargeSpacing, end = MediumSpacing)
         ) {
@@ -86,39 +102,25 @@ fun FaunaDetailItem(
                     tint = Pink
                 )
                 Text(
-                    text = fauna.location, style = MaterialTheme.typography.bodyLarge.copy(
+                    text = location, style = MaterialTheme.typography.bodyLarge.copy(
                         color = Pink, fontFamily = LexendDeca
                     )
                 )
             }
             Text(
                 modifier = Modifier.padding(start = MediumSpacing, top = SmallSpacing),
-                text = fauna.name,
+                text = name,
                 style = MaterialTheme.typography.displayMedium.copy(
                     color = MaterialTheme.colorScheme.onBackground, fontFamily = LexendDeca
                 )
             )
             Text(
                 modifier = Modifier.padding(top = MediumSpacing),
-                text = fauna.aboutFauna,
+                text = about,
                 style = MaterialTheme.typography.bodyLarge.copy(
                     color = MaterialTheme.colorScheme.onBackground, fontFamily = LexendDeca
                 )
             )
-            Card(
-                modifier = Modifier
-                    .size(45.dp)
-                    .clickable { onClickVoice() }
-                    .clip(CircleShape),
-                shape = CardDefaults.shape,
-            ) {
-                Icon(
-                    modifier = Modifier,
-                    imageVector = Icons.Default.KeyboardVoice,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.background
-                )
-            }
         }
     }
 }

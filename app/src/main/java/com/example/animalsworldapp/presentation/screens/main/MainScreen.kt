@@ -72,7 +72,8 @@ fun LoadedMainScreen(
     navigateToAllFauna: () -> Unit,
     navigateToAllMountain: () -> Unit,
     navigateToForest: () -> Unit,
-) {
+
+    ) {
 
     LazyColumn(
         modifier = modifier
