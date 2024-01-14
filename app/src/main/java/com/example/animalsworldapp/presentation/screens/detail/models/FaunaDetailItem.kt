@@ -1,7 +1,6 @@
 package com.example.animalsworldapp.presentation.screens.detail.models
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,11 +12,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardVoice
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.outlined.ArrowBackIosNew
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
+import androidx.compose.material.icons.outlined.KeyboardVoice
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -75,18 +72,18 @@ fun FaunaDetailItem(
                 tint = Color.White
             )
         }
-        Card(
-            modifier = Modifier
-                .size(45.dp)
-                .clickable { onClickVoice() }
-                .clip(CircleShape),
-            shape = CardDefaults.shape,
-        ) {
+
+        IconButton(modifier = Modifier
+            .align(Alignment.TopEnd)
+            .padding(ExtraLargeSpacing)
+            .clip(CircleShape)
+            .background(Color.Transparent.copy(alpha = 0.25f)),
+            onClick = { onClickVoice() }) {
             Icon(
-                modifier = Modifier,
-                imageVector = Icons.Default.KeyboardVoice,
+                modifier = Modifier.size(22.dp),
+                imageVector = Icons.Outlined.KeyboardVoice,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.background
+                tint = Color.White
             )
         }
         Column(

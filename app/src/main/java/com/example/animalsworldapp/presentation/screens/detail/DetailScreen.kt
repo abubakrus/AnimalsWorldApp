@@ -26,7 +26,6 @@ fun DetailScreen(
     uiState: DetailScreenUiState,
     navHostController: NavHostController,
     onClickVoice: () -> Unit = {},
-    voice: String? = String(),
     modifier: Modifier = Modifier,
 ) {
     Scaffold { innerPaddings ->
@@ -36,11 +35,12 @@ fun DetailScreen(
             is DetailScreenUiState.Error -> ErrorScreen(message = uiState.message, onClick = {})
             is DetailScreenUiState.Content -> {
                 LoadedDetailScreen(
-                    modifier = Modifier
+                    modifier = modifier
                         .fillMaxSize()
                         .padding(innerPaddings),
                     navigateBackStack = { navHostController.navigateUp() },
                     contentType = uiState.contentType,
+                    onClickVoice = onClickVoice
                 )
             }
         }
@@ -54,8 +54,7 @@ fun LoadedDetailScreen(
     modifier: Modifier = Modifier,
     contentType: ContentType,
     navigateBackStack: () -> Unit,
-    onClickVoice: () -> Unit = {},
-    voice: String? = String()
+    onClickVoice: () -> Unit,
 ) {
     BoxWithConstraints(
         modifier = modifier
@@ -102,7 +101,7 @@ fun LoadedDetailScreen(
                     location = contentType.location,
                     name = contentType.name,
                     backgroundImage = contentType.backgroundImage,
-                    onClickVoice = {}
+                    onClickVoice = onClickVoice
                 )
 
             }

@@ -88,6 +88,7 @@ fun MainNavGraphRoot() {
                 DetailScreen(
                     uiState = uiState,
                     navHostController = navHostController,
+                    onClickVoice = {}
                 )
             }
 //            composable(

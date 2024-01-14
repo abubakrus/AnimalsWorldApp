@@ -1,6 +1,7 @@
 package com.example.animalsworldapp.presentation.screens.detail
 
 import android.media.MediaPlayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.animalsworldapp.domain.usecases.fauna_usecase.FetchFaunaByIdUseCase
@@ -11,6 +12,9 @@ import com.example.animalsworldapp.presentation.models.toFauna
 import com.example.animalsworldapp.presentation.models.toFlora
 import com.example.animalsworldapp.presentation.models.toForest
 import com.example.animalsworldapp.presentation.models.toMountain
+import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.source.MediaSource
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -20,6 +24,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.io.Serializable
 import javax.inject.Inject
+
 
 enum class ItemDetailType(
     val type: Int
@@ -50,6 +55,25 @@ class DetailScreenViewModel @Inject constructor(
 
     private val handler = CoroutineExceptionHandler { _, throwable ->
         _uiStateFlow.tryEmit(DetailScreenUiState.Error(throwable.localizedMessage ?: ""))
+    }
+
+    private val appContext = LocalContext.current
+
+    private val exoPlayer = SimpleExoPlayer.Builder(appContext).build()
+
+
+    fun prepareMedia(mediaUrl: String) {
+        val dataSourceFactory = DefaultDataSourceFactory(appContext, "app_name")
+        val mediaSource: MediaSource = {}
+        exoPlayer.prepare(mediaSource)
+    }
+
+    fun play() {
+        exoPlayer.playWhenReady = true
+    }
+
+    fun pause() {
+        exoPlayer.playWhenReady = false
     }
 
 
