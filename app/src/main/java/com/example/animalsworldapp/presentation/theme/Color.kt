@@ -25,6 +25,9 @@ val Dark_Gray = Color(0xFF363636)
 val Light_Gray = Color(0xFF727477)
 val TransparentGray = Color(0xFFF9F8F8)
 
+val LargeBlue = Color(0xFF2E8AF6)
+
+
 
 
 val LightPlaceholder = Color(0xFFE5E5E5)

@@ -31,6 +31,9 @@
     <string name="type_users">Type User\'s</string>
     <string name="edit_profile">Edit ptofile</string>
     <string name="language">Language</string>
+    <string name="sorry_search">Unfortunately,\n we cannot find your request :(</string>
+    <string name="find_your">Check your request,\n or make a different request</string>
+
 
 
 
@@ -46,5 +49,9 @@
     <string name="forest">Forest</string>
     <string name="all_forest">All Forest</string>
     <string name="show_all">Show all</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="signup">SingUp</string>
+    <string name="dont_have_anaccount">Dont have Account</string>
 
 </resources>

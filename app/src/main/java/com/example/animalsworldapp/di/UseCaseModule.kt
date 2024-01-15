@@ -1,8 +1,10 @@
 package com.example.animalsworldapp.di
 
+import com.example.animalsworldapp.domain.repositories.CurrentUserRepository
 import com.example.animalsworldapp.domain.repositories.FaunaRepository
 import com.example.animalsworldapp.domain.repositories.FloraRepository
 import com.example.animalsworldapp.domain.repositories.ForestRepository
+import com.example.animalsworldapp.domain.repositories.LoginRepository
 import com.example.animalsworldapp.domain.repositories.MountainRepository
 import com.example.animalsworldapp.domain.repositories.ShowedOnBoardingRepository
 import com.example.animalsworldapp.domain.repositories.UsersRepository
@@ -10,6 +12,8 @@ import com.example.animalsworldapp.domain.usecases.SetOnBoardingShowedUseCase
 import com.example.animalsworldapp.domain.usecases.SetOnBoardingShowedUseCaseImpl
 import com.example.animalsworldapp.domain.usecases.ShouldOnBoardingPassedUseCase
 import com.example.animalsworldapp.domain.usecases.ShouldOnBoardingPassedUseCaseImpl
+import com.example.animalsworldapp.domain.usecases.current_user.SaveCurrentUserUseCase
+import com.example.animalsworldapp.domain.usecases.current_user.SaveCurrentUserUseCaseImpl
 import com.example.animalsworldapp.domain.usecases.fauna_usecase.FetchAllFaunaUseCase
 import com.example.animalsworldapp.domain.usecases.fauna_usecase.FetchAllFaunaUseCaseImpl
 import com.example.animalsworldapp.domain.usecases.fauna_usecase.FetchFaunaByIdUseCase
@@ -32,6 +36,10 @@ import com.example.animalsworldapp.domain.usecases.mountain_usecase.FetchLimitMo
 import com.example.animalsworldapp.domain.usecases.mountain_usecase.FetchLimitMountainUseCaseImpl
 import com.example.animalsworldapp.domain.usecases.mountain_usecase.FetchMountainByIdUseCase
 import com.example.animalsworldapp.domain.usecases.mountain_usecase.FetchMountainByIdUseCaseImpl
+import com.example.animalsworldapp.domain.usecases.signin.SingInUseCase
+import com.example.animalsworldapp.domain.usecases.signin.SingInUseCaseImpl
+import com.example.animalsworldapp.domain.usecases.signup.SignUpUseCase
+import com.example.animalsworldapp.domain.usecases.signup.SignUpUseCaseImpl
 import com.example.animalsworldapp.domain.usecases.user.FetchCurrentUserUseCase
 import com.example.animalsworldapp.domain.usecases.user.FetchCurrentUserUseCaseImpl
 import com.example.animalsworldapp.domain.usecases.user.FetchUserByIdUseCase
@@ -149,6 +157,29 @@ class UseCaseModule {
         repository: UsersRepository
     ): FetchCurrentUserUseCase = FetchCurrentUserUseCaseImpl(
         repository = repository
+    )
+
+    @Provides
+    fun provideSaveCurrentUserUseCaseImpl(
+        repository: CurrentUserRepository
+    ): SaveCurrentUserUseCase = SaveCurrentUserUseCaseImpl(
+        repository = repository
+    )
+
+    @Provides
+    fun provideSingInUseCaseImpl(
+        repository: LoginRepository
+    ): SingInUseCase = SingInUseCaseImpl(
+        repository = repository
+    )
+
+    @Provides
+    fun provideSignUpUseCaseImpl(
+        repository: LoginRepository,
+        userRepository: UsersRepository
+    ): SignUpUseCase = SignUpUseCaseImpl(
+        repository = repository,
+        userRepository = userRepository
     )
 
 }

@@ -47,4 +47,16 @@ class UsersRepositoryImpl @Inject constructor(
             UsersDomain.unknown
         }
     }
+
+    override suspend fun fetchAllUsers(): Result<List<UsersDomain>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun deleteUserById(id: String) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateUser(updateUser: UsersDomain): kotlin.Result<UsersDomain> {
+        TODO("Not yet implemented")
+    }
 }

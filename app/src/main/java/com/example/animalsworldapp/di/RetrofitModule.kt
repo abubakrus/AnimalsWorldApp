@@ -3,6 +3,7 @@ package com.example.animalsworldapp.di
 import com.example.animalsworldapp.data.cloud.service.FaunaService
 import com.example.animalsworldapp.data.cloud.service.FloraService
 import com.example.animalsworldapp.data.cloud.service.ForestService
+import com.example.animalsworldapp.data.cloud.service.LoginService
 import com.example.animalsworldapp.data.cloud.service.MountainService
 import com.example.animalsworldapp.data.cloud.service.UsersService
 import dagger.Module
@@ -74,4 +75,9 @@ class RetrofitModule {
     fun provideForestService(
         retrofit: Retrofit
     ): ForestService = retrofit.create(ForestService::class.java)
+
+    @Provides
+    fun provideLoginService(
+        retrofit: Retrofit
+    ): LoginService = retrofit.create(LoginService::class.java)
 }

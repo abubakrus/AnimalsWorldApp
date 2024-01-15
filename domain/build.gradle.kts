@@ -7,7 +7,7 @@ dependencies{
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.retrofit)
 
-
+    testImplementation(libs.junit)
 }
 java {
     sourceCompatibility = JavaVersion.VERSION_17
