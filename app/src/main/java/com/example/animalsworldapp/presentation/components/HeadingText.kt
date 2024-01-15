@@ -10,8 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.LexendDeca
 import com.example.animalsworldapp.presentation.theme.MediumSpacing
@@ -44,8 +46,10 @@ fun HeadingText(
 
         )
         if (isShowAll) Text(
-            modifier = Modifier.padding(end = MediumSpacing).clickable { navigateToAllShow()},
-            text = "Show all",
+            modifier = Modifier
+                .padding(end = MediumSpacing)
+                .clickable { navigateToAllShow() },
+            text = stringResource(id = R.string.show_all),
             fontFamily = LexendDeca,
             fontSize = 12.sp,
             fontWeight = FontWeight.SemiBold,

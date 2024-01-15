@@ -45,5 +45,6 @@
     <string name="about_me">About Me</string>
     <string name="forest">Forest</string>
     <string name="all_forest">All Forest</string>
+    <string name="show_all">Show all</string>
 
 </resources>

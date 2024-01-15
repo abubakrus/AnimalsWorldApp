@@ -20,7 +20,7 @@ data class UsersDomain(
             createdAt = String(),
             lastName = String(),
             location = String(),
-            name = String(),
+            name = "unknown",
             nickName = String(),
             id = String(),
             updatedAt = String()

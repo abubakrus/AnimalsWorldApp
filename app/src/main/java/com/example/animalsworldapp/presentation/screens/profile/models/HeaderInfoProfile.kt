@@ -11,15 +11,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
+import com.example.animalsworldapp.presentation.models.User
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.LargeSpacing
 import com.example.animalsworldapp.presentation.theme.MediumSpacing
 
 
 @Composable
-fun HeaderInfoProfile(modifier: Modifier = Modifier) {
+fun HeaderInfoProfile(modifier: Modifier = Modifier, user: User) {
     Box(
-        modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center
+        modifier = modifier.fillMaxWidth(), contentAlignment = Alignment.Center
     ) {
         Column(
             modifier = Modifier
@@ -27,25 +28,25 @@ fun HeaderInfoProfile(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CircularImage(
-                path = "uiState.user.avatar", modifier = Modifier, size = 150
+                path = user.avatar, modifier = Modifier, size = 150
             )
             SpacerHeight(LargeSpacing)
             Text(
-                text = "Blake Gordon",
+                text = user.lastName,
                 style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold
             )
             SpacerHeight(MediumSpacing)
             Text(
-                text = "Bob",
+                text = user.name,
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold
             )
             SpacerHeight(MediumSpacing)
             Text(
-                text = "Bio",
+                text = user.nickName,
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold

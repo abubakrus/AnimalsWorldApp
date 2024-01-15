@@ -20,6 +20,7 @@ import com.example.animalsworldapp.presentation.components.DetailBackgroundItem
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
 import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.screens.detail.models.FaunaDetailItem
+import com.example.animalsworldapp.presentation.screens.detail.models.LoadingScreenDetail
 
 @Composable
 fun DetailScreen(
@@ -31,7 +32,7 @@ fun DetailScreen(
     Scaffold { innerPaddings ->
         when (uiState) {
             is DetailScreenUiState.Initial -> Unit
-            is DetailScreenUiState.Loading -> LoadingScreen()
+            is DetailScreenUiState.Loading -> LoadingScreenDetail()
             is DetailScreenUiState.Error -> ErrorScreen(message = uiState.message, onClick = {})
             is DetailScreenUiState.Content -> {
                 LoadedDetailScreen(

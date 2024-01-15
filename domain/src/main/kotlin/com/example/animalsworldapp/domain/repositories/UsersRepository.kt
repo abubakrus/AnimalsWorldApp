@@ -5,4 +5,5 @@ import com.example.animalsworldapp.domain.models.UsersDomain
 
 interface UsersRepository {
     suspend fun fetchUserById(id: String): Result<UsersDomain>
+    fun fetchCurrent(): UsersDomain
 }

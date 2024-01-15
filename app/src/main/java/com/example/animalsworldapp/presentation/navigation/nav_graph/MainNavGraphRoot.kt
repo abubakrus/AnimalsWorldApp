@@ -115,13 +115,14 @@ fun MainNavGraphRoot() {
             }
             composable(BottomTab.PROFILE.route) {
                 val viewModel: ProfileViewModel = hiltViewModel()
+                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 val navCommand by viewModel.navCommandFlow.collectAsStateWithLifecycle(initialValue = null)
 
                 LaunchedEffect(key1 = navCommand) {
                     if (navCommand != null) navHostController.navigate(navCommand!!)
                 }
 
-                ProfileScreen(onEvent = viewModel::onEvent)
+                ProfileScreen(onEvent = viewModel::onEvent, uiState = uiState)
             }
             composable(EDIT_PROFILE_ROUTE) {
                 val viewModel: EditProfileViewModel = hiltViewModel()

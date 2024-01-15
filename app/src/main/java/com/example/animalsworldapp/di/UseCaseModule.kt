@@ -32,6 +32,8 @@ import com.example.animalsworldapp.domain.usecases.mountain_usecase.FetchLimitMo
 import com.example.animalsworldapp.domain.usecases.mountain_usecase.FetchLimitMountainUseCaseImpl
 import com.example.animalsworldapp.domain.usecases.mountain_usecase.FetchMountainByIdUseCase
 import com.example.animalsworldapp.domain.usecases.mountain_usecase.FetchMountainByIdUseCaseImpl
+import com.example.animalsworldapp.domain.usecases.user.FetchCurrentUserUseCase
+import com.example.animalsworldapp.domain.usecases.user.FetchCurrentUserUseCaseImpl
 import com.example.animalsworldapp.domain.usecases.user.FetchUserByIdUseCase
 import com.example.animalsworldapp.domain.usecases.user.FetchUserByIdUseCaseImpl
 import dagger.Module
@@ -139,6 +141,13 @@ class UseCaseModule {
     fun provideFetchLimitForestUseCaseImpl(
         repository: ForestRepository
     ): FetchLimitForestUseCase = FetchLimitForestUseCaseImpl(
+        repository = repository
+    )
+
+    @Provides
+    fun provideFetchCurrentUserUseCaseImpl(
+        repository: UsersRepository
+    ): FetchCurrentUserUseCase = FetchCurrentUserUseCaseImpl(
         repository = repository
     )
 

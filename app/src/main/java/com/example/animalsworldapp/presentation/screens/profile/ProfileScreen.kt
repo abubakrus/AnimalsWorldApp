@@ -17,6 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
+import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
+import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.screens.profile.models.HeaderInfoProfile
 import com.example.animalsworldapp.presentation.screens.profile.models.ProfileItemInfo
 import com.example.animalsworldapp.presentation.screens.profile.models.ProfileSwitchItem
@@ -26,12 +28,22 @@ import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 
 @Composable
 fun ProfileScreen(
+    uiState: ProfileUiState,
     modifier: Modifier = Modifier,
     onEvent: (ProfileEvent) -> Unit,
 ) {
     Scaffold { innerPaddings ->
         Column {
-            LoadedScreenProfile(modifier = modifier.padding(innerPaddings), onEvent = onEvent)
+            when (uiState) {
+                is ProfileUiState.Initial -> Unit
+                is ProfileUiState.Loading -> LoadingScreen()
+                is ProfileUiState.Error -> ErrorScreen(message = uiState.message, onClick = {})
+                is ProfileUiState.Content -> LoadedScreenProfile(
+                    modifier = modifier.padding(innerPaddings),
+                    onEvent = onEvent,
+                    uiState = uiState
+                )
+            }
         }
     }
 
@@ -40,6 +52,7 @@ fun ProfileScreen(
 
 @Composable
 fun LoadedScreenProfile(
+    uiState: ProfileUiState.Content,
     modifier: Modifier = Modifier,
     onEvent: (ProfileEvent) -> Unit,
 ) {
@@ -49,7 +62,7 @@ fun LoadedScreenProfile(
             .background(MaterialTheme.colorScheme.background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HeaderInfoProfile()
+        HeaderInfoProfile(user = uiState.user)
         SpacerHeight(ExtraLargeSpacing)
         ProfileSwitchItem(
             icon = Icons.Default.WbSunny,
