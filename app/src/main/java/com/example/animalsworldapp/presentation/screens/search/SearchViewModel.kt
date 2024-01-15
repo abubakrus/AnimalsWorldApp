@@ -11,12 +11,12 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow<SearchUiState>(SearchUiState())
+
+
+    private val _uiState = MutableStateFlow<SearchUiState>(SearchUiState.Loading)
     val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
 
     private val searchQueryFlow = MutableStateFlow("")
-
-
 
 
     fun onValueChange(value: String) {

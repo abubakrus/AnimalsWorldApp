@@ -10,6 +10,7 @@ sealed class SearchUiState() {
     data object Loading : SearchUiState()
     data class Error(val message: String) : SearchUiState()
     data class Content(
+
         val fauna: List<Fauna> = emptyList(),
         val flora: List<Flora> = emptyList(),
         val mountain: List<Mountain> = emptyList(),

@@ -11,7 +11,6 @@ import com.example.animalsworldapp.presentation.manager.NavigatorManager
 import com.example.animalsworldapp.presentation.manager.toast.ShowToastUseCase
 import com.example.animalsworldapp.presentation.navigation.nav_graph.MAIN_NAV_GRAPH_ROUTE
 import com.example.animalsworldapp.presentation.screens.auth.login.LoginDestination
-import com.example.socialapp.presentation.screens.auth.signup.SignUpUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow

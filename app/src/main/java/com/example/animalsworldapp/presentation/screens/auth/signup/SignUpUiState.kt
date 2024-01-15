@@ -1,4 +1,4 @@
-package com.example.socialapp.presentation.screens.auth.signup
+package com.example.animalsworldapp.presentation.screens.auth.signup
 
 data class SignUpUiState (
     val name:String = String(),

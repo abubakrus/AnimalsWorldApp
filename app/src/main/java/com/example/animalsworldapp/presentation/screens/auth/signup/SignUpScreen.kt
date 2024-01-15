@@ -1,4 +1,4 @@
-package com.example.socialapp.presentation.screens.auth.signup
+package com.example.animalsworldapp.presentation.screens.auth.signup
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -17,18 +17,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.animalsworldapp.presentation.screens.auth.signup.SignUpEvent
-import com.example.socialapp.R
-import com.example.socialapp.presentation.components.LoginTextField
-import com.example.socialapp.presentation.components.TabBar
-import com.example.socialapp.presentation.extensions.SpacerHeight
-import com.example.socialapp.presentation.extensions.SpacerWidth
-import com.example.socialapp.presentation.theme.ExtraLargeSpacing
-import com.example.socialapp.presentation.theme.ExtraMediumSpacing
-import com.example.socialapp.presentation.theme.LargeBlue
-import com.example.socialapp.presentation.theme.MediumSpacing
-import com.example.socialapp.presentation.theme.SmallSpacing
+import com.example.AnimalsWorldApp.R
+import com.example.animalsworldapp.presentation.components.LoginTextField
+import com.example.animalsworldapp.presentation.components.TabBar
+import com.example.animalsworldapp.presentation.extensions.SpacerHeight
+import com.example.animalsworldapp.presentation.extensions.SpacerWidth
+import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
+import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
+import com.example.animalsworldapp.presentation.theme.LargeBlue
+import com.example.animalsworldapp.presentation.theme.MediumSpacing
+import com.example.animalsworldapp.presentation.theme.SmallSpacing
 
 
 @Composable
@@ -114,8 +112,3 @@ fun SignUpScreen(
     }
 }
 
-
-@Preview
-@Composable
-fun SignUpScreenPreview() {
-}
