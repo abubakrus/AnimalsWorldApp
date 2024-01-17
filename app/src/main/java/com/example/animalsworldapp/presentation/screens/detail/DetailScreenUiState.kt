@@ -7,6 +7,7 @@ import com.example.animalsworldapp.presentation.models.Mountain
 
 sealed class ContentType(
     val backgroundImage: String,
+    val image: String,
     val location: String,
     val name: String,
     val about: String,
@@ -18,28 +19,32 @@ sealed class ContentType(
         location = fauna.location,
         name = fauna.name,
         about = fauna.aboutFauna,
-        voice = fauna.voice
+        voice = fauna.voice,
+        image = fauna.image
     )
 
     data class FloraContent(val flora: Flora) : ContentType(
         backgroundImage = flora.backgroundImage,
         location = flora.interestingFact,
         name = flora.name,
-        about = flora.aboutFlora
+        about = flora.aboutFlora,
+        image = flora.image
     )
 
     data class MountainContent(val mountain: Mountain) : ContentType(
         backgroundImage = mountain.backgroundImage,
         location = mountain.interestingFact,
         name = mountain.name,
-        about = mountain.about
+        about = mountain.about,
+        image = mountain.image
     )
 
     data class ForestContent(val forest: Forest) : ContentType(
         backgroundImage = forest.backgroundImage,
-        location = forest.interestingFact,
+        location = forest.location,
         name = forest.name,
-        about = forest.about
+        about = forest.about,
+        image = forest.image
     )
 
     data object Unknown : ContentType(
@@ -47,6 +52,7 @@ sealed class ContentType(
         location = String(),
         name = String(),
         about = String(),
+        image = String()
     )
 }
 

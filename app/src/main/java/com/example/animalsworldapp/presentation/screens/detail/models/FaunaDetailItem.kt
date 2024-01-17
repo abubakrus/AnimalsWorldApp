@@ -1,6 +1,8 @@
 package com.example.animalsworldapp.presentation.screens.detail.models
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.ScrollableDefaults
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -35,12 +38,14 @@ import com.example.animalsworldapp.presentation.theme.Pink
 import com.example.animalsworldapp.presentation.theme.SmallSpacing
 
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun FaunaDetailItem(
     onClickVoice: () -> Unit,
     backgroundImage: String,
     location: String,
     name: String,
+    image: String,
     about: String,
     navigateBackStack: () -> Unit,
     modifier: Modifier = Modifier,
@@ -48,17 +53,34 @@ fun FaunaDetailItem(
     Box(
         modifier = modifier.fillMaxSize()
     ) {
-        AsyncImage(
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .height(480.dp)
-                .fillMaxWidth()
-                .padding(MediumSpacing)
-                .clip(RoundedCornerShape(35.dp)),
-            model = backgroundImage,
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
+        LazyRow(
+            modifier = Modifier.align(Alignment.TopCenter),
+        ) {
+            item {
+                AsyncImage(
+                    modifier = Modifier
+                        .height(520.dp)
+                        .fillMaxWidth()
+                        .padding(MediumSpacing)
+                        .clip(RoundedCornerShape(35.dp)),
+                    model = backgroundImage,
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop
+                )
+            }
+            item {
+                AsyncImage(
+                    modifier = Modifier
+                        .height(520.dp)
+                        .fillMaxWidth()
+                        .padding(MediumSpacing)
+                        .clip(RoundedCornerShape(35.dp)),
+                    model = image,
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop
+                )
+            }
+        }
         IconButton(modifier = Modifier
             .align(Alignment.TopStart)
             .padding(ExtraLargeSpacing)
@@ -87,7 +109,7 @@ fun FaunaDetailItem(
             )
         }
         Column(
-            modifier = Modifier.padding(top = 490.dp, start = LargeSpacing, end = MediumSpacing)
+            modifier = Modifier.padding(top = 530.dp, start = LargeSpacing, end = MediumSpacing)
         ) {
             Row(
                 modifier = Modifier

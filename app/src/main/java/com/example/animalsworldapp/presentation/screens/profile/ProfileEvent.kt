@@ -4,6 +4,8 @@ sealed class ProfileEvent {
 
     data object OnEditUserType : ProfileEvent()
 
+    data object OnClickLogin : ProfileEvent()
+
     data object OnEditProfile : ProfileEvent()
 
     data object OnEditLanguage : ProfileEvent()

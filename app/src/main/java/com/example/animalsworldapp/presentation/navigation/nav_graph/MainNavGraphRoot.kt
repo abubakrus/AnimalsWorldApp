@@ -24,6 +24,12 @@ import com.example.animalsworldapp.presentation.screens.all.forest.AllForestView
 import com.example.animalsworldapp.presentation.screens.all.mountain.AllMountainDestination
 import com.example.animalsworldapp.presentation.screens.all.mountain.AllMountainScreen
 import com.example.animalsworldapp.presentation.screens.all.mountain.AllMountainViewModel
+import com.example.animalsworldapp.presentation.screens.auth.login.LoginDestination
+import com.example.animalsworldapp.presentation.screens.auth.login.LoginScreen
+import com.example.animalsworldapp.presentation.screens.auth.login.LoginViewModel
+import com.example.animalsworldapp.presentation.screens.auth.signup.SignUpDestination
+import com.example.animalsworldapp.presentation.screens.auth.signup.SignUpScreen
+import com.example.animalsworldapp.presentation.screens.auth.signup.SignUpViewModel
 import com.example.animalsworldapp.presentation.screens.detail.DetailDestination
 import com.example.animalsworldapp.presentation.screens.detail.DetailScreen
 import com.example.animalsworldapp.presentation.screens.detail.DetailScreenViewModel
@@ -162,6 +168,31 @@ fun MainNavGraphRoot() {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 SearchScreen(
                     uiState = uiState, onValueChange = {}, navHostController = navHostController
+                )
+            }
+            composable(LoginDestination.route()) {
+                val viewModel: LoginViewModel = hiltViewModel()
+                val navCommand by viewModel.navCommandFlow.collectAsStateWithLifecycle(initialValue = null)
+
+                LaunchedEffect(key1 = navCommand) {
+                    if (navCommand != null) navHostController.navigate(navCommand!!)
+                }
+
+                LoginScreen(
+                    uiState = viewModel.uiState.collectAsStateWithLifecycle().value,
+                    onEvent = viewModel::onEvent
+                )
+            }
+            composable(SignUpDestination.route()) {
+                val viewModel: SignUpViewModel = hiltViewModel()
+                val navCommand by viewModel.navCommandFlow.collectAsStateWithLifecycle(initialValue = null)
+
+                LaunchedEffect(key1 = navCommand) {
+                    if (navCommand != null) navHostController.navigate(navCommand!!)
+                }
+                SignUpScreen(
+                    uiState = viewModel.uiState.collectAsStateWithLifecycle().value,
+                    onEvent = viewModel::onEvent
                 )
             }
         }

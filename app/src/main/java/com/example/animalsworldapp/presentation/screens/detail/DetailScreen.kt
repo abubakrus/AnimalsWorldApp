@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.example.animalsworldapp.presentation.components.DetailBackgroundItem
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
-import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.screens.detail.models.FaunaDetailItem
 import com.example.animalsworldapp.presentation.screens.detail.models.LoadingScreenDetail
 
@@ -102,7 +101,8 @@ fun LoadedDetailScreen(
                     location = contentType.location,
                     name = contentType.name,
                     backgroundImage = contentType.backgroundImage,
-                    onClickVoice = onClickVoice
+                    onClickVoice = onClickVoice,
+                    image = contentType.image
                 )
 
             }

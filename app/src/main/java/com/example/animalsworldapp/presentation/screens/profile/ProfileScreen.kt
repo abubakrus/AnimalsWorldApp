@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Input
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.material3.MaterialTheme
@@ -85,6 +86,12 @@ fun LoadedScreenProfile(
             icon = Icons.Default.Language,
             title = stringResource(id = R.string.language),
             onClick = { onEvent(ProfileEvent.OnEditLanguage) }
+        )
+        SpacerHeight(ExtraMediumSpacing)
+        ProfileItemInfo(
+            icon = Icons.Default.Input,
+            title = stringResource(id = R.string.sign_in),
+            onClick = { onEvent(ProfileEvent.OnClickLogin) }
         )
     }
 }

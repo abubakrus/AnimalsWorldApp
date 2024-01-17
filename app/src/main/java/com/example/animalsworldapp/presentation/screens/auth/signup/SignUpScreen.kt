@@ -2,11 +2,14 @@ package com.example.animalsworldapp.presentation.screens.auth.signup
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -21,12 +24,11 @@ import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.components.LoginTextField
 import com.example.animalsworldapp.presentation.components.TabBar
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
-import com.example.animalsworldapp.presentation.extensions.SpacerWidth
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
+import com.example.animalsworldapp.presentation.theme.ExtraSmallSpacing
 import com.example.animalsworldapp.presentation.theme.LargeBlue
 import com.example.animalsworldapp.presentation.theme.MediumSpacing
-import com.example.animalsworldapp.presentation.theme.SmallSpacing
 
 
 @Composable
@@ -60,6 +62,12 @@ fun SignUpScreen(
                 onValueChange = { onEvent(SignUpEvent.OnLastNamedChanged(it)) },
                 placeholder = stringResource(id = R.string.lastname)
             )
+            SpacerHeight(ExtraLargeSpacing)
+            LoginTextField(
+                text = uiState.nickName,
+                onValueChange = { onEvent(SignUpEvent.OnNickNamedChanged(it)) },
+                placeholder = stringResource(id = R.string.nickName)
+            )
             SpacerHeight(ExtraMediumSpacing)
             LoginTextField(
                 text = uiState.email,
@@ -72,6 +80,19 @@ fun SignUpScreen(
                 onValueChange = { onEvent(SignUpEvent.OnPasswordChanged(it)) },
                 placeholder = stringResource(id = R.string.password),
                 isPassword = true
+            )
+
+            SpacerHeight(ExtraLargeSpacing)
+            LoginTextField(
+                text = uiState.aboutYou,
+                onValueChange = { onEvent(SignUpEvent.OnAboutYouChanged(it)) },
+                placeholder = stringResource(id = R.string.about_you)
+            )
+            SpacerHeight(ExtraLargeSpacing)
+            LoginTextField(
+                text = uiState.location,
+                onValueChange = { onEvent(SignUpEvent.OnLocationChanged(it)) },
+                placeholder = stringResource(id = R.string.your_location)
             )
             SpacerHeight(ExtraMediumSpacing)
             Button(
@@ -93,14 +114,17 @@ fun SignUpScreen(
                 )
             }
             SpacerHeight(ExtraLargeSpacing)
-            Row {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
                 Text(
                     text = stringResource(id = R.string.already_have_an_account),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onBackground,
                     fontWeight = FontWeight.Bold
                 )
-                SpacerWidth(SmallSpacing)
+                Spacer(modifier = Modifier.width(ExtraSmallSpacing))
                 Text(
                     modifier = Modifier.clickable { onEvent(SignUpEvent.OnLoginClick) },
                     text = stringResource(id = R.string.login),

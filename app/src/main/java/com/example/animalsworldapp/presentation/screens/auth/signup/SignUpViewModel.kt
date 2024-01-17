@@ -44,6 +44,9 @@ class SignUpViewModel @Inject constructor(
             is SignUpEvent.OnLastNamedChanged -> doLastNameChanged(event)
             is SignUpEvent.OnSignUpClick -> onSignUpClick()
             is SignUpEvent.OnLoginClick -> onLoginClick()
+            is SignUpEvent.OnNickNamedChanged -> doOnNickNamedChanged(event)
+            is SignUpEvent.OnAboutYouChanged -> doAboutYouChanged(event)
+            is SignUpEvent.OnLocationChanged -> doLocationChanged(event)
         }
     }
 
@@ -93,6 +96,24 @@ class SignUpViewModel @Inject constructor(
     private fun doNameChanged(event: SignUpEvent.OnNamedChanged) {
         _uiState.update { currentState ->
             currentState.copy(name = event.value)
+        }
+    }
+
+    private fun doLocationChanged(event: SignUpEvent.OnLocationChanged) {
+        _uiState.update { currentState ->
+            currentState.copy(location = event.value)
+        }
+    }
+
+    private fun doAboutYouChanged(event: SignUpEvent.OnAboutYouChanged) {
+        _uiState.update { currentState ->
+            currentState.copy(aboutYou = event.value)
+        }
+    }
+
+    private fun doOnNickNamedChanged(event: SignUpEvent.OnNickNamedChanged) {
+        _uiState.update { currentState ->
+            currentState.copy(nickName = event.value)
         }
     }
 

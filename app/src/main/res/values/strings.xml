@@ -52,10 +52,14 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="signup">SingUp</string>
-    <string name="dont_have_anaccount">Dont have Account</string>
+    <string name="sign_in">SingIn</string>
+    <string name="dont_have_anaccount">Dont have Account </string>
     <string name="name">Name</string>
     <string name="lastname">LastName</string>
     <string name="email">Email</string>
     <string name="already_have_an_account">Already have an account</string>
+    <string name="nickName">Nick name</string>
+    <string name="about_you">About you</string>
+    <string name="your_location">Your location</string>
 
 </resources>

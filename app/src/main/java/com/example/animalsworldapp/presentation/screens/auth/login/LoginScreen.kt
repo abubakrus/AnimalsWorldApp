@@ -1,12 +1,15 @@
 package com.example.animalsworldapp.presentation.screens.auth.login
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -22,8 +25,8 @@ import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.components.LoginTextField
 import com.example.animalsworldapp.presentation.components.TabBar
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
-import com.example.animalsworldapp.presentation.extensions.SpacerWidth
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
+import com.example.animalsworldapp.presentation.theme.ExtraSmallSpacing
 import com.example.animalsworldapp.presentation.theme.LargeBlue
 import com.example.animalsworldapp.presentation.theme.SmallSpacing
 
@@ -92,13 +95,16 @@ fun LoginScreen(
                 )
             }
             SpacerHeight(ExtraLargeSpacing)
-            Row {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
                 Text(
                     text = stringResource(id = R.string.dont_have_anaccount),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onBackground
                 )
-                SpacerWidth(SmallSpacing)
+                Spacer(modifier = Modifier.width(ExtraSmallSpacing))
                 Text(
                     modifier = Modifier.clickable {
                         onEvent(LoginEvent.OnSignUpClick)

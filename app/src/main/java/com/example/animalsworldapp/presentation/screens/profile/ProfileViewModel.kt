@@ -7,6 +7,7 @@ import com.example.animalsworldapp.domain.usecases.user.FetchUserByIdUseCase
 import com.example.animalsworldapp.presentation.extensions.createMutableSharedFlowAsSingleLiveEvent
 import com.example.animalsworldapp.presentation.manager.toast.ShowToastUseCase
 import com.example.animalsworldapp.presentation.models.toUser
+import com.example.animalsworldapp.presentation.screens.auth.signup.SignUpDestination
 import com.example.animalsworldapp.presentation.screens.edit_profile.EDIT_PROFILE_ROUTE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -36,6 +37,7 @@ class ProfileViewModel @Inject constructor(
             is ProfileEvent.OnEditUserType -> onEditUserType()
             is ProfileEvent.OnEditLanguage -> onEditLanguage()
             is ProfileEvent.OnEditChangeTheme -> {}
+            is ProfileEvent.OnClickLogin -> navigateToOnClickLogin()
         }
     }
 
@@ -52,6 +54,10 @@ class ProfileViewModel @Inject constructor(
 
     private fun navigateToEditProfileScreen() {
         _navCommandFlow.tryEmit(EDIT_PROFILE_ROUTE)
+    }
+
+    private fun navigateToOnClickLogin() {
+        _navCommandFlow.tryEmit(SignUpDestination.route())
     }
 
     private fun onEditLanguage() {
