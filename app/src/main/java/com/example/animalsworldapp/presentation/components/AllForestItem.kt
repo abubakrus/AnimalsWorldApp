@@ -1,7 +1,7 @@
 package com.example.animalsworldapp.presentation.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,7 +30,9 @@ import com.example.animalsworldapp.presentation.theme.SmallSpacing
 
 @Composable
 fun AllForestItem(
-    modifier: Modifier = Modifier, forest: Forest
+    forest: Forest,
+    navigateToDetails: (String) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Box(
         modifier = modifier.fillMaxSize()
@@ -43,13 +45,12 @@ fun AllForestItem(
                 .fillMaxWidth()
                 .wrapContentHeight()
                 .padding(horizontal = SmallSpacing)
-//                .height(480.dp)
-//                .padding(horizontal = SmallSpacing)
                 .clip(
                     RoundedCornerShape(
                         topStart = 16.dp, topEnd = 16.dp, bottomStart = 16.dp, bottomEnd = 16.dp
                     )
-                ),
+                )
+                .clickable { navigateToDetails(forest.id) },
         )
         Column(
             modifier = Modifier

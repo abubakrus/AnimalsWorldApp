@@ -45,10 +45,8 @@ import com.example.animalsworldapp.presentation.extensions.SpacerWidth
 import com.example.animalsworldapp.presentation.extensions.advancedShadow
 import com.example.animalsworldapp.presentation.screens.onboarding.models.OnBoardingPagerItem
 import com.example.animalsworldapp.presentation.theme.Inter
-import com.example.animalsworldapp.presentation.theme.LexendDeca
 import com.example.animalsworldapp.presentation.theme.NiramitMedium
 import com.example.animalsworldapp.presentation.theme.NobileBold
-import com.example.animalsworldapp.presentation.theme.NobileBoldItalic
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import kotlinx.coroutines.launch
 
@@ -57,7 +55,7 @@ private val onBoardings = OnBoardingPagerItem.onBoardingItem()
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnBoardingScreen(
-    navigateToLoginScreen: () -> Unit,
+    navigateToMainScreen: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val pagerState = rememberPagerState(pageCount = { onBoardings.size })
@@ -111,7 +109,7 @@ fun OnBoardingScreen(
                     modifier = Modifier,
                     page = onBoardings[pagerState.currentPage],
                     onNextPage = { isLastPage ->
-                        if (isLastPage) navigateToLoginScreen()
+                        if (isLastPage) navigateToMainScreen()
                         else scope.launch { pagerState.animateScrollToPage(pagerState.currentPage.inc()) }
                     })
 
@@ -213,7 +211,7 @@ fun OnBoardingPage(
 @Composable
 fun OnBoardingScreenPreview() {
     MaterialTheme {
-        OnBoardingScreen(navigateToLoginScreen = {})
+        OnBoardingScreen(navigateToMainScreen = {})
     }
 }
 

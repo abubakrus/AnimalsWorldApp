@@ -31,7 +31,6 @@ fun MainScreen(
     navigateToAllFauna: () -> Unit,
     navigateToAllMountain: () -> Unit,
     navigateToForest: () -> Unit,
-
     ) {
     val fillScreen = Modifier.fillMaxSize()
     Scaffold(topBar = {

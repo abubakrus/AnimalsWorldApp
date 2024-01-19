@@ -36,7 +36,7 @@ fun AnimalsWorldComposeApp(
         modifier = modifier.fillMaxSize()
     ) { paddings ->
         AppNavGraph(
-            navHostController = navHostController
+            navHostController = navHostController,
         )
     }
 }

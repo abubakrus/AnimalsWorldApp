@@ -20,7 +20,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.outlined.ArrowBackIosNew
-import androidx.compose.material.icons.outlined.KeyboardVoice
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -55,16 +54,14 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun FaunaDetailItem(
-    onClickVoice: () -> Unit,
+fun FloraDetailItem(
+    modifier: Modifier = Modifier,
     backgroundImage: String,
-    location: String,
-    name: String,
     image: String,
+    name: String,
     about: String,
     interestingFact: String?,
     navigateBackStack: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val imageList = listOf(image, backgroundImage)
     val imageState = rememberPagerState { imageList.size }
@@ -72,16 +69,18 @@ fun FaunaDetailItem(
     val pagerState = rememberPagerState(pageCount = { detailTab.size })
     val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
+
     Box(
         modifier = modifier.fillMaxSize()
     ) {
+
         HorizontalPager(state = imageState) { index ->
             when (val list = imageList[index]) {
                 imageList[0] -> {
                     AsyncImage(
                         modifier = Modifier
                             .align(Alignment.TopCenter)
-                            .height(520.dp)
+                            .height(480.dp)
                             .fillMaxWidth()
                             .padding(MediumSpacing)
                             .clip(RoundedCornerShape(35.dp)),
@@ -95,7 +94,7 @@ fun FaunaDetailItem(
                     AsyncImage(
                         modifier = Modifier
                             .align(Alignment.TopCenter)
-                            .height(520.dp)
+                            .height(480.dp)
                             .fillMaxWidth()
                             .padding(MediumSpacing)
                             .clip(RoundedCornerShape(35.dp)),
@@ -119,38 +118,9 @@ fun FaunaDetailItem(
                 tint = Color.White
             )
         }
-
-        IconButton(modifier = Modifier
-            .align(Alignment.TopEnd)
-            .padding(ExtraLargeSpacing)
-            .clip(CircleShape)
-            .background(Color.Transparent.copy(alpha = 0.25f)),
-            onClick = { onClickVoice() }) {
-            Icon(
-                modifier = Modifier.size(22.dp),
-                imageVector = Icons.Outlined.KeyboardVoice,
-                contentDescription = null,
-                tint = Color.White
-            )
-        }
         Column(
-            modifier = Modifier.padding(top = 530.dp, start = LargeSpacing, end = MediumSpacing)
+            modifier = Modifier.padding(top = 490.dp, start = LargeSpacing, end = MediumSpacing)
         ) {
-            Row(
-                modifier = Modifier
-            ) {
-                Icon(
-                    modifier = Modifier.size(24.dp),
-                    imageVector = Icons.Filled.LocationOn,
-                    contentDescription = null,
-                    tint = Pink
-                )
-                Text(
-                    text = location, style = MaterialTheme.typography.bodyLarge.copy(
-                        color = Pink, fontFamily = LexendDeca
-                    )
-                )
-            }
             Text(
                 modifier = Modifier.padding(start = MediumSpacing, top = SmallSpacing),
                 text = name,
@@ -179,9 +149,10 @@ fun FaunaDetailItem(
                 edgePadding = 0.dp,
             ) {
                 detailTab.forEachIndexed { index, detailTab ->
-                    Tab(modifier = Modifier
-                        .padding(28.dp)
-                        .clip(RoundedCornerShape(16.dp)),
+                    Tab(
+                        modifier = Modifier
+                            .padding(28.dp)
+                            .clip(RoundedCornerShape(16.dp)),
                         selected = index == pagerState.currentPage,
                         onClick = {
                             scope.launch { pagerState.animateScrollToPage(index) }

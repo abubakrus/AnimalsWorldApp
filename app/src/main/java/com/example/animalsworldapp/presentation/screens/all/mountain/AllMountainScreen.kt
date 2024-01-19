@@ -13,17 +13,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.components.MountainItem
 import com.example.animalsworldapp.presentation.components.TabBar
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
 import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
+import com.example.animalsworldapp.presentation.screens.detail.ItemDetailType
 
 @Composable
 fun AllMountainScreen(
     uiState: AllMountainUiState,
-    navHostController: NavHostController,
+    navBackStackEntry: () -> Unit,
+    navigateToDetails: (ItemDetailType, String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -31,9 +32,7 @@ fun AllMountainScreen(
             TabBar(
                 title = stringResource(id = R.string.all_mountain),
                 startIcon = Icons.Default.ArrowBack,
-                startIconClick = {
-                    navHostController.navigateUp()
-                }
+                startIconClick = navBackStackEntry
             )
         }
     ) { innerPaddings ->
@@ -43,7 +42,8 @@ fun AllMountainScreen(
                 uiState = uiState,
                 modifier = modifier
                     .padding(innerPaddings)
-                    .fillMaxSize()
+                    .fillMaxSize(),
+                navigateToDetails = navigateToDetails
             )
 
             is AllMountainUiState.Error -> ErrorScreen(
@@ -56,6 +56,7 @@ fun AllMountainScreen(
 @Composable
 fun LoadedAllMountainScreen(
     uiState: AllMountainUiState.Loaded,
+    navigateToDetails: (ItemDetailType, String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyVerticalStaggeredGrid(
@@ -67,7 +68,12 @@ fun LoadedAllMountainScreen(
                 items = uiState.mountain,
                 key = { it.id }
             ) { mountain ->
-                MountainItem(mountain = mountain)
+                MountainItem(
+                    mountain = mountain,
+                    navigateToDetails = {
+                        navigateToDetails(ItemDetailType.MAUNTAIN, it)
+                    }
+                )
             }
 
         },

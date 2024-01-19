@@ -3,6 +3,7 @@ package com.example.animalsworldapp.presentation.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,12 +33,12 @@ import com.example.animalsworldapp.presentation.theme.SmallSpacing
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun AllFaunaItem(
+    fauna: Fauna,
+    navigateToDetails: (String) -> Unit,
     modifier: Modifier = Modifier,
-    fauna: Fauna
 ) {
     Box(
-        modifier = modifier
-            .fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
         AsyncImage(
             model = fauna.backgroundImage,
@@ -47,16 +48,12 @@ fun AllFaunaItem(
                 .fillMaxWidth()
                 .wrapContentHeight()
                 .padding(horizontal = SmallSpacing)
-//                .height(480.dp)
-//                .padding(horizontal = SmallSpacing)
                 .clip(
                     RoundedCornerShape(
-                        topStart = 16.dp,
-                        topEnd = 16.dp,
-                        bottomStart = 16.dp,
-                        bottomEnd = 16.dp
+                        topStart = 16.dp, topEnd = 16.dp, bottomStart = 16.dp, bottomEnd = 16.dp
                     )
-                ),
+                )
+                .clickable { navigateToDetails(fauna.objectId) },
         )
         Column(
             modifier = Modifier
@@ -67,10 +64,7 @@ fun AllFaunaItem(
                 .padding(horizontal = ExtraMediumSpacing)
                 .clip(
                     RoundedCornerShape(
-                        topStart = 8.dp,
-                        topEnd = 8.dp,
-                        bottomStart = 8.dp,
-                        bottomEnd = 8.dp
+                        topStart = 8.dp, topEnd = 8.dp, bottomStart = 8.dp, bottomEnd = 8.dp
                     )
                 )
                 .background(Color.White.copy(alpha = 0.45f)),
@@ -78,13 +72,10 @@ fun AllFaunaItem(
             horizontalAlignment = Alignment.Start
         ) {
             Text(
-                modifier = Modifier
-                    .padding(SmallSpacing),
+                modifier = Modifier.padding(SmallSpacing),
                 text = fauna.name,
                 style = MaterialTheme.typography.titleMedium.copy(
-                    fontSize = 14.sp,
-                    color = Color.Black,
-                    fontFamily = NobileBold
+                    fontSize = 14.sp, color = Color.Black, fontFamily = NobileBold
                 )
             )
         }

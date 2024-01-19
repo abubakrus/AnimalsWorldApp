@@ -2,6 +2,7 @@ package com.example.animalsworldapp.presentation.screens.detail.models
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
@@ -20,7 +22,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.outlined.ArrowBackIosNew
-import androidx.compose.material.icons.outlined.KeyboardVoice
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -55,16 +56,15 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun FaunaDetailItem(
-    onClickVoice: () -> Unit,
+fun ForestDetailItem(
+    modifier: Modifier = Modifier,
     backgroundImage: String,
-    location: String,
-    name: String,
     image: String,
+    name: String,
+    location: String,
     about: String,
     interestingFact: String?,
     navigateBackStack: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val imageList = listOf(image, backgroundImage)
     val imageState = rememberPagerState { imageList.size }
@@ -72,6 +72,7 @@ fun FaunaDetailItem(
     val pagerState = rememberPagerState(pageCount = { detailTab.size })
     val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
+
     Box(
         modifier = modifier.fillMaxSize()
     ) {
@@ -81,7 +82,7 @@ fun FaunaDetailItem(
                     AsyncImage(
                         modifier = Modifier
                             .align(Alignment.TopCenter)
-                            .height(520.dp)
+                            .height(480.dp)
                             .fillMaxWidth()
                             .padding(MediumSpacing)
                             .clip(RoundedCornerShape(35.dp)),
@@ -95,7 +96,7 @@ fun FaunaDetailItem(
                     AsyncImage(
                         modifier = Modifier
                             .align(Alignment.TopCenter)
-                            .height(520.dp)
+                            .height(480.dp)
                             .fillMaxWidth()
                             .padding(MediumSpacing)
                             .clip(RoundedCornerShape(35.dp)),
@@ -119,22 +120,8 @@ fun FaunaDetailItem(
                 tint = Color.White
             )
         }
-
-        IconButton(modifier = Modifier
-            .align(Alignment.TopEnd)
-            .padding(ExtraLargeSpacing)
-            .clip(CircleShape)
-            .background(Color.Transparent.copy(alpha = 0.25f)),
-            onClick = { onClickVoice() }) {
-            Icon(
-                modifier = Modifier.size(22.dp),
-                imageVector = Icons.Outlined.KeyboardVoice,
-                contentDescription = null,
-                tint = Color.White
-            )
-        }
         Column(
-            modifier = Modifier.padding(top = 530.dp, start = LargeSpacing, end = MediumSpacing)
+            modifier = Modifier.padding(top = 490.dp, start = LargeSpacing, end = MediumSpacing)
         ) {
             Row(
                 modifier = Modifier
@@ -146,7 +133,8 @@ fun FaunaDetailItem(
                     tint = Pink
                 )
                 Text(
-                    text = location, style = MaterialTheme.typography.bodyLarge.copy(
+                    text = location,
+                    style = MaterialTheme.typography.bodyLarge.copy(
                         color = Pink, fontFamily = LexendDeca
                     )
                 )
@@ -177,11 +165,12 @@ fun FaunaDetailItem(
                     Spacer(modifier = Modifier.height(4.dp))
                 },
                 edgePadding = 0.dp,
-            ) {
+                ) {
                 detailTab.forEachIndexed { index, detailTab ->
-                    Tab(modifier = Modifier
-                        .padding(28.dp)
-                        .clip(RoundedCornerShape(16.dp)),
+                    Tab(
+                        modifier = Modifier
+                            .padding(28.dp)
+                            .clip(RoundedCornerShape(16.dp)),
                         selected = index == pagerState.currentPage,
                         onClick = {
                             scope.launch { pagerState.animateScrollToPage(index) }

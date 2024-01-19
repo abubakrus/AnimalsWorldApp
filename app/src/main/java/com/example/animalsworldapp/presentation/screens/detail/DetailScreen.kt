@@ -16,9 +16,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import com.example.animalsworldapp.presentation.components.DetailBackgroundItem
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
+import com.example.animalsworldapp.presentation.screens.detail.models.DetailTab
 import com.example.animalsworldapp.presentation.screens.detail.models.FaunaDetailItem
+import com.example.animalsworldapp.presentation.screens.detail.models.FloraDetailItem
+import com.example.animalsworldapp.presentation.screens.detail.models.ForestDetailItem
 import com.example.animalsworldapp.presentation.screens.detail.models.LoadingScreenDetail
 
 @Composable
@@ -40,7 +42,7 @@ fun DetailScreen(
                         .padding(innerPaddings),
                     navigateBackStack = { navHostController.navigateUp() },
                     contentType = uiState.contentType,
-                    onClickVoice = onClickVoice
+                    onClickVoice = onClickVoice,
                 )
             }
         }
@@ -71,28 +73,32 @@ fun LoadedDetailScreen(
         ) {
             when (contentType) {
                 is ContentType.Unknown -> Unknown()
-                is ContentType.MountainContent -> DetailBackgroundItem(
+                is ContentType.MountainContent -> FloraDetailItem(
                     navigateBackStack = navigateBackStack,
-                    about = contentType.about,
-                    location = contentType.location,
                     name = contentType.name,
-                    backgroundImage = contentType.backgroundImage
+                    backgroundImage = contentType.backgroundImage,
+                    interestingFact = contentType.interestingFact,
+                    image = contentType.image,
+                    about = contentType.about
                 )
 
-                is ContentType.FloraContent -> DetailBackgroundItem(
+                is ContentType.FloraContent -> FloraDetailItem(
                     navigateBackStack = navigateBackStack,
-                    about = contentType.about,
-                    location = contentType.location,
                     name = contentType.name,
-                    backgroundImage = contentType.backgroundImage
+                    backgroundImage = contentType.backgroundImage,
+                    interestingFact = contentType.interestingFact,
+                    image = contentType.image,
+                    about = contentType.about
                 )
 
-                is ContentType.ForestContent -> DetailBackgroundItem(
+                is ContentType.ForestContent -> ForestDetailItem(
                     navigateBackStack = navigateBackStack,
                     about = contentType.about,
                     location = contentType.location,
                     name = contentType.name,
-                    backgroundImage = contentType.backgroundImage
+                    backgroundImage = contentType.backgroundImage,
+                    interestingFact = contentType.interestingFact,
+                    image = contentType.image
                 )
 
                 is ContentType.FaunaContent -> FaunaDetailItem(
@@ -101,8 +107,9 @@ fun LoadedDetailScreen(
                     location = contentType.location,
                     name = contentType.name,
                     backgroundImage = contentType.backgroundImage,
-                    onClickVoice = onClickVoice,
-                    image = contentType.image
+                    interestingFact = contentType.interestingFact,
+                    image = contentType.image,
+                    onClickVoice = {}
                 )
 
             }

@@ -10,6 +10,7 @@ import com.example.animalsworldapp.presentation.models.toFauna
 import com.example.animalsworldapp.presentation.models.toFlora
 import com.example.animalsworldapp.presentation.models.toForest
 import com.example.animalsworldapp.presentation.models.toMountain
+import com.example.animalsworldapp.presentation.screens.detail.models.DetailTab
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -100,6 +101,7 @@ class DetailScreenViewModel @Inject constructor(
 
         _uiStateFlow.tryEmit(state)
     }
-
 }
+
+
 

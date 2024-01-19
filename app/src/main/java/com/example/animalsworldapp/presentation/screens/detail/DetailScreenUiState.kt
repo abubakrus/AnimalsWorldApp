@@ -4,9 +4,11 @@ import com.example.animalsworldapp.presentation.models.Fauna
 import com.example.animalsworldapp.presentation.models.Flora
 import com.example.animalsworldapp.presentation.models.Forest
 import com.example.animalsworldapp.presentation.models.Mountain
+import com.example.animalsworldapp.presentation.screens.detail.models.DetailTab
 
 sealed class ContentType(
     val backgroundImage: String,
+    val interestingFact: String?,
     val image: String,
     val location: String,
     val name: String,
@@ -20,7 +22,8 @@ sealed class ContentType(
         name = fauna.name,
         about = fauna.aboutFauna,
         voice = fauna.voice,
-        image = fauna.image
+        image = fauna.image,
+        interestingFact = fauna.interestingFact
     )
 
     data class FloraContent(val flora: Flora) : ContentType(
@@ -28,7 +31,8 @@ sealed class ContentType(
         location = flora.interestingFact,
         name = flora.name,
         about = flora.aboutFlora,
-        image = flora.image
+        image = flora.image,
+        interestingFact = flora.interestingFact
     )
 
     data class MountainContent(val mountain: Mountain) : ContentType(
@@ -36,7 +40,8 @@ sealed class ContentType(
         location = mountain.interestingFact,
         name = mountain.name,
         about = mountain.about,
-        image = mountain.image
+        image = mountain.image,
+        interestingFact = mountain.interestingFact
     )
 
     data class ForestContent(val forest: Forest) : ContentType(
@@ -44,7 +49,8 @@ sealed class ContentType(
         location = forest.location,
         name = forest.name,
         about = forest.about,
-        image = forest.image
+        image = forest.image,
+        interestingFact = forest.interestingFact
     )
 
     data object Unknown : ContentType(
@@ -52,7 +58,8 @@ sealed class ContentType(
         location = String(),
         name = String(),
         about = String(),
-        image = String()
+        image = String(),
+        interestingFact = String()
     )
 }
 
@@ -65,6 +72,6 @@ sealed class DetailScreenUiState {
     data class Error(val message: String) : DetailScreenUiState()
 
     data class Content(
-        val contentType: ContentType
+        val contentType: ContentType,
     ) : DetailScreenUiState()
 }

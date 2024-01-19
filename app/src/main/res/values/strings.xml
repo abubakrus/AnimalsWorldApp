@@ -61,5 +61,7 @@
     <string name="nickName">Nick name</string>
     <string name="about_you">About you</string>
     <string name="your_location">Your location</string>
+    <string name="about">About</string>
+    <string name="interestingFact">Interesting facts</string>
 
 </resources>

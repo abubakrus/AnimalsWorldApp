@@ -1,13 +1,18 @@
 package com.example.animalsworldapp.presentation.screens.detail.models
 
+import androidx.annotation.StringRes
+import com.example.AnimalsWorldApp.R
+
 
 sealed class DetailTab(
+    @StringRes
+    val titleResId: Int
 ) {
-    data class Image(
-        val image: String
-    ) : DetailTab()
+    data class About(
+        val about: String
+    ) : DetailTab(R.string.about)
 
-    data class BackgroundImage(
-        val image: String
-    ) : DetailTab()
+    data class InterestingFact(
+        val interestingFact: String?
+    ) : DetailTab(R.string.interestingFact)
 }

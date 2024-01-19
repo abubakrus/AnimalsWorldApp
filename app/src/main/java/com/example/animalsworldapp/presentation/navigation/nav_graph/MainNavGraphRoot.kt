@@ -56,7 +56,8 @@ fun MainNavGraphRoot() {
     val navHostController = rememberNavController()
     Scaffold(bottomBar = {
         AppBottomNavigation(navController = navHostController)
-    }) { innerPaddings ->
+    }
+    ) { innerPaddings ->
         NavHost(
             modifier = Modifier.padding(bottom = innerPaddings.calculateBottomPadding()),
             navController = navHostController,
@@ -97,21 +98,6 @@ fun MainNavGraphRoot() {
                     onClickVoice = {}
                 )
             }
-//            composable(
-//                route = DetailFaunaDestinations.route(),
-//                arguments = DetailFaunaDestinations.arguments
-//            ) {
-//                val viewModel: DetailFaunaViewModel = hiltViewModel()
-//                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-//
-//                DetailFaunaScreen(
-//                    uiState = uiState,
-//                    navigateBackStack = {
-//                        navHostController.navigateUp()
-//                    },
-//                    onClickVoice = { /*TODO*/ }
-//                )
-//            }
             composable(BottomTab.Search.route) {
                 val viewModel: SearchViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -144,17 +130,39 @@ fun MainNavGraphRoot() {
                 val viewModel: AllFaunaViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-                AllFaunaScreen(uiState = uiState, navHostController = navHostController)
+                AllFaunaScreen(uiState = uiState, navBackStackEntry = {
+                    navHostController.navigateUp()
+                },
+                    navigateToDetails = { itemDetailType, id ->
+                        navHostController.navigate("${DetailDestination.route()}/${itemDetailType.type}/$id")
+                    }
+                )
             }
             composable(AllForestDestination.route()) {
                 val viewModel: AllForestViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                AllForestScreen(uiState = uiState, navHostController = navHostController)
+                AllForestScreen(
+                    uiState = uiState,
+                    navBackStackEntry = {
+                        navHostController.navigateUp()
+                    },
+                    navigateToDetails = { itemDetailType, id ->
+                        navHostController.navigate("${DetailDestination.route()}/${itemDetailType.type}/$id")
+                    }
+                )
             }
             composable(AllMountainDestination.route()) {
                 val viewModel: AllMountainViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                AllMountainScreen(uiState = uiState, navHostController = navHostController)
+                AllMountainScreen(
+                    uiState = uiState,
+                    navBackStackEntry = {
+                        navHostController.navigateUp()
+                    },
+                    navigateToDetails = { itemDetailType, id ->
+                        navHostController.navigate("${DetailDestination.route()}/${itemDetailType.type}/$id")
+                    }
+                )
             }
             composable(SearchDestination.route()) {
                 val viewModel: SearchViewModel = hiltViewModel()

@@ -13,17 +13,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.components.AllFaunaItem
 import com.example.animalsworldapp.presentation.components.TabBar
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
 import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
+import com.example.animalsworldapp.presentation.screens.detail.ItemDetailType
 
 @Composable
 fun AllFaunaScreen(
     uiState: AllFaunaUiState,
-    navHostController: NavHostController,
+    navBackStackEntry: () -> Unit,
+    navigateToDetails: (ItemDetailType, String) -> Unit,
     modifier: Modifier = Modifier,
 
     ) {
@@ -32,9 +33,7 @@ fun AllFaunaScreen(
             TabBar(
                 headlineEnd = stringResource(id = R.string.all_fauna),
                 startIcon = Icons.Default.ArrowBack,
-                startIconClick = {
-                    navHostController.navigateUp()
-                }
+                startIconClick = navBackStackEntry
             )
         },
     ) { innerPaddings ->
@@ -44,7 +43,8 @@ fun AllFaunaScreen(
                 modifier = modifier
                     .padding(innerPaddings)
                     .fillMaxSize(),
-                uiState = uiState
+                uiState = uiState,
+                navigateToDetails = navigateToDetails
             )
 
             is AllFaunaUiState.Error -> ErrorScreen(
@@ -59,8 +59,10 @@ fun AllFaunaScreen(
 @Composable
 fun LoadedAllFaunaScreen(
     uiState: AllFaunaUiState.Loaded,
-    modifier: Modifier = Modifier
-) {
+    navigateToDetails: (ItemDetailType, String) -> Unit,
+    modifier: Modifier = Modifier,
+
+    ) {
 
     LazyVerticalStaggeredGrid(
         columns = StaggeredGridCells.Adaptive(200.dp),
@@ -72,7 +74,10 @@ fun LoadedAllFaunaScreen(
                 key = { it.objectId }
             ) { fauna ->
                 AllFaunaItem(
-                    fauna = fauna
+                    fauna = fauna,
+                    navigateToDetails = {
+                        navigateToDetails(ItemDetailType.FAUNA, it)
+                    }
                 )
             }
 
@@ -80,19 +85,4 @@ fun LoadedAllFaunaScreen(
         modifier = modifier
 
     )
-//    LazyColumn(
-//        modifier = modifier,
-//    ) {
-//        items(
-//            items = uiState.fauna,
-//            key = { it.objectId }
-//        ) { fauna ->
-//            AllFaunaItem(
-//                fauna = fauna
-//            )
-////            FaunaItem(
-////                fauna = fauna
-////            )
-//        }
-//    }
 }
