@@ -59,9 +59,6 @@ fun HorizontalPagerForForest(
         HorizontalPager(
             modifier = Modifier,
             state = pagerState,
-            contentPadding = PaddingValues(
-                horizontal = 32.dp, vertical = 8.dp
-            ),
         ) { index ->
             val forest = forestList[index]
             Box(modifier = Modifier) {
