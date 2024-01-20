@@ -1,9 +1,11 @@
 # A program written entirely in Kotlin using the principles of Clean Architecture according to the MVVM pattern.
 
-This application is an information application. In this application you can find films and learn
-more about this film. These applications are best suited to those who like to watch movies. In this
-application, movies are divided into several categories for a convenient interface.Written in
-Kotlin using the Jetpack Compose
+This application is children's educational. 
+In this application, a child can study animals, 
+develop their knowledge of nature and be able to examine the beauty of our world. 
+This application is best suited for children over 8 years old to develop their knowledge about nature. 
+In this application, nature has been divided into flora and fauna.
+Written in Kotlin using the Jetpack Compose
 framework.
 Using the
 server (https://parse-dashboard.back4app.com/apps/e045620e-42ac-4f44-b6b7-6d4fd9690e38/browser/CategoryId)
