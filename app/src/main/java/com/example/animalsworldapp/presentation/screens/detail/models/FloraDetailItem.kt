@@ -73,7 +73,6 @@ fun FloraDetailItem(
     Box(
         modifier = modifier.fillMaxSize()
     ) {
-
         HorizontalPager(state = imageState) { index ->
             when (val list = imageList[index]) {
                 imageList[0] -> {
@@ -89,7 +88,6 @@ fun FloraDetailItem(
                         contentScale = ContentScale.Crop
                     )
                 }
-
                 imageList[1] -> {
                     AsyncImage(
                         modifier = Modifier
@@ -141,7 +139,6 @@ fun FloraDetailItem(
                                 shape = RoundedCornerShape(8.dp)
                             )
                     )
-
                 },
                 divider = {
                     Spacer(modifier = Modifier.height(4.dp))
@@ -151,7 +148,7 @@ fun FloraDetailItem(
                 detailTab.forEachIndexed { index, detailTab ->
                     Tab(
                         modifier = Modifier
-                            .padding(28.dp)
+                            .padding(12.dp)
                             .clip(RoundedCornerShape(16.dp)),
                         selected = index == pagerState.currentPage,
                         onClick = {
@@ -164,7 +161,7 @@ fun FloraDetailItem(
                                 stringResource(id = R.string.interestingFact)
                             },
                             style = MaterialTheme.typography.titleLarge,
-                            color = if (isSystemInDarkTheme()) Color.White else Color.Black
+                            color = MaterialTheme.colorScheme.onBackground
                         )
                     }
 

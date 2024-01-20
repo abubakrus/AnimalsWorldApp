@@ -14,8 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.AnimalsWorldApp.R
-import com.example.animalsworldapp.presentation.components.AllFaunaItem
 import com.example.animalsworldapp.presentation.components.TabBar
+import com.example.animalsworldapp.presentation.screens.all.components.ShowAllItem
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
 import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.screens.detail.ItemDetailType
@@ -26,7 +26,7 @@ fun AllFaunaScreen(
     navBackStackEntry: () -> Unit,
     navigateToDetails: (ItemDetailType, String) -> Unit,
     modifier: Modifier = Modifier,
-    ) {
+) {
     Scaffold(
         topBar = {
             TabBar(
@@ -60,9 +60,9 @@ fun LoadedAllFaunaScreen(
     uiState: AllFaunaUiState.Loaded,
     navigateToDetails: (ItemDetailType, String) -> Unit,
     modifier: Modifier = Modifier,
-    ) {
+) {
     LazyVerticalStaggeredGrid(
-        columns = StaggeredGridCells.Adaptive(200.dp),
+        columns = StaggeredGridCells.Fixed(2),
         verticalItemSpacing = 4.dp,
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         content = {
@@ -70,14 +70,15 @@ fun LoadedAllFaunaScreen(
                 items = uiState.fauna,
                 key = { it.objectId }
             ) { fauna ->
-                AllFaunaItem(
-                    fauna = fauna,
+                ShowAllItem(
+                    backgroundImage = fauna.backgroundImage,
+                    id = fauna.objectId,
+                    name = fauna.name,
                     navigateToDetails = {
                         navigateToDetails(ItemDetailType.FAUNA, it)
                     }
                 )
             }
-
         },
         modifier = modifier
     )

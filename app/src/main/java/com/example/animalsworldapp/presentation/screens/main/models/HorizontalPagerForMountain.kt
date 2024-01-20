@@ -36,6 +36,7 @@ import com.example.animalsworldapp.presentation.models.Mountain
 import com.example.animalsworldapp.presentation.theme.DarkPlaceholder
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
+import com.example.animalsworldapp.presentation.theme.ExtraSmallSpacing
 import com.example.animalsworldapp.presentation.theme.LightPlaceholder
 import com.example.animalsworldapp.presentation.theme.MediumSpacing
 import com.example.animalsworldapp.presentation.theme.NobileBold
@@ -51,7 +52,7 @@ fun HorizontalPagerForMountain(
     val pagerState = rememberPagerState(pageCount = { mountainList.size })
     Box(
         modifier = Modifier
-            .padding(bottom = 48.dp, top = MediumSpacing)
+            .padding(bottom = ExtraSmallSpacing, top = MediumSpacing)
             .padding(horizontal = ExtraLargeSpacing)
     ) {
         HorizontalPager(
@@ -60,7 +61,8 @@ fun HorizontalPagerForMountain(
         ) { index ->
             val mountain = mountainList[index]
             Box(modifier = Modifier) {
-                val pageOffset = (pagerState.currentPage - index) + pagerState.currentPageOffsetFraction
+                val pageOffset =
+                    (pagerState.currentPage - index) + pagerState.currentPageOffsetFraction
                 val imageSize by animateFloatAsState(
                     targetValue = if (pageOffset != 0.0f) 0.75f else 1f,
                     animationSpec = tween(durationMillis = 300),

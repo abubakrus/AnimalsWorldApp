@@ -88,7 +88,6 @@ fun ForestDetailItem(
                         contentScale = ContentScale.Crop
                     )
                 }
-
                 imageList[1] -> {
                     AsyncImage(
                         modifier = Modifier
@@ -166,7 +165,7 @@ fun ForestDetailItem(
                 detailTab.forEachIndexed { index, detailTab ->
                     Tab(
                         modifier = Modifier
-                            .padding(28.dp)
+                            .padding(12.dp)
                             .clip(RoundedCornerShape(16.dp)),
                         selected = index == pagerState.currentPage,
                         onClick = {

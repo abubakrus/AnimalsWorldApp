@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.AnimalsWorldApp.R
@@ -67,6 +68,10 @@ fun AppBottomNavigation(
                 onClick = {
                     navController.navigate(bottomTab.route) {
                         launchSingleTop = true
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
+                        restoreState = true
                     }
                 },
                 icon = painterResource(id = bottomTab.icon)

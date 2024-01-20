@@ -15,8 +15,7 @@ data class Fauna(
     val locationImage: String?,
     val updatedAt: String,
     val voice: String?,
-
-    ) {
+) {
     fun isUnknown() = this == unknown
 
     fun isNotUnknown() = this != unknown

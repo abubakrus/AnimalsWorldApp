@@ -30,6 +30,7 @@ import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 import com.example.animalsworldapp.presentation.theme.Inter
 import com.example.animalsworldapp.presentation.theme.Light_Gray
 import com.example.animalsworldapp.presentation.theme.Light_White
+import com.example.animalsworldapp.presentation.theme.MediumSpacing
 
 
 @Composable
@@ -68,7 +69,7 @@ fun ProfileSwitchItem(
                 )
             )
         }
-        Spacer(modifier = Modifier.width(ExtraLargeSpacing))
+        Spacer(modifier = Modifier.width(MediumSpacing))
         ThemeSwitcher(
             darkTheme = darkTheme,
             onClick = onThemeUpdated,

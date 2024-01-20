@@ -14,8 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.AnimalsWorldApp.R
-import com.example.animalsworldapp.presentation.components.AllForestItem
 import com.example.animalsworldapp.presentation.components.TabBar
+import com.example.animalsworldapp.presentation.screens.all.components.ShowAllItem
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
 import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.screens.detail.ItemDetailType
@@ -29,7 +29,7 @@ fun AllForestScreen(
 ) {
     Scaffold(topBar = {
         TabBar(
-            title = stringResource(id = R.string.all_forest),
+            headlineEnd = stringResource(id = R.string.all_forest),
             startIcon = Icons.Default.ArrowBack,
             startIconClick = navBackStackEntry
         )
@@ -56,7 +56,7 @@ fun LoadedAllMountainScreen(
     modifier: Modifier = Modifier
 ) {
     LazyVerticalStaggeredGrid(
-        columns = StaggeredGridCells.Adaptive(200.dp),
+        columns = StaggeredGridCells.Fixed(2),
         verticalItemSpacing = 4.dp,
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         content = {
@@ -64,14 +64,15 @@ fun LoadedAllMountainScreen(
                 items = uiState.forest,
                 key = { it.id }
             ) { forest ->
-                AllForestItem(
-                    forest = forest,
+                ShowAllItem(
+                    backgroundImage = forest.backgroundImage,
+                    id = forest.id,
+                    name = forest.name,
                     navigateToDetails = {
                         navigateToDetails(ItemDetailType.FOREST, it)
                     }
                 )
             }
-
         },
         modifier = modifier
     )

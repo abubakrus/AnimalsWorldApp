@@ -2,7 +2,6 @@ package com.example.animalsworldapp.presentation.screens.detail.models
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -91,6 +90,7 @@ fun FaunaDetailItem(
                         contentScale = ContentScale.Crop
                     )
                 }
+
                 imageList[1] -> {
                     AsyncImage(
                         modifier = Modifier
@@ -170,7 +170,6 @@ fun FaunaDetailItem(
                                 shape = RoundedCornerShape(8.dp)
                             )
                     )
-
                 },
                 divider = {
                     Spacer(modifier = Modifier.height(4.dp))
@@ -194,7 +193,7 @@ fun FaunaDetailItem(
                             style = MaterialTheme.typography.titleLarge.copy(
                                 fontFamily = LexendDeca
                             ),
-                            color = if (isSystemInDarkTheme()) Color.White else Color.Black
+                            color = MaterialTheme.colorScheme.onBackground
                         )
                     }
 

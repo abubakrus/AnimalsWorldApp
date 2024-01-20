@@ -9,7 +9,7 @@ data class Mountain(
     val image: String,
     val interestingFact: String,
     val about: String,
-){
+) {
 
     fun isUnknown() = this == unknown
 

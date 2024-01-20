@@ -1,7 +1,5 @@
-package com.example.animalsworldapp.presentation.components
+package com.example.animalsworldapp.presentation.screens.all.components
 
-
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -24,16 +22,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.example.animalsworldapp.presentation.models.Fauna
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 import com.example.animalsworldapp.presentation.theme.NobileBold
 import com.example.animalsworldapp.presentation.theme.SmallSpacing
 
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun AllFaunaItem(
-    fauna: Fauna,
+fun ShowAllItem(
+    backgroundImage: String,
+    id: String,
+    name: String,
     navigateToDetails: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -41,7 +39,7 @@ fun AllFaunaItem(
         modifier = modifier.fillMaxSize()
     ) {
         AsyncImage(
-            model = fauna.backgroundImage,
+            model = backgroundImage,
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -53,7 +51,7 @@ fun AllFaunaItem(
                         topStart = 16.dp, topEnd = 16.dp, bottomStart = 16.dp, bottomEnd = 16.dp
                     )
                 )
-                .clickable { navigateToDetails(fauna.objectId) },
+                .clickable { navigateToDetails(id) },
         )
         Column(
             modifier = Modifier
@@ -73,7 +71,7 @@ fun AllFaunaItem(
         ) {
             Text(
                 modifier = Modifier.padding(SmallSpacing),
-                text = fauna.name,
+                text = name,
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontSize = 14.sp, color = Color.Black, fontFamily = NobileBold
                 )

@@ -18,6 +18,9 @@ import com.example.animalsworldapp.presentation.models.toMountain
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -40,47 +43,54 @@ class MainScreenViewModel @Inject constructor(
         _uiStateFlow.tryEmit(MainScreenUiState.Error(throwable.localizedMessage ?: ""))
     }
 
-
     init {
         viewModelScope.launch(handler + Dispatchers.IO) {
             _uiStateFlow.tryEmit(MainScreenUiState.Loading)
-            val contentState = MainScreenUiState.Loaded(
-                fauna = fetchLimitFauna(),
-                flora = fetchAllFlora(),
-                mountain = fetchLimitMountain(),
-                forest = fetchLimitForest()
-            )
-                .copy(
-                    fauna = fetchLimitFauna(),
-                    flora = fetchAllFlora(),
-                    mountain = fetchLimitMountain(),
-                    forest = fetchLimitForest()
+
+            val contentState = MainScreenUiState.Loaded.Companion.Builder()
+            val deferredList = coroutineScope {
+                listOf(
+                    async { fetchLimitFauna(contentState) },
+                    async { fetchAllFlora(contentState) },
+                    async { fetchLimitMountain(contentState) },
+                    async { fetchLimitForest(contentState) },
                 )
-            Log.i("Abubakir", "fauna = ${contentState.flora.size}")
-            _uiStateFlow.tryEmit(contentState)
+            }
+            deferredList.awaitAll()
+            _uiStateFlow.tryEmit(contentState.build())
         }
     }
 
-    private suspend fun fetchLimitFauna(): List<Fauna> {
+    private suspend fun fetchLimitFauna(state: MainScreenUiState.Loaded.Companion.Builder) {
+        Log.i("Joseph","fetchLimitFauna")
         val faunaLimited = fetchLimitFaunaUseCase.invoke(10)
-        return faunaLimited.data?.map { it.toFauna() } ?: emptyList()
+        val faunaList = faunaLimited.data?.map { it.toFauna() } ?: emptyList()
+        state.fauna(fauna = faunaList)
     }
 
-    private suspend fun fetchLimitMountain(): List<Mountain> {
+    private suspend fun fetchLimitMountain(
+        state: MainScreenUiState.Loaded.Companion.Builder
+    ) {
+        Log.i("Joseph","fetchLimitMountain")
         val mountainLimited = fetchLimitMountainUseCase.invoke(7)
-        return mountainLimited.data?.map { it.toMountain() } ?: emptyList()
+        val mountain = mountainLimited.data?.map { it.toMountain() } ?: emptyList()
+        state.mountain(mountain)
     }
 
-    private suspend fun fetchLimitForest(): List<Forest> {
-        val mountainLimited = fetchLimitForestUseCase.invoke(7)
-        return mountainLimited.data?.map { it.toForest() } ?: emptyList()
+    private suspend fun fetchLimitForest(
+        state: MainScreenUiState.Loaded.Companion.Builder
+    ) {
+        Log.i("Joseph","fetchLimitForest")
+        val forestLimited = fetchLimitForestUseCase.invoke(7)
+        val forest = forestLimited.data?.map { it.toForest() } ?: emptyList()
+        state.forest(forest)
     }
 
-    private suspend fun fetchAllFlora(): List<Flora> {
-        val flora = fetchAllFloraUseCase().map { it.toFlora() }
-        delay(2_000)
-        return flora
+    private suspend fun fetchAllFlora(
+        state: MainScreenUiState.Loaded.Companion.Builder
+    ) {
+        Log.i("Joseph","fetchAllFlora")
+        val flora =  fetchAllFloraUseCase().map { it.toFlora() }
+        state.flora(flora)
     }
-
-
 }

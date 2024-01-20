@@ -32,7 +32,8 @@ fun MainScreen(
     navigateToForest: () -> Unit,
     modifier: Modifier = Modifier,
     ) {
-    Scaffold(topBar = {
+    Scaffold(
+        topBar = {
         TabBar(
             headline = stringResource(id = R.string.hello),
             alignment = Alignment.TopCenter,
