@@ -21,8 +21,10 @@ import com.example.animalsworldapp.presentation.screens.splash.SplashViewModel
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 fun AppNavGraph(
+    darkTheme: Boolean,
+    onThemeUpdated: () -> Unit,
     navHostController: NavHostController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     NavHost(
         modifier = modifier,
@@ -39,7 +41,10 @@ fun AppNavGraph(
             OnBoardingScreen(navigateToMainScreen = { viewModel.onBoardingFinished() })
         }
         composable(MAIN_NAV_GRAPH_ROUTE) {
-            MainNavGraphRoot()
+            MainNavGraphRoot(
+                darkTheme = darkTheme,
+                onThemeUpdated = onThemeUpdated
+            )
         }
 
     }

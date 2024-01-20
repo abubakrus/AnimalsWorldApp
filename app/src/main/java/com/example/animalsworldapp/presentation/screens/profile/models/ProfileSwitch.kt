@@ -4,10 +4,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddAlarm
@@ -23,20 +25,24 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.AnimalsWorldApp.R
+import com.example.animalsworldapp.presentation.components.ThemeSwitcher
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 import com.example.animalsworldapp.presentation.theme.Gray
 import com.example.animalsworldapp.presentation.theme.Inter
+import com.example.animalsworldapp.presentation.theme.Light_Gray
 import com.example.animalsworldapp.presentation.theme.Light_White
 
 
 @Composable
 fun ProfileSwitchItem(
-    modifier: Modifier = Modifier,
     icon: ImageVector? = null,
-    title: String? = null
+    title: String? = null,
+    darkTheme: Boolean,
+    onThemeUpdated: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    val background = if (isSystemInDarkTheme()) Gray else Light_White
+    val background = if (isSystemInDarkTheme()) Light_Gray else Light_White
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -44,8 +50,9 @@ fun ProfileSwitchItem(
             .padding(horizontal = ExtraLargeSpacing)
             .clip(RoundedCornerShape(25.dp))
             .background(background),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
+        verticalAlignment = Alignment.CenterVertically,
+
+        ) {
         if (icon != null) Icon(
             modifier = Modifier
                 .padding(start = ExtraMediumSpacing)
@@ -65,10 +72,13 @@ fun ProfileSwitchItem(
                 )
             )
         }
-//        Switch(
-//            checked = ,
-//            onCheckedChange = {}
-//        )
+        Spacer(modifier = Modifier.width(ExtraLargeSpacing))
+        ThemeSwitcher(
+            darkTheme = darkTheme,
+            onClick = onThemeUpdated,
+            size = 40.dp,
+            padding = 5.dp,
+        )
     }
 }
 
@@ -91,7 +101,6 @@ fun ProfileItemInfo(
     title: String? = null,
     onClick: (String) -> Unit
 ) {
-    val background = if (isSystemInDarkTheme()) Gray else Light_White
 
     Row(
         modifier = modifier
@@ -99,7 +108,7 @@ fun ProfileItemInfo(
             .height(60.dp)
             .padding(horizontal = ExtraLargeSpacing)
             .clip(RoundedCornerShape(25.dp))
-            .background(background)
+            .background(if (isSystemInDarkTheme()) Light_Gray else Light_White)
             .clickable { onClick(String()) },
         verticalAlignment = Alignment.CenterVertically
     ) {

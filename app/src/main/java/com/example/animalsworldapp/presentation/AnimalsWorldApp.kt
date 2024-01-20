@@ -11,7 +11,6 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class AnimalsWorldApp : Application() {
-
     override fun onCreate() {
         super.onCreate()
         Parse.enableLocalDatastore(this)

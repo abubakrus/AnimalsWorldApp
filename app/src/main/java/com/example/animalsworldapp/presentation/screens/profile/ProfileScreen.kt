@@ -30,9 +30,12 @@ import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 @Composable
 fun ProfileScreen(
     uiState: ProfileUiState,
-    modifier: Modifier = Modifier,
     onEvent: (ProfileEvent) -> Unit,
-) {
+    darkTheme: Boolean,
+    onThemeUpdated: () -> Unit,
+    modifier: Modifier = Modifier,
+
+    ) {
     Scaffold { innerPaddings ->
         Column {
             when (uiState) {
@@ -42,7 +45,9 @@ fun ProfileScreen(
                 is ProfileUiState.Content -> LoadedScreenProfile(
                     modifier = modifier.padding(innerPaddings),
                     onEvent = onEvent,
-                    uiState = uiState
+                    uiState = uiState,
+                    darkTheme = darkTheme,
+                    onThemeUpdated = onThemeUpdated
                 )
             }
         }
@@ -54,8 +59,10 @@ fun ProfileScreen(
 @Composable
 fun LoadedScreenProfile(
     uiState: ProfileUiState.Content,
-    modifier: Modifier = Modifier,
     onEvent: (ProfileEvent) -> Unit,
+    darkTheme: Boolean,
+    onThemeUpdated: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier
@@ -68,6 +75,8 @@ fun LoadedScreenProfile(
         ProfileSwitchItem(
             icon = Icons.Default.WbSunny,
             title = stringResource(id = R.string.change_theme),
+            darkTheme = darkTheme,
+            onThemeUpdated = onThemeUpdated
         )
         SpacerHeight(ExtraMediumSpacing)
         ProfileItemInfo(

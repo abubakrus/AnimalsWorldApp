@@ -52,7 +52,11 @@ const val MAIN_NAV_GRAPH_ROUTE = "main_nav_graph_route"
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
-fun MainNavGraphRoot() {
+fun MainNavGraphRoot(
+    darkTheme: Boolean,
+    onThemeUpdated: () -> Unit,
+) {
+
     val navHostController = rememberNavController()
     Scaffold(bottomBar = {
         AppBottomNavigation(navController = navHostController)
@@ -114,7 +118,11 @@ fun MainNavGraphRoot() {
                     if (navCommand != null) navHostController.navigate(navCommand!!)
                 }
 
-                ProfileScreen(onEvent = viewModel::onEvent, uiState = uiState)
+                ProfileScreen(
+                    onEvent = viewModel::onEvent, uiState = uiState,
+                    darkTheme = darkTheme,
+                    onThemeUpdated = onThemeUpdated
+                )
             }
             composable(EDIT_PROFILE_ROUTE) {
                 val viewModel: EditProfileViewModel = hiltViewModel()
