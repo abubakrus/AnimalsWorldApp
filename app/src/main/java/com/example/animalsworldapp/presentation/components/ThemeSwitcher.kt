@@ -71,7 +71,7 @@ fun ThemeSwitcher(
                 .border(
                     border = BorderStroke(
                         width = borderWidth,
-                        color = Light_Gray
+                        color = if (darkTheme) Light_White else Light_Gray
                     ),
                     shape = parentShape
                 )

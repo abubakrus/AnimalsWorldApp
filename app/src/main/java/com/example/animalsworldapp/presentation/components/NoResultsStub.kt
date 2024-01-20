@@ -44,8 +44,7 @@ fun NoResultsStub(
                 textAlign = TextAlign.Center,
                 text = stringResource(id = R.string.sorry_search),
                 style = MaterialTheme.typography.bodyLarge.copy(
-                    fontWeight = FontWeight.Normal, color = if (isSystemInDarkTheme()) Color.White
-                    else Color.Black
+                    fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.onBackground
                 ),
             )
             Spacer(modifier = Modifier.height(8.dp))
@@ -54,8 +53,7 @@ fun NoResultsStub(
                 textAlign = TextAlign.Center,
                 text = stringResource(id = R.string.find_your),
                 style = MaterialTheme.typography.bodySmall.copy(
-                    fontWeight = FontWeight.Normal, color = if (isSystemInDarkTheme()) Color.White
-                    else Color.Black
+                    fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.onBackground
                 )
             )
         }

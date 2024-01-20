@@ -2,8 +2,6 @@ package com.example.animalsworldapp.presentation.screens.detail.models
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
@@ -165,7 +162,7 @@ fun ForestDetailItem(
                     Spacer(modifier = Modifier.height(4.dp))
                 },
                 edgePadding = 0.dp,
-                ) {
+            ) {
                 detailTab.forEachIndexed { index, detailTab ->
                     Tab(
                         modifier = Modifier
@@ -182,7 +179,7 @@ fun ForestDetailItem(
                                 stringResource(id = R.string.interestingFact)
                             },
                             style = MaterialTheme.typography.titleLarge,
-                            color = if (isSystemInDarkTheme()) Color.White else Color.Black
+                            color = MaterialTheme.colorScheme.onBackground
                         )
                     }
 
