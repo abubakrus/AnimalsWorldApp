@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
 import com.example.animalsworldapp.presentation.models.User
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
@@ -31,25 +32,26 @@ fun HeaderInfoProfile(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CircularImage(
-                path = user.avatar, modifier = Modifier, size = 150
+                path = R.drawable.avatar_simple,
+                modifier = Modifier, size = 150
             )
             SpacerHeight(LargeSpacing)
             Text(
-                text = user.lastName,
+                text = "Usenbaev",
                 style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold
             )
             SpacerHeight(MediumSpacing)
             Text(
-                text = user.name,
+                text = "Abubakir",
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold
             )
             SpacerHeight(MediumSpacing)
             Text(
-                text = user.nickName,
+                text = "Abu",
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold
