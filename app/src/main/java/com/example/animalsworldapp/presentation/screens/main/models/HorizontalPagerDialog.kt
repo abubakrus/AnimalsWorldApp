@@ -53,9 +53,7 @@ fun HorizontalPagerDialog(
             modifier = Modifier
                 .graphicsLayer {
                     val pageOffset = pagerState.calculateCurrentOffsetForPage(page)
-                    // translate the contents by the size of the page, to prevent the pages from sliding in from left or right and stays in the center
                     translationX = pageOffset * size.width
-                    // apply an alpha to fade the current page in and the old page out
                     alpha = 1 - pageOffset.absoluteValue
                 }
                 .fillMaxSize()
@@ -117,14 +115,12 @@ fun HorizontalPagerDialog(
                         fontFamily = NobileBold
                     )
                 )
-
             }
         }
     }
 }
 
 
-// extension method for current page offset
 @OptIn(ExperimentalFoundationApi::class)
 fun PagerState.calculateCurrentOffsetForPage(page: Int): Float {
     return (currentPage - page) + currentPageOffsetFraction

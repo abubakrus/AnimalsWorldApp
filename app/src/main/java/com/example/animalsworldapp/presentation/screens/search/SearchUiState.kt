@@ -7,8 +7,11 @@ import com.example.animalsworldapp.presentation.models.Mountain
 
 sealed class SearchUiState() {
     data object Initial : SearchUiState()
+
     data object Loading : SearchUiState()
+
     data class Error(val message: String) : SearchUiState()
+
     data class Content(
 
         val fauna: List<Fauna> = emptyList(),

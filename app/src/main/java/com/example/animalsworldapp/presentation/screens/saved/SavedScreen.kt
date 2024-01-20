@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.example.animalsworldapp.presentation.components.HeadingText
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
@@ -28,7 +27,8 @@ import com.example.animalsworldapp.presentation.theme.ExtraSpacing
 
 @Composable
 fun SaveScreen(
-    modifier: Modifier = Modifier, uiState: SaveUiState, navHostController: NavHostController
+    uiState: SaveUiState,
+    modifier: Modifier = Modifier,
 ) {
     when (uiState) {
         is SaveUiState.Loading -> LoadingScreen()

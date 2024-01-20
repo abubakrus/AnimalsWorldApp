@@ -56,7 +56,6 @@ fun MainNavGraphRoot(
     darkTheme: Boolean,
     onThemeUpdated: () -> Unit,
 ) {
-
     val navHostController = rememberNavController()
     Scaffold(bottomBar = {
         AppBottomNavigation(navController = navHostController)

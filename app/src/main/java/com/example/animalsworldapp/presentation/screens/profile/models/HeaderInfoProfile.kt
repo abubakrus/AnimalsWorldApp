@@ -18,7 +18,10 @@ import com.example.animalsworldapp.presentation.theme.MediumSpacing
 
 
 @Composable
-fun HeaderInfoProfile(modifier: Modifier = Modifier, user: User) {
+fun HeaderInfoProfile(
+    user: User,
+    modifier: Modifier = Modifier,
+) {
     Box(
         modifier = modifier.fillMaxWidth(), contentAlignment = Alignment.Center
     ) {

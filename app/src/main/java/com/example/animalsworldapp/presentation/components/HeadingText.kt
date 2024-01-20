@@ -56,5 +56,4 @@ fun HeadingText(
             color = MaterialTheme.colorScheme.primary
         )
     }
-
 }

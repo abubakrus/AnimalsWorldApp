@@ -90,7 +90,6 @@ fun HorizontalPagerForMountain(
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                 )
-
                 Column(modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .width(340.dp)

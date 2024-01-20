@@ -82,17 +82,7 @@ fun ProfileSwitchItem(
     }
 }
 
-@Preview
-@Composable
-fun ProfileItemInfoPreview() {
-    MaterialTheme {
-        ProfileItemInfo(
-            icon = Icons.Default.AddAlarm,
-            title = stringResource(id = R.string.type_users),
-            onClick = {}
-        )
-    }
-}
+
 
 @Composable
 fun ProfileItemInfo(
@@ -131,5 +121,18 @@ fun ProfileItemInfo(
                 )
             )
         }
+    }
+}
+
+
+@Preview
+@Composable
+fun ProfileItemInfoPreview() {
+    MaterialTheme {
+        ProfileItemInfo(
+            icon = Icons.Default.AddAlarm,
+            title = stringResource(id = R.string.type_users),
+            onClick = {}
+        )
     }
 }

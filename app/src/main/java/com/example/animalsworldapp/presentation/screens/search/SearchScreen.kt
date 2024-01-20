@@ -22,9 +22,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.example.animalsworldapp.presentation.components.TabBar
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
+import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
+import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 
 
@@ -34,7 +35,6 @@ fun SearchScreen(
     uiState: SearchUiState,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    navHostController: NavHostController
 ) {
     Scaffold(
         topBar = {
@@ -43,36 +43,58 @@ fun SearchScreen(
             )
         }
     ) { innerPaddings ->
-        Column(
-            modifier = modifier
-                .padding(innerPaddings)
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background),
-        ) {
-            SpacerHeight(ExtraLargeSpacing)
-            OutlinedTextField(
-                value = "",
+
+
+        when (uiState) {
+            is SearchUiState.Initial -> {}
+            is SearchUiState.Loading -> LoadingScreen()
+            is SearchUiState.Error -> ErrorScreen(
+                message = uiState.message,
+                onClick = { /*TODO*/ }
+            )
+            is SearchUiState.Content -> LoadedSearchScreen(
                 onValueChange = onValueChange,
-                textStyle = TextStyle(fontSize = 17.sp),
-                shape = CircleShape,
-                trailingIcon = {
-                    Icon(
-                        imageVector = Icons.Filled.Search,
-                        contentDescription = null,
-                        tint = Color.Gray
-                    )
-                },
-                modifier = modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 26.dp)
-                    .background(Color(0xFFE7F1F1), RoundedCornerShape(30.dp)),
-                placeholder = { Text(text = "Start Search") },
-                colors = TextFieldDefaults.textFieldColors(
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    cursorColor = Color.DarkGray,
-                )
+                modifier = modifier.padding(innerPaddings)
             )
         }
+    }
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LoadedSearchScreen(
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
+    ) {
+        SpacerHeight(ExtraLargeSpacing)
+        OutlinedTextField(
+            value = "",
+            onValueChange = onValueChange,
+            textStyle = TextStyle(fontSize = 17.sp),
+            shape = CircleShape,
+            trailingIcon = {
+                Icon(
+                    imageVector = Icons.Filled.Search,
+                    contentDescription = null,
+                    tint = Color.Gray
+                )
+            },
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(horizontal = 26.dp)
+                .background(Color(0xFFE7F1F1), RoundedCornerShape(30.dp)),
+            placeholder = { Text(text = "Start Search") },
+            colors = TextFieldDefaults.textFieldColors(
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                cursorColor = Color.DarkGray,
+            )
+        )
     }
 }

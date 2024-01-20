@@ -78,7 +78,6 @@ fun LoadedAllMountainScreen(
 
         },
         modifier = modifier
-
     )
 }
 

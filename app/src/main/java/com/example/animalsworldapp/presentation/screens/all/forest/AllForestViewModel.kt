@@ -20,6 +20,7 @@ import javax.inject.Inject
 class AllForestViewModel @Inject constructor(
     private val fetchAllForestsUseCase: FetchAllForestsUseCase
 ) : ViewModel() {
+
     private val _uiStateFlow = MutableStateFlow<AllForestUiState>(AllForestUiState.Loading)
     val uiState: StateFlow<AllForestUiState> = _uiStateFlow.asStateFlow()
 

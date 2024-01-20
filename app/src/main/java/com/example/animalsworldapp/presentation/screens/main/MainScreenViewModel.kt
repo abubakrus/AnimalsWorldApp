@@ -32,9 +32,9 @@ class MainScreenViewModel @Inject constructor(
     private val fetchLimitMountainUseCase: FetchLimitMountainUseCase,
     private val fetchLimitForestUseCase: FetchLimitForestUseCase
 ) : ViewModel() {
+
     private val _uiStateFlow = MutableStateFlow<MainScreenUiState>(MainScreenUiState.Loading)
     val uiState: StateFlow<MainScreenUiState> = _uiStateFlow.asStateFlow()
-
 
     private val handler = CoroutineExceptionHandler { _, throwable ->
         _uiStateFlow.tryEmit(MainScreenUiState.Error(throwable.localizedMessage ?: ""))

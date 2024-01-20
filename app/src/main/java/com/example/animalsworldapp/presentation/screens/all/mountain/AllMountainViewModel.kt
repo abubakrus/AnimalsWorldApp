@@ -20,6 +20,7 @@ import javax.inject.Inject
 class AllMountainViewModel @Inject constructor(
     private val fetchAllMountainUseCase: FetchAllMountainUseCase
 ) : ViewModel() {
+
     private val _uiStateFlow = MutableStateFlow<AllMountainUiState>(AllMountainUiState.Loading)
     val uiState: StateFlow<AllMountainUiState> = _uiStateFlow.asStateFlow()
 

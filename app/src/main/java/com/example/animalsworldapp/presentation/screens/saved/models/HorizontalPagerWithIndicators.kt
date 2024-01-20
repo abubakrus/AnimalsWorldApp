@@ -37,11 +37,12 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HorizontalPagerWithIndicators(
+    mountain: List<Mountain>,
     modifier: Modifier = Modifier,
-    mountain: List<Mountain>
-) {
+
+    ) {
     val scope = rememberCoroutineScope()
-    Box(modifier = Modifier) {
+    Box(modifier = modifier) {
         val pageCount = 7
         val pagerState = rememberPagerState(pageCount = { pageCount })
         LaunchedEffect(Unit) {

@@ -7,7 +7,7 @@ import com.example.animalsworldapp.presentation.models.Mountain
 
 sealed class MainScreenUiState {
 
-    object Loading : MainScreenUiState()
+    data object Loading : MainScreenUiState()
 
     data class Loaded(
         val fauna: List<Fauna>,

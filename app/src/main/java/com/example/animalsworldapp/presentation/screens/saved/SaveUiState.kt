@@ -6,7 +6,7 @@ import com.example.animalsworldapp.presentation.models.Mountain
 
 sealed class SaveUiState {
 
-    object Loading : SaveUiState()
+    data object Loading : SaveUiState()
 
     data class Loaded(
         val fauna: List<Fauna>,

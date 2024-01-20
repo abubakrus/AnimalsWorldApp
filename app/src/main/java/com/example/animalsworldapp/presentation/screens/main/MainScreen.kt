@@ -26,26 +26,25 @@ import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 @Composable
 fun MainScreen(
     uiState: MainScreenUiState,
-    modifier: Modifier = Modifier,
     navigateToDetails: (ItemDetailType, String) -> Unit,
     navigateToAllFauna: () -> Unit,
     navigateToAllMountain: () -> Unit,
     navigateToForest: () -> Unit,
+    modifier: Modifier = Modifier,
     ) {
-    val fillScreen = Modifier.fillMaxSize()
     Scaffold(topBar = {
         TabBar(
             headline = stringResource(id = R.string.hello),
             alignment = Alignment.TopCenter,
         )
-    }) { innerPaddings ->
+    }
+    ) { innerPaddings ->
         when (uiState) {
             is MainScreenUiState.Loading -> LoadingScreenMain(
                 modifier = modifier.padding(
                     innerPaddings
                 )
             )
-
             is MainScreenUiState.Loaded -> LoadedMainScreen(
                 uiState = uiState,
                 modifier = modifier
@@ -57,7 +56,6 @@ fun MainScreen(
                 navigateToForest = navigateToForest
 
             )
-
             is MainScreenUiState.Error -> ErrorScreen(message = uiState.message, onClick = {})
         }
     }
@@ -73,7 +71,6 @@ fun LoadedMainScreen(
     navigateToForest: () -> Unit,
 
     ) {
-
     LazyColumn(
         modifier = modifier
     ) {
@@ -94,7 +91,6 @@ fun LoadedMainScreen(
                 },
             )
         }
-
         item {
             HeadingText(text = stringResource(id = R.string.mountain),
                 navigateToAllShow = { navigateToAllMountain() })

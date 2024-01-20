@@ -43,7 +43,6 @@ fun LoginScreen(
             TabBar(title = stringResource(id = R.string.login))
         }
     ) { innerPaddings ->
-
         if (uiState.isAuthentication) {
             Box(
                 modifier = Modifier.fillMaxSize(),
@@ -51,7 +50,6 @@ fun LoginScreen(
             ) {
             }
         }
-
         Column(
             modifier = Modifier.padding(innerPaddings),
             horizontalAlignment = Alignment.CenterHorizontally

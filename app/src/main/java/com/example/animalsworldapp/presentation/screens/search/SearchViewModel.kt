@@ -12,12 +12,10 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
 ) : ViewModel() {
 
-
     private val _uiState = MutableStateFlow<SearchUiState>(SearchUiState.Loading)
     val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
 
     private val searchQueryFlow = MutableStateFlow("")
-
 
     fun onValueChange(value: String) {
         searchQueryFlow.tryEmit(value)

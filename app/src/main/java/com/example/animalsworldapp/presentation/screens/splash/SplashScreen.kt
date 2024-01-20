@@ -51,7 +51,6 @@ fun SplashScreen(
         startAnimation = true
         delay(4000)
     }
-    val scope = rememberCoroutineScope()
     Box(
         modifier = modifier
     ) {

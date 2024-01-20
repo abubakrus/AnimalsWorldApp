@@ -26,7 +26,6 @@ fun AllFaunaScreen(
     navBackStackEntry: () -> Unit,
     navigateToDetails: (ItemDetailType, String) -> Unit,
     modifier: Modifier = Modifier,
-
     ) {
     Scaffold(
         topBar = {
@@ -61,9 +60,7 @@ fun LoadedAllFaunaScreen(
     uiState: AllFaunaUiState.Loaded,
     navigateToDetails: (ItemDetailType, String) -> Unit,
     modifier: Modifier = Modifier,
-
     ) {
-
     LazyVerticalStaggeredGrid(
         columns = StaggeredGridCells.Adaptive(200.dp),
         verticalItemSpacing = 4.dp,
@@ -83,6 +80,5 @@ fun LoadedAllFaunaScreen(
 
         },
         modifier = modifier
-
     )
 }

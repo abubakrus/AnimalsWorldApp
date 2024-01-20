@@ -16,11 +16,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 interface ManagerModule {
 
-//    @Binds
-//    fun bindOnBoardingManager(
-//        impl: OnBoardingManagerImpl
-//    ): OnBoardingManager
-
     @Binds
     @Singleton
     fun bindNavigatorManager(

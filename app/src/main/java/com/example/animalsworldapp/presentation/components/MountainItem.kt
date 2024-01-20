@@ -35,8 +35,7 @@ fun MountainItem(
     mountain: Mountain,
     navigateToDetails: (String) -> Unit,
     modifier: Modifier = Modifier,
-
-    ) {
+) {
     Box(
         modifier = modifier.fillMaxSize()
     ) {

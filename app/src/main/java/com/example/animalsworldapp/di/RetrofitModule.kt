@@ -50,7 +50,6 @@ class RetrofitModule {
             ).build()
     }
 
-
     @Provides
     fun provideFaunaService(
         retrofit: Retrofit
@@ -80,4 +79,5 @@ class RetrofitModule {
     fun provideLoginService(
         retrofit: Retrofit
     ): LoginService = retrofit.create(LoginService::class.java)
+
 }

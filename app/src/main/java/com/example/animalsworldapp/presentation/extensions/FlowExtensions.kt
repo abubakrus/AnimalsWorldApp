@@ -15,10 +15,9 @@ fun <T> createMutableSharedFlowAsLiveData(): MutableSharedFlow<T> =
     MutableSharedFlow(1, 0, BufferOverflow.DROP_OLDEST)
 
 
-
 fun <T> Flow<T>.onEachWithLaunch(
-    scope:CoroutineScope,
-    action:suspend (T) -> Unit
-){
+    scope: CoroutineScope,
+    action: suspend (T) -> Unit
+) {
     this.onEach(action).launchIn(scope)
 }

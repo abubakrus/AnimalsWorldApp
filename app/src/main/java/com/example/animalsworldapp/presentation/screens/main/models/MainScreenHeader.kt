@@ -37,13 +37,12 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MainScreenHorizontalFlora(
-    modifier: Modifier = Modifier,
     floraList: List<Flora>,
-    navigateToDetails: (String) -> Unit
-) {
+    navigateToDetails: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    ) {
     val scope = rememberCoroutineScope()
-    Box(modifier = Modifier) {
-        val pageCount = floraList.size
+    Box(modifier = modifier) {
         val pagerState = rememberPagerState(pageCount = { 4 })
         LaunchedEffect(Unit) {
             while (true) {
@@ -57,7 +56,6 @@ fun MainScreenHorizontalFlora(
                 }
             }
         }
-
         HorizontalPager(
             beyondBoundsPageCount = 2,
             state = pagerState,

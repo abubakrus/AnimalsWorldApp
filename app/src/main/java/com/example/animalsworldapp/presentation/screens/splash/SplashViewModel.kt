@@ -13,13 +13,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 private const val SPLASH_DELAY_TIME = 3_000L
-const val TAG = "FaunaApp"
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
     private val shouldOnBoardingPassedUseCase: ShouldOnBoardingPassedUseCase,
     private val navigatorManager: NavigatorManager
 ) : ViewModel() {
+
     init {
         val isOnBoardingPassed = shouldOnBoardingPassedUseCase()
         viewModelScope.launch {

@@ -18,4 +18,5 @@ class OnBoardingViewModel @Inject constructor(
         setOnBoardingShowedUseCase.invoke()
         navigatorManager.navigateTo(MAIN_NAV_GRAPH_ROUTE, true)
     }
+
 }

@@ -33,7 +33,8 @@ fun AllForestScreen(
             startIcon = Icons.Default.ArrowBack,
             startIconClick = navBackStackEntry
         )
-    }) { innerPaddings ->
+    }
+    ) { innerPaddings ->
         when (uiState) {
             is AllForestUiState.Loading -> LoadingScreen()
             is AllForestUiState.Loaded -> LoadedAllMountainScreen(

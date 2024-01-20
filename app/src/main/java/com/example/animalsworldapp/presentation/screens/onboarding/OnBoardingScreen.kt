@@ -111,21 +111,22 @@ fun OnBoardingScreen(
                     onNextPage = { isLastPage ->
                         if (isLastPage) navigateToMainScreen()
                         else scope.launch { pagerState.animateScrollToPage(pagerState.currentPage.inc()) }
-                    })
-
+                    }
+                )
             }
         }
     }
-
 }
+
 
 @SuppressLint("ResourceType")
 @Composable
 fun OnBoardingAnimatedTextFiled(
-    page: OnBoardingPagerItem, onNextPage: (Boolean) -> Unit, modifier: Modifier = Modifier
+    page: OnBoardingPagerItem,
+    onNextPage: (Boolean) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     var startAnimation by remember { mutableStateOf(false) }
-
 
     Box(modifier = modifier
         .padding(horizontal = 16.dp)
@@ -155,14 +156,14 @@ fun OnBoardingAnimatedTextFiled(
             Spacer(modifier = Modifier.weight(1f))
         }
     }
-
 }
 
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnBoardingPage(
-    page: OnBoardingPagerItem.OnBoarding, modifier: Modifier = Modifier
+    page: OnBoardingPagerItem.OnBoarding,
+    modifier: Modifier = Modifier
 ) {
     val pagerState = rememberPagerState(pageCount = { onBoardings.size })
     val ifNotWelcomeScreen = pagerState.currentPage != 0
@@ -207,18 +208,12 @@ fun OnBoardingPage(
     }
 }
 
-@Preview
-@Composable
-fun OnBoardingScreenPreview() {
-    MaterialTheme {
-        OnBoardingScreen(navigateToMainScreen = {})
-    }
-}
-
 
 @Composable
 fun WelcomeOnBoarding(
-    @DrawableRes imageId: Int, @StringRes titleId: Int, modifier: Modifier = Modifier
+    @DrawableRes imageId: Int,
+    @StringRes titleId: Int,
+    modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier.fillMaxSize()
@@ -239,7 +234,7 @@ fun WelcomeOnBoarding(
             fontSize = 40.sp,
             color = Color.White,
 
-        )
+            )
     }
 }
 
@@ -250,5 +245,13 @@ fun WelcomeOnBoardingPreview() {
         WelcomeOnBoarding(
             imageId = R.drawable.welcome_image, titleId = R.string.welcome
         )
+    }
+}
+
+@Preview
+@Composable
+fun OnBoardingScreenPreview() {
+    MaterialTheme {
+        OnBoardingScreen(navigateToMainScreen = {})
     }
 }

@@ -46,6 +46,5 @@ fun AppNavGraph(
                 onThemeUpdated = onThemeUpdated
             )
         }
-
     }
 }

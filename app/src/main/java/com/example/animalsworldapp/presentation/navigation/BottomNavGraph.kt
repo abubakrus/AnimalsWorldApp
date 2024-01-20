@@ -31,7 +31,6 @@ enum class BottomTab(
     val title: String,
     val route: String
 ) {
-
     Search(
         icon = R.drawable.search_icon,
         title = "Search",
@@ -85,7 +84,6 @@ fun AppBottomNavigationItem(
     iconSize: Dp = DEFAULT_ICON_SIZE.dp,
 ) {
     val scale = if (selected) 1.5f else 1.0f
-
     val color = if (selected) Blue
     else MaterialTheme.colorScheme.secondary
 
@@ -103,7 +101,6 @@ fun AppBottomNavigationItem(
             easing = FastOutSlowInEasing
         ), label = ""
     )
-
     IconButton(
         onClick = onClick,
         modifier = modifier.size(iconSize)

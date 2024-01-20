@@ -114,7 +114,6 @@ fun HorizontalPagerForForest(
                             fontSize = 16.sp, color = Color.Black, fontFamily = NobileBold
                         )
                     )
-
                 }
             }
         }
