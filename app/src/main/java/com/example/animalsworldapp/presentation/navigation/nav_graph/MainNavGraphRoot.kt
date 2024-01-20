@@ -105,7 +105,7 @@ fun MainNavGraphRoot(
                 val viewModel: SearchViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 SearchScreen(
-                    uiState = uiState, onValueChange = {}, navHostController = navHostController
+                    uiState = uiState, onValueChange = {},
                 )
             }
             composable(BottomTab.PROFILE.route) {
@@ -169,20 +169,6 @@ fun MainNavGraphRoot(
                     navigateToDetails = { itemDetailType, id ->
                         navHostController.navigate("${DetailDestination.route()}/${itemDetailType.type}/$id")
                     }
-                )
-            }
-            composable(SearchDestination.route()) {
-                val viewModel: SearchViewModel = hiltViewModel()
-                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                SearchScreen(
-                    uiState = uiState, onValueChange = {}, navHostController = navHostController
-                )
-            }
-            composable(SearchDestination.route()) {
-                val viewModel: SearchViewModel = hiltViewModel()
-                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                SearchScreen(
-                    uiState = uiState, onValueChange = {}, navHostController = navHostController
                 )
             }
             composable(LoginDestination.route()) {
