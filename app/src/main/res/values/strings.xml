@@ -52,7 +52,7 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="signup">SingUp</string>
-    <string name="sign_in">SingIn</string>
+    <string name="sign_in">SignIn</string>
     <string name="dont_have_anaccount">Dont have Account </string>
     <string name="name">Name</string>
     <string name="lastname">LastName</string>

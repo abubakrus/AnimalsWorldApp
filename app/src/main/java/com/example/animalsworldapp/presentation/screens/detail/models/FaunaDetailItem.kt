@@ -48,6 +48,7 @@ import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.LargeSpacing
 import com.example.animalsworldapp.presentation.theme.LexendDeca
 import com.example.animalsworldapp.presentation.theme.MediumSpacing
+import com.example.animalsworldapp.presentation.theme.NiramitMedium
 import com.example.animalsworldapp.presentation.theme.Pink
 import com.example.animalsworldapp.presentation.theme.SmallSpacing
 import kotlinx.coroutines.launch
@@ -90,7 +91,6 @@ fun FaunaDetailItem(
                         contentScale = ContentScale.Crop
                     )
                 }
-
                 imageList[1] -> {
                     AsyncImage(
                         modifier = Modifier
@@ -119,7 +119,6 @@ fun FaunaDetailItem(
                 tint = Color.White
             )
         }
-
         IconButton(modifier = Modifier
             .align(Alignment.TopEnd)
             .padding(ExtraLargeSpacing)
@@ -180,7 +179,7 @@ fun FaunaDetailItem(
             ) {
                 detailTab.forEachIndexed { index, detailTab ->
                     Tab(modifier = Modifier
-                        .padding(28.dp)
+                        .padding(12.dp)
                         .clip(RoundedCornerShape(16.dp)),
                         selected = index == pagerState.currentPage,
                         onClick = {
@@ -192,7 +191,9 @@ fun FaunaDetailItem(
                             } else {
                                 stringResource(id = R.string.interestingFact)
                             },
-                            style = MaterialTheme.typography.titleLarge,
+                            style = MaterialTheme.typography.titleLarge.copy(
+                                fontFamily = LexendDeca
+                            ),
                             color = if (isSystemInDarkTheme()) Color.White else Color.Black
                         )
                     }
@@ -223,7 +224,7 @@ fun FaunaDetailItem(
                                 text = tab,
                                 style = MaterialTheme.typography.bodyLarge.copy(
                                     color = MaterialTheme.colorScheme.onBackground,
-                                    fontFamily = LexendDeca
+                                    fontFamily = NiramitMedium
                                 )
                             )
                         }
@@ -236,7 +237,7 @@ fun FaunaDetailItem(
                                 text = tab,
                                 style = MaterialTheme.typography.bodyLarge.copy(
                                     color = MaterialTheme.colorScheme.onBackground,
-                                    fontFamily = LexendDeca
+                                    fontFamily = NiramitMedium
                                 )
                             )
                         }

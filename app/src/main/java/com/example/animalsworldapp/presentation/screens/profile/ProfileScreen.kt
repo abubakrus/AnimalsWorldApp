@@ -23,7 +23,6 @@ import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.screens.profile.models.HeaderInfoProfile
 import com.example.animalsworldapp.presentation.screens.profile.models.ProfileItemInfo
 import com.example.animalsworldapp.presentation.screens.profile.models.ProfileSwitchItem
-import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 
 
@@ -71,7 +70,7 @@ fun LoadedScreenProfile(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         HeaderInfoProfile(user = uiState.user)
-        SpacerHeight(ExtraLargeSpacing)
+        SpacerHeight(ExtraMediumSpacing)
         ProfileSwitchItem(
             icon = Icons.Default.WbSunny,
             title = stringResource(id = R.string.change_theme),
@@ -82,25 +81,32 @@ fun LoadedScreenProfile(
         ProfileItemInfo(
             icon = Icons.Default.AccountCircle,
             title = stringResource(id = R.string.edit_profile),
-            onClick = { onEvent(ProfileEvent.OnEditProfile) }
+            onClick = { onEvent(ProfileEvent.OnEditProfile) },
+            darkTheme=darkTheme
+
         )
         SpacerHeight(ExtraMediumSpacing)
         ProfileItemInfo(
             icon = Icons.Default.AccountBox,
             title = stringResource(id = R.string.type_users),
-            onClick = { onEvent(ProfileEvent.OnEditUserType) }
+            onClick = { onEvent(ProfileEvent.OnEditUserType) },
+            darkTheme=darkTheme
+
         )
         SpacerHeight(ExtraMediumSpacing)
         ProfileItemInfo(
             icon = Icons.Default.Language,
             title = stringResource(id = R.string.language),
-            onClick = { onEvent(ProfileEvent.OnEditLanguage) }
+            onClick = { onEvent(ProfileEvent.OnEditLanguage) },
+            darkTheme=darkTheme
+
         )
         SpacerHeight(ExtraMediumSpacing)
         ProfileItemInfo(
             icon = Icons.Default.Input,
             title = stringResource(id = R.string.sign_in),
-            onClick = { onEvent(ProfileEvent.OnClickLogin) }
+            onClick = { onEvent(ProfileEvent.OnClickLogin) },
+            darkTheme=darkTheme
         )
     }
 }

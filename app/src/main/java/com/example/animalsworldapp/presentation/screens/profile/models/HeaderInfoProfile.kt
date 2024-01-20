@@ -33,7 +33,7 @@ fun HeaderInfoProfile(
         ) {
             CircularImage(
                 path = R.drawable.avatar_simple,
-                modifier = Modifier, size = 150
+                modifier = Modifier, size = 200
             )
             SpacerHeight(LargeSpacing)
             Text(

@@ -2,7 +2,6 @@ package com.example.animalsworldapp.presentation.screens.profile.models
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,7 +27,6 @@ import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.components.ThemeSwitcher
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
-import com.example.animalsworldapp.presentation.theme.Gray
 import com.example.animalsworldapp.presentation.theme.Inter
 import com.example.animalsworldapp.presentation.theme.Light_Gray
 import com.example.animalsworldapp.presentation.theme.Light_White
@@ -42,17 +40,15 @@ fun ProfileSwitchItem(
     onThemeUpdated: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val background = if (isSystemInDarkTheme()) Light_Gray else Light_White
     Row(
         modifier = modifier
             .fillMaxWidth()
             .height(60.dp)
             .padding(horizontal = ExtraLargeSpacing)
             .clip(RoundedCornerShape(25.dp))
-            .background(background),
+            .background(if (darkTheme) Light_Gray else Light_White),
         verticalAlignment = Alignment.CenterVertically,
-
-        ) {
+    ) {
         if (icon != null) Icon(
             modifier = Modifier
                 .padding(start = ExtraMediumSpacing)
@@ -83,13 +79,13 @@ fun ProfileSwitchItem(
 }
 
 
-
 @Composable
 fun ProfileItemInfo(
-    modifier: Modifier = Modifier,
     icon: ImageVector? = null,
     title: String? = null,
-    onClick: (String) -> Unit
+    onClick: (String) -> Unit,
+    darkTheme: Boolean = false,
+    modifier: Modifier = Modifier,
 ) {
 
     Row(
@@ -98,7 +94,7 @@ fun ProfileItemInfo(
             .height(60.dp)
             .padding(horizontal = ExtraLargeSpacing)
             .clip(RoundedCornerShape(25.dp))
-            .background(if (isSystemInDarkTheme()) Light_Gray else Light_White)
+            .background(if (darkTheme) Light_Gray else Light_White)
             .clickable { onClick(String()) },
         verticalAlignment = Alignment.CenterVertically
     ) {
