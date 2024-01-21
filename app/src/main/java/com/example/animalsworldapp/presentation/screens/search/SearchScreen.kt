@@ -1,10 +1,14 @@
 package com.example.animalsworldapp.presentation.screens.search
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -25,7 +29,9 @@ import androidx.compose.ui.unit.sp
 import com.example.animalsworldapp.presentation.components.NoResultsStub
 import com.example.animalsworldapp.presentation.components.TabBar
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
+import com.example.animalsworldapp.presentation.screens.all.components.ShowAllItem
 import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
+import com.example.animalsworldapp.presentation.screens.detail.ItemDetailType
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 
 
@@ -33,6 +39,7 @@ import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 @Composable
 fun SearchScreen(
     uiState: SearchUiState,
+    navigateToDetails: (ItemDetailType, String) -> Unit,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -51,7 +58,7 @@ fun SearchScreen(
         ) {
             SpacerHeight(ExtraLargeSpacing)
             OutlinedTextField(
-                value = "",
+                value = uiState.query,
                 onValueChange = onValueChange,
                 textStyle = TextStyle(fontSize = 17.sp),
                 shape = CircleShape,
@@ -75,9 +82,31 @@ fun SearchScreen(
             )
         }
         when {
-            uiState.contentType.isEmpty() -> NoResultsStub()
+            uiState.fauna.isEmpty() -> NoResultsStub()
             uiState.isLoading -> LoadingScreen()
-            else -> {}
+            else -> {
+                LazyVerticalStaggeredGrid(
+                    columns = StaggeredGridCells.Fixed(2),
+                    verticalItemSpacing = 4.dp,
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    content = {
+                        items(
+                            items = uiState.fauna,
+                            key = { it.objectId }
+                        ) { fauna ->
+                            ShowAllItem(
+                                backgroundImage = fauna.backgroundImage,
+                                id = fauna.objectId,
+                                name = fauna.name,
+                                navigateToDetails = {
+                                    navigateToDetails(ItemDetailType.FAUNA, it)
+                                }
+                            )
+                        }
+                    },
+                    modifier = modifier
+                )
+            }
         }
     }
 }

@@ -43,7 +43,6 @@ import com.example.animalsworldapp.presentation.screens.main.MainScreen
 import com.example.animalsworldapp.presentation.screens.main.MainScreenViewModel
 import com.example.animalsworldapp.presentation.screens.profile.ProfileScreen
 import com.example.animalsworldapp.presentation.screens.profile.ProfileViewModel
-import com.example.animalsworldapp.presentation.screens.search.SearchDestination
 import com.example.animalsworldapp.presentation.screens.search.SearchScreen
 import com.example.animalsworldapp.presentation.screens.search.SearchViewModel
 
@@ -105,7 +104,11 @@ fun MainNavGraphRoot(
                 val viewModel: SearchViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 SearchScreen(
-                    uiState = uiState, onValueChange = {},
+                    uiState = uiState,
+                    onValueChange = viewModel::onValueChange,
+                    navigateToDetails = { itemDetailType, id ->
+                        navHostController.navigate("${DetailDestination.route()}/${itemDetailType.type}/$id")
+                    }
                 )
             }
             composable(BottomTab.PROFILE.route) {
