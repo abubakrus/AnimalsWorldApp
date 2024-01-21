@@ -1,6 +1,6 @@
 package com.example.animalsworldapp.presentation.screens.search
 
-import com.example.animalsworldapp.presentation.screens.detail.ContentType
+import com.example.animalsworldapp.presentation.models.Fauna
 
 //sealed class SearchUiState() {
 //
@@ -21,6 +21,6 @@ import com.example.animalsworldapp.presentation.screens.detail.ContentType
 
 data class SearchUiState(
     val query: String = "",
-    val contentType: List<ContentType> = emptyList(),
+    val fauna: List<Fauna> = emptyList(),
     val isLoading: Boolean = false
 )

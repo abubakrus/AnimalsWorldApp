@@ -20,6 +20,8 @@ import com.example.animalsworldapp.domain.usecases.fauna_usecase.FetchFaunaByIdU
 import com.example.animalsworldapp.domain.usecases.fauna_usecase.FetchFaunaByIdUseCaseImpl
 import com.example.animalsworldapp.domain.usecases.fauna_usecase.FetchLimitFaunaUseCase
 import com.example.animalsworldapp.domain.usecases.fauna_usecase.FetchLimitFaunaUseCaseImpl
+import com.example.animalsworldapp.domain.usecases.fauna_usecase.SearchByQueryFaunaUseCase
+import com.example.animalsworldapp.domain.usecases.fauna_usecase.SearchByQueryFaunaUseCaseImpl
 import com.example.animalsworldapp.domain.usecases.flora_usecase.FetchAllFloraUseCase
 import com.example.animalsworldapp.domain.usecases.flora_usecase.FetchAllFloraUseCaseImpl
 import com.example.animalsworldapp.domain.usecases.flora_usecase.FetchFloraByIdUseCase
@@ -180,6 +182,13 @@ class UseCaseModule {
     ): SignUpUseCase = SignUpUseCaseImpl(
         repository = repository,
         userRepository = userRepository
+    )
+
+    @Provides
+    fun provideSearchByQueryFaunaUseCaseImpl(
+        repository: FaunaRepository,
+    ): SearchByQueryFaunaUseCase = SearchByQueryFaunaUseCaseImpl(
+        repository = repository,
     )
 
 }

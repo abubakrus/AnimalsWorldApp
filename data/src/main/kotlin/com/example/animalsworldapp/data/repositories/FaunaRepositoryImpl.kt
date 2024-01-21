@@ -26,6 +26,18 @@ class FaunaRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun searchByQuery(query: String): Result<List<FaunaDomain>> {
+        return try {
+            val resultBackend = service.searchByQuery(query).results
+            Result.Success(data = resultBackend.map { it.toDomain() })
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            Log.e("FaunaApp", e.stackTraceToString())
+            Result.Error(message = e.message ?: e.stackTraceToString())
+        }
+    }
+
     override suspend fun fetchAllFauna(): Result<List<FaunaDomain>> {
         return try {
             val faunaClouds = service.fetchAllFauna().results
@@ -42,9 +54,9 @@ class FaunaRepositoryImpl @Inject constructor(
         return try {
             val getLimited = service.getLimitedData(limit).results
             Result.Success(data = getLimited.map { it.toDomain() })
-        }catch (e:CancellationException){
+        } catch (e: CancellationException) {
             throw e
-        }catch (e:Exception){
+        } catch (e: Exception) {
             Log.e("Animal", e.stackTraceToString())
             Result.Error(message = e.message ?: e.stackTraceToString())
         }

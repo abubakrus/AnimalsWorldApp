@@ -1,20 +1,17 @@
 package com.example.animalsworldapp.presentation.screens.search
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.example.animalsworldapp.domain.usecases.fauna_usecase.FetchFaunaByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
+    private val searchByIdUseCase: FetchFaunaByIdUseCase
 ) : ViewModel() {
 
     private val searQueryFlow = MutableStateFlow("")

@@ -15,9 +15,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.components.TabBar
+import com.example.animalsworldapp.presentation.screens.all.components.LoadingScreenForAllShow
 import com.example.animalsworldapp.presentation.screens.all.components.ShowAllItem
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
-import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.screens.detail.ItemDetailType
 
 @Composable
@@ -37,7 +37,10 @@ fun AllMountainScreen(
         }
     ) { innerPaddings ->
         when (uiState) {
-            is AllMountainUiState.Loading -> LoadingScreen()
+            is AllMountainUiState.Loading -> LoadingScreenForAllShow(
+                modifier = modifier.padding(innerPaddings)
+            )
+
             is AllMountainUiState.Loaded -> LoadedAllMountainScreen(
                 uiState = uiState,
                 modifier = modifier

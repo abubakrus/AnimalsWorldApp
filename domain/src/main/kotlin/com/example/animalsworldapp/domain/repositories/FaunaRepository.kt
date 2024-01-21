@@ -8,6 +8,8 @@ interface FaunaRepository {
 
     suspend fun fetchFaunaById(id: String): Result<FaunaDomain>
 
+    suspend fun searchByQuery(query: String):  Result<List<FaunaDomain>>
+
     suspend fun fetchAllFauna(): Result<List<FaunaDomain>>
 
     suspend fun getLimitedData(limit: Int): Result<List<FaunaDomain>>
