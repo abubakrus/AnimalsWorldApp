@@ -11,5 +11,10 @@ data class SignUpParams(
     val email:String,
     @SerializedName("password")
     val password:String,
-
+    @SerializedName("nick_name")
+    val nickName:String,
+    @SerializedName("location")
+    val location:String,
+    @SerializedName("about")
+    val aboutYou:String,
 )

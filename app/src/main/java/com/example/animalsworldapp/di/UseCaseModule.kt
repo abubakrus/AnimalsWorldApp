@@ -156,7 +156,7 @@ class UseCaseModule {
 
     @Provides
     fun provideFetchCurrentUserUseCaseImpl(
-        repository: UsersRepository
+        repository: CurrentUserRepository
     ): FetchCurrentUserUseCase = FetchCurrentUserUseCaseImpl(
         repository = repository
     )

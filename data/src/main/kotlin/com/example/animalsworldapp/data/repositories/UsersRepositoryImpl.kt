@@ -6,7 +6,6 @@ import com.example.animalsworldapp.data.cloud.service.UsersService
 import com.example.animalsworldapp.domain.common.Result
 import com.example.animalsworldapp.domain.models.UsersDomain
 import com.example.animalsworldapp.domain.repositories.UsersRepository
-import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.concurrent.CancellationException
 import javax.inject.Inject
@@ -22,9 +21,6 @@ class UsersRepositoryImpl @Inject constructor(
 
 ) : UsersRepository {
 
-    private val sharedPreferences by lazy(LazyThreadSafetyMode.NONE) {
-        context.getSharedPreferences(SETTINGS_SHARED_PREF_NAME, Context.MODE_PRIVATE)
-    }
 
     override suspend fun fetchUserById(id: String): Result<UsersDomain> {
         return try {
@@ -37,19 +33,6 @@ class UsersRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             Result.Error(message = e.message ?: e.stackTraceToString())
         }
-    }
-
-    override fun fetchCurrent(): UsersDomain {
-        return try {
-            val json = sharedPreferences.getString(CURRENT_USER_NAME, String()) ?: String()
-            Gson().fromJson(json, UsersDomain::class.java)
-        } catch (e: Exception) {
-            UsersDomain.unknown
-        }
-    }
-
-    override suspend fun fetchAllUsers(): Result<List<UsersDomain>> {
-        TODO("Not yet implemented")
     }
 
     override suspend fun deleteUserById(id: String) {

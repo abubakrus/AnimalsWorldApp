@@ -12,8 +12,11 @@ data class User(
     val name: String,
     val nickName: String,
     val id: String,
-    val updatedAt: String
-) {
+    val updatedAt: String,
+    val email: String,
+    val password: String,
+
+    ) {
     fun isUnknown() = this == User.unknown
 
     fun isNotUnknown() = this != User.unknown
@@ -29,7 +32,9 @@ data class User(
             name = String(),
             nickName = String(),
             id = String(),
-            updatedAt = String()
+            updatedAt = String(),
+            email = String(),
+            password = String()
         )
     }
 }
@@ -47,7 +52,9 @@ fun UsersDomain.toUser() = this.run {
         name = name,
         nickName = nickName,
         id = id,
-        updatedAt = updatedAt
+        updatedAt = updatedAt,
+        email = email,
+        password = password
     )
 }
 

@@ -9,7 +9,10 @@ interface SignUpUseCase {
         name: String,
         lastName: String,
         email: String,
-        password: String
+        password: String,
+        nickName: String,
+        location: String,
+        aboutYou: String,
     ): Result<UsersDomain>
 
 }

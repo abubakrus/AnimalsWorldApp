@@ -58,6 +58,7 @@ exoPlayer = { group = "com.google.android.exoplayer", name = "exoplayer", versio
 exoPlayer_core = { group = "com.google.android.exoplayer", name = "exoplayer-core", version.ref = "exoPlayer_version" }
 exoPlayer_ui = { group = "com.google.android.exoplayer", name = "exoplayer-ui", version.ref = "exoPlayer_version" }
 media_exoPlayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media_exoPlayer_version" }
+exoPlayer_session = { group = "androidx.media3", name = "media3-session", version.ref = "media_exoPlayer_version" }
 systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "systemuicontroller_version" }
 
 # Test

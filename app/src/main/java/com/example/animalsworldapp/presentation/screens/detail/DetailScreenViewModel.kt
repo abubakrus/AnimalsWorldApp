@@ -1,5 +1,6 @@
 package com.example.animalsworldapp.presentation.screens.detail
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.animalsworldapp.domain.usecases.fauna_usecase.FetchFaunaByIdUseCase
@@ -10,7 +11,8 @@ import com.example.animalsworldapp.presentation.models.toFauna
 import com.example.animalsworldapp.presentation.models.toFlora
 import com.example.animalsworldapp.presentation.models.toForest
 import com.example.animalsworldapp.presentation.models.toMountain
-import com.example.animalsworldapp.presentation.screens.detail.models.DetailTab
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.ui.StyledPlayerView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -46,6 +48,12 @@ class DetailScreenViewModel @Inject constructor(
     private val fetchForestByIdUseCase: FetchForestByIdUseCase
 ) : ViewModel() {
 
+
+    @SuppressLint("StaticFieldLeak")
+    private lateinit var styledPlayerView: StyledPlayerView
+    private lateinit var player: ExoPlayer
+
+
     private val _uiStateFlow = MutableStateFlow<DetailScreenUiState>(DetailScreenUiState.Initial)
     val uiState: StateFlow<DetailScreenUiState> = _uiStateFlow.asStateFlow()
 
@@ -64,6 +72,11 @@ class DetailScreenViewModel @Inject constructor(
         }
 
     }
+
+
+
+
+
 
     private suspend fun fetchById(
         type: ItemDetailType,

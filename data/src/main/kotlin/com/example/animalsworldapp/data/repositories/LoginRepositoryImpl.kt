@@ -20,16 +20,16 @@ class LoginRepositoryImpl @Inject constructor(
     override suspend fun signIn(
         email: String,
         password: String
-    ): com.example.animalsworldapp.domain.common.Result<UsersDomain> {
+    ): Result<UsersDomain> {
         return try {
             val response = service.signIn("{\"email\":\"$email\", \"password\":\"$password\"}")
             val result = response.body()?.results!!.first()
-            com.example.animalsworldapp.domain.common.Result.Success(data = result.toDomain())
+            Result.Success(data = result.toDomain())
         } catch (e: Throwable) {
             throw e
         } catch (e: Exception) {
-            Log.e("SocialApp", e.stackTraceToString())
-            com.example.animalsworldapp.domain.common.Result.Error(DEFAULT_ERROR_MESSAGE)
+            Log.e("AnimalsApp", e.stackTraceToString())
+            Result.Error(DEFAULT_ERROR_MESSAGE)
         }
     }
 
@@ -37,22 +37,27 @@ class LoginRepositoryImpl @Inject constructor(
         name: String,
         lastName: String,
         email: String,
-        password: String
-    ): com.example.animalsworldapp.domain.common.Result<CreateResponseDomain> = try {
+        password: String,
+        nickName: String,
+        location: String,
+        aboutYou: String,
+    ): Result<CreateResponseDomain> = try {
         val params = SignUpParams(
             name = name,
             lastName = lastName,
             email = email,
-            password = password
+            password = password,
+            location = location,
+            nickName = nickName,
+            aboutYou = aboutYou
         )
         val response = service.signUp(params)
         val result = response.body()!!
-        com.example.animalsworldapp.domain.common.Result.Success(
+        Result.Success(
             CreateResponseDomain(
                 id = result.id,
             )
         )
-
     } catch (e: CancellationException) {
         throw e
     } catch (e: Exception) {

@@ -28,8 +28,10 @@ class FaunaRepositoryImpl @Inject constructor(
 
     override suspend fun searchByQuery(query: String): Result<List<FaunaDomain>> {
         return try {
-            val resultBackend = service.searchByQuery(query).results
-            Result.Success(data = resultBackend.map { it.toDomain() })
+            val params = "{\"name\":\"$query\"}"
+            val response = service.searchByQuery(params)
+            val result = response.results
+            Result.Success(data = result.map { it.toDomain() })
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {

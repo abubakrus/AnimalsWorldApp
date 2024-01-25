@@ -18,7 +18,7 @@ interface FaunaService {
 
     @GET("Fauna")
     suspend fun searchByQuery(
-        @Query("query") query: String
+        @Query("where") query: String
     ): FaunaResponse
 
     @GET("Fauna")

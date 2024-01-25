@@ -92,6 +92,7 @@ dependencies {
     implementation(libs.exoPlayer.ui)
     implementation(libs.media.exoPlayer)
     implementation(libs.systemuicontroller)
+    implementation(libs.exoPlayer.session)
 
 
 // Pager

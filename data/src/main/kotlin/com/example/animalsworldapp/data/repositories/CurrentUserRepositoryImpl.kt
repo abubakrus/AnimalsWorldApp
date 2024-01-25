@@ -1,6 +1,7 @@
 package com.example.animalsworldapp.data.repositories
 
 import android.content.Context
+import android.util.Log
 import com.example.animalsworldapp.domain.models.UsersDomain
 import com.example.animalsworldapp.domain.repositories.CurrentUserRepository
 import com.google.gson.Gson
@@ -16,12 +17,12 @@ class CurrentUserRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context
 ) : CurrentUserRepository {
 
-
     private val sharedPreferences by lazy(LazyThreadSafetyMode.NONE) {
         context.getSharedPreferences(SETTINGS_SHARED_PREF_NAME, Context.MODE_PRIVATE)
     }
 
     override fun saveCurrentUser(user: UsersDomain) {
+        Log.i("FFF", "saveUser: $user")
         val prefEditor = sharedPreferences.edit()
         prefEditor.putString(CURRENT_USER_NAME, Gson().toJson(user))
         prefEditor.apply()

@@ -7,12 +7,9 @@ sealed class SignUpEvent {
 
     data class OnNickNamedChanged(val value: String) : SignUpEvent()
 
-
     data class OnAboutYouChanged(val value: String) : SignUpEvent()
 
-
     data class OnLocationChanged(val value: String) : SignUpEvent()
-
 
     data class OnLastNamedChanged(val value: String) : SignUpEvent()
 

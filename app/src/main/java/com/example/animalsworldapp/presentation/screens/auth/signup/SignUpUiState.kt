@@ -1,14 +1,14 @@
 package com.example.animalsworldapp.presentation.screens.auth.signup
 
-data class SignUpUiState (
-    val name:String = String(),
-    val nickName:String = String(),
-    val location:String = String(),
-    val aboutYou:String = String(),
-    val lastName:String = String(),
-    val email:String = String(),
-    val password:String = String(),
-    val isAuthentication:Boolean=false,
-    val errorMessage:String? = null,
-    val isSuccessesAuth:Boolean =false
+data class SignUpUiState(
+    val name: String = String(),
+    val nickName: String = String(),
+    val location: String = String(),
+    val aboutYou: String = String(),
+    val lastName: String = String(),
+    val email: String = String(),
+    val password: String = String(),
+    val isAuthentication: Boolean = false,
+    val errorMessage: String? = null,
+    val isSuccessesAuth: Boolean = false
 )

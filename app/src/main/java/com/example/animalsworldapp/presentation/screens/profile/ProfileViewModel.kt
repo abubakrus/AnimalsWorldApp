@@ -20,7 +20,6 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val showToast: ShowToastUseCase,
-    private val fetchUserByIdUseCase: FetchUserByIdUseCase,
     private val fetchCurrentUserUseCase: FetchCurrentUserUseCase
 ) : ViewModel() {
 
@@ -45,7 +44,7 @@ class ProfileViewModel @Inject constructor(
         try {
             val user = fetchCurrentUserUseCase().toUser()
             _uiState.tryEmit(ProfileUiState.Content(user))
-            Log.i("Abubakir", "name = ${user.name.toString()}")
+            Log.i("Abubakir", "name = ${user.name}")
         } catch (e: Throwable) {
             val errorState = ProfileUiState.Error(e.stackTraceToString())
             _uiState.tryEmit(errorState)

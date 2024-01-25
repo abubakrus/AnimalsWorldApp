@@ -31,7 +31,8 @@ class SignUpViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(SignUpUiState())
-    val uiState: StateFlow<SignUpUiState> = _uiState.asStateFlow()
+    val uiState: StateFlow<
+            SignUpUiState> = _uiState.asStateFlow()
 
     private val _navCommandFlow = createMutableSharedFlowAsSingleLiveEvent<String>()
     val navCommandFlow: SharedFlow<String> = _navCommandFlow.asSharedFlow()
@@ -57,11 +58,13 @@ class SignUpViewModel @Inject constructor(
                 lastName = uiState.value.lastName,
                 email = uiState.value.email,
                 password = uiState.value.password,
+                location = uiState.value.location,
+                nickName = uiState.value.nickName,
+                aboutYou = uiState.value.aboutYou
             )
 
             when (result) {
                 is Result.Error -> {
-
                     Log.e("SocialApp", result.message ?: "")
                 }
 
@@ -69,7 +72,7 @@ class SignUpViewModel @Inject constructor(
                     val user = result.data ?: return@launch
                     saveCurrentUserUseCase(user)
                     navigatorManager.navigateTo(MAIN_NAV_GRAPH_ROUTE, true)
-                    Log.i("SocialApp", "${result.data}")
+                    Log.i("AnimalsApp", "${result.data}")
                 }
             }
         }

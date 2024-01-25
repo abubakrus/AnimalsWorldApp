@@ -39,6 +39,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -50,6 +51,7 @@ import com.example.animalsworldapp.presentation.theme.MediumSpacing
 import com.example.animalsworldapp.presentation.theme.NiramitMedium
 import com.example.animalsworldapp.presentation.theme.Pink
 import com.example.animalsworldapp.presentation.theme.SmallSpacing
+import com.google.android.exoplayer2.MediaItem
 import kotlinx.coroutines.launch
 
 
@@ -72,6 +74,7 @@ fun FaunaDetailItem(
     val pagerState = rememberPagerState(pageCount = { detailTab.size })
     val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
+    val context = LocalContext.current
     Box(
         modifier = modifier.fillMaxSize()
     ) {

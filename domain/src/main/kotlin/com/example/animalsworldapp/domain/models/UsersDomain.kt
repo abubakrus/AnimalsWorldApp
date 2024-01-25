@@ -10,7 +10,9 @@ data class UsersDomain(
     val name: String,
     val nickName: String,
     val id: String,
-    val updatedAt: String
+    val updatedAt: String,
+    val email: String,
+    val password: String
 ) {
     companion object {
         val unknown = UsersDomain(
@@ -23,7 +25,9 @@ data class UsersDomain(
             name = "unknown",
             nickName = String(),
             id = String(),
-            updatedAt = String()
+            updatedAt = String(),
+            email = String(),
+            password = String()
         )
     }
 }

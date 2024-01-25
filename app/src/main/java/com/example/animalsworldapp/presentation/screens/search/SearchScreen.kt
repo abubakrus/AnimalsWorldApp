@@ -33,6 +33,7 @@ import com.example.animalsworldapp.presentation.screens.all.components.ShowAllIt
 import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.screens.detail.ItemDetailType
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
+import com.example.animalsworldapp.presentation.theme.MediumSpacing
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,13 +44,11 @@ fun SearchScreen(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Scaffold(
-        topBar = {
-            TabBar(
-                title = "Search",
-            )
-        }
-    ) { innerPaddings ->
+    Scaffold(topBar = {
+        TabBar(
+            headline = "Search",
+        )
+    }) { innerPaddings ->
         Column(
             modifier = modifier
                 .padding(innerPaddings)
@@ -80,32 +79,29 @@ fun SearchScreen(
                     cursorColor = Color.DarkGray,
                 )
             )
-        }
-        when {
-            uiState.fauna.isEmpty() -> NoResultsStub()
-            uiState.isLoading -> LoadingScreen()
-            else -> {
-                LazyVerticalStaggeredGrid(
-                    columns = StaggeredGridCells.Fixed(2),
-                    verticalItemSpacing = 4.dp,
-                    horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    content = {
-                        items(
-                            items = uiState.fauna,
-                            key = { it.objectId }
-                        ) { fauna ->
-                            ShowAllItem(
-                                backgroundImage = fauna.backgroundImage,
-                                id = fauna.objectId,
-                                name = fauna.name,
-                                navigateToDetails = {
-                                    navigateToDetails(ItemDetailType.FAUNA, it)
-                                }
-                            )
-                        }
-                    },
-                    modifier = modifier
-                )
+            when {
+                uiState.fauna.isEmpty() -> NoResultsStub()
+                uiState.isLoading -> LoadingScreen()
+                else -> {
+                    LazyVerticalStaggeredGrid(
+                        modifier = modifier
+                            .padding(horizontal = MediumSpacing)
+                            .padding(top = MediumSpacing),
+                        columns = StaggeredGridCells.Fixed(2),
+                        verticalItemSpacing = 4.dp,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp),
+                        content = {
+                            items(items = uiState.fauna, key = { it.objectId }) { fauna ->
+                                ShowAllItem(backgroundImage = fauna.backgroundImage,
+                                    id = fauna.objectId,
+                                    name = fauna.name,
+                                    navigateToDetails = {
+                                        navigateToDetails(ItemDetailType.FAUNA, it)
+                                    })
+                            }
+                        },
+                    )
+                }
             }
         }
     }

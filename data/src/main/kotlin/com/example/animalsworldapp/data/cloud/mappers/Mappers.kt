@@ -40,7 +40,9 @@ fun UsersCloud.toDomain(): UsersDomain = this.run {
         name = name,
         nickName = nickName,
         id = id,
-        updatedAt = updatedAt
+        updatedAt = updatedAt,
+        email = email,
+        password = password
     )
 }
 

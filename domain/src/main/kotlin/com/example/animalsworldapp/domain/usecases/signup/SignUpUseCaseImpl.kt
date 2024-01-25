@@ -15,7 +15,10 @@ class SignUpUseCaseImpl constructor(
         name: String,
         lastName: String,
         email: String,
-        password: String
+        password: String,
+        nickName: String,
+        location: String,
+        aboutYou: String,
     ): Result<UsersDomain> {
         if (name.isEmpty()) {
             return Result.Error(message = "First fill in name!")
@@ -35,13 +38,14 @@ class SignUpUseCaseImpl constructor(
         if (password.length < 8) {
             return Result.Error(message = "Incorrect fill password!")
         }
-
-
         val response = repository.signUp(
             name = name,
             lastName = lastName,
             email = email,
-            password = password
+            password = password,
+            location = location,
+            aboutYou = aboutYou,
+            nickName = nickName,
         )
         return userRepository.fetchUserById(response.data?.id ?: String())
     }

@@ -37,21 +37,21 @@ fun HeaderInfoProfile(
             )
             SpacerHeight(LargeSpacing)
             Text(
-                text = "Usenbaev",
+                text = user.name,
                 style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold
             )
             SpacerHeight(MediumSpacing)
             Text(
-                text = "Abubakir",
+                text = user.lastName,
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold
             )
             SpacerHeight(MediumSpacing)
             Text(
-                text = "Abu",
+                text = user.nickName,
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold

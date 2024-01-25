@@ -26,5 +26,9 @@ data class UsersCloud(
     @SerializedName("objectId")
     val id: String,
     @SerializedName("updatedAt")
-    val updatedAt: String
+    val updatedAt: String,
+    @SerializedName("email")
+    val email: String,
+    @SerializedName("password")
+    val password: String
 ) : Parcelable

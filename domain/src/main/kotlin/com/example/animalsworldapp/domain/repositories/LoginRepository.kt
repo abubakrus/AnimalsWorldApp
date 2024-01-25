@@ -6,12 +6,15 @@ import com.example.animalsworldapp.domain.models.UsersDomain
 
 
 interface LoginRepository {
-    suspend fun signIn(email: String, password: String): com.example.animalsworldapp.domain.common.Result<UsersDomain>
+    suspend fun signIn(email: String, password: String): Result<UsersDomain>
 
     suspend fun signUp(
         name: String,
-        lastName:String,
+        lastName: String,
         email: String,
-        password: String
-    ): Result<CreateResponseDomain>
+        password: String,
+        nickName: String,
+        location: String,
+        aboutYou: String,
+        ): Result<CreateResponseDomain>
 }
