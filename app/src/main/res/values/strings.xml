@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AnimalsWorldApp</string>
     <string name="ani">Ani</string>
-    <string name="hello">Hello.</string>
+    <string name="hello">Hello</string>
     <string name="nice_day">Have a nice day</string>
     <string name="animal">Animal</string>
     <string name="welcome">Welcome to the \n animal world</string>
@@ -63,5 +63,6 @@
     <string name="your_location">Your location</string>
     <string name="about">About</string>
     <string name="interestingFact">Interesting facts</string>
+    <string name="profile">Profile</string>
 
 </resources>

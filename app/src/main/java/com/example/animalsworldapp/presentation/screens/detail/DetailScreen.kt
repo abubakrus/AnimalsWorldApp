@@ -17,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
-import com.example.animalsworldapp.presentation.screens.detail.models.DetailTab
 import com.example.animalsworldapp.presentation.screens.detail.models.FaunaDetailItem
 import com.example.animalsworldapp.presentation.screens.detail.models.FloraDetailItem
 import com.example.animalsworldapp.presentation.screens.detail.models.ForestDetailItem
@@ -42,7 +41,9 @@ fun DetailScreen(
                         .padding(innerPaddings),
                     navigateBackStack = { navHostController.navigateUp() },
                     contentType = uiState.contentType,
-                    onClickVoice = onClickVoice,
+                    onClickVoice = {
+                        onClickVoice()
+                    },
                 )
             }
         }
@@ -109,7 +110,7 @@ fun LoadedDetailScreen(
                     backgroundImage = contentType.backgroundImage,
                     interestingFact = contentType.interestingFact,
                     image = contentType.image,
-                    onClickVoice = {}
+                    onClickVoice = { onClickVoice() }
                 )
 
             }

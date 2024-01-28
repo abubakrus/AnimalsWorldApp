@@ -82,7 +82,7 @@ class LoginViewModel @Inject constructor(
                 }
                 saveCurrentUserUseCase(user)
                 navigatorManager.navigateTo(MAIN_NAV_GRAPH_ROUTE, true)
-                Log.i("SocialApp", "data = ${result.data}")
+                Log.i("AnimalsApp", "data = ${result.data}")
             }
 
         }

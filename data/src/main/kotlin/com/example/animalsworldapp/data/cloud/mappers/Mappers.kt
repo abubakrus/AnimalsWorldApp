@@ -32,7 +32,7 @@ fun FaunaCloud.toDomain(): FaunaDomain = this.run {
 fun UsersCloud.toDomain(): UsersDomain = this.run {
     UsersDomain(
         about = about,
-        avatar = avatar.url,
+        avatar = avatar?.url,
         contactWithMe = contactWithMe,
         createdAt = createdAt,
         lastName = lastName,

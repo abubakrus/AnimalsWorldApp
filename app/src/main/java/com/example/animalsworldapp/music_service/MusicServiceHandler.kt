@@ -22,12 +22,12 @@ class MusicServiceHandler @Inject constructor(
         player.prepare()
     }
 
-    private suspend fun playOrPause() {
+    suspend fun playOrPause() {
         if (player.isPlaying) {
             player.pause()
         } else {
             player.play()
-            Log.d("Baha", "player.play: ${player.isPlaying}")
+            Log.d("Abu", "player.play: ${player.isPlaying}")
         }
     }
 

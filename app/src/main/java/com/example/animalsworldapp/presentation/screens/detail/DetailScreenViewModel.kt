@@ -1,18 +1,17 @@
 package com.example.animalsworldapp.presentation.screens.detail
 
-import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.media3.common.MediaItem
 import com.example.animalsworldapp.domain.usecases.fauna_usecase.FetchFaunaByIdUseCase
 import com.example.animalsworldapp.domain.usecases.flora_usecase.FetchFloraByIdUseCase
 import com.example.animalsworldapp.domain.usecases.forests.FetchForestByIdUseCase
 import com.example.animalsworldapp.domain.usecases.mountain_usecase.FetchMountainByIdUseCase
+import com.example.animalsworldapp.music_service.MusicServiceHandler
 import com.example.animalsworldapp.presentation.models.toFauna
 import com.example.animalsworldapp.presentation.models.toFlora
 import com.example.animalsworldapp.presentation.models.toForest
 import com.example.animalsworldapp.presentation.models.toMountain
-import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.ui.StyledPlayerView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -45,14 +44,9 @@ class DetailScreenViewModel @Inject constructor(
     private val fetchMountainByIdUseCase: FetchMountainByIdUseCase,
     private val fetchFloraByIdUseCase: FetchFloraByIdUseCase,
     private val fetchFaunaByIdUseCase: FetchFaunaByIdUseCase,
-    private val fetchForestByIdUseCase: FetchForestByIdUseCase
+    private val fetchForestByIdUseCase: FetchForestByIdUseCase,
+//    private val musicServiceHandler: MusicServiceHandler
 ) : ViewModel() {
-
-
-    @SuppressLint("StaticFieldLeak")
-    private lateinit var styledPlayerView: StyledPlayerView
-    private lateinit var player: ExoPlayer
-
 
     private val _uiStateFlow = MutableStateFlow<DetailScreenUiState>(DetailScreenUiState.Initial)
     val uiState: StateFlow<DetailScreenUiState> = _uiStateFlow.asStateFlow()
@@ -70,13 +64,7 @@ class DetailScreenViewModel @Inject constructor(
         viewModelScope.launch(handler + Dispatchers.IO) {
             fetchById(type, id)
         }
-
     }
-
-
-
-
-
 
     private suspend fun fetchById(
         type: ItemDetailType,
@@ -111,10 +99,12 @@ class DetailScreenViewModel @Inject constructor(
         } catch (e: Exception) {
             DetailScreenUiState.Error("Error")
         }
-
         _uiStateFlow.tryEmit(state)
     }
 }
+
+
+
 
 
 

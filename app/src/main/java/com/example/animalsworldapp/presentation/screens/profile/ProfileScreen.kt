@@ -1,9 +1,11 @@
 package com.example.animalsworldapp.presentation.screens.profile
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.AccountCircle
@@ -17,7 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.AnimalsWorldApp.R
-import com.example.animalsworldapp.presentation.extensions.SpacerHeight
+import com.example.animalsworldapp.presentation.components.TabBar
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
 import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.screens.profile.models.HeaderInfoProfile
@@ -35,23 +37,27 @@ fun ProfileScreen(
     modifier: Modifier = Modifier,
 
     ) {
-    Scaffold { innerPaddings ->
-        Column {
-            when (uiState) {
-                is ProfileUiState.Initial -> Unit
-                is ProfileUiState.Loading -> LoadingScreen()
-                is ProfileUiState.Error -> ErrorScreen(message = uiState.message, onClick = {})
-                is ProfileUiState.Content -> LoadedScreenProfile(
-                    modifier = modifier.padding(innerPaddings),
-                    onEvent = onEvent,
-                    uiState = uiState,
-                    darkTheme = darkTheme,
-                    onThemeUpdated = onThemeUpdated
-                )
-            }
+    Scaffold(
+        topBar = {
+            TabBar(
+                headline = stringResource(id = R.string.profile),
+                alignment = Alignment.TopCenter,
+            )
+        }
+    ) { innerPaddings ->
+        when (uiState) {
+            is ProfileUiState.Initial -> Unit
+            is ProfileUiState.Loading -> LoadingScreen()
+            is ProfileUiState.Error -> ErrorScreen(message = uiState.message, onClick = {})
+            is ProfileUiState.Content -> LoadedScreenProfile(
+                modifier = modifier.padding(innerPaddings),
+                onEvent = onEvent,
+                uiState = uiState,
+                darkTheme = darkTheme,
+                onThemeUpdated = onThemeUpdated
+            )
         }
     }
-
 }
 
 
@@ -63,50 +69,59 @@ fun LoadedScreenProfile(
     onThemeUpdated: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(
+    LazyColumn(
         modifier = modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HeaderInfoProfile(user = uiState.user)
-        SpacerHeight(ExtraMediumSpacing)
-        ProfileSwitchItem(
-            icon = Icons.Default.WbSunny,
-            title = stringResource(id = R.string.change_theme),
-            darkTheme = darkTheme,
-            onThemeUpdated = onThemeUpdated
-        )
-        SpacerHeight(ExtraMediumSpacing)
-        ProfileItemInfo(
-            icon = Icons.Default.AccountCircle,
-            title = stringResource(id = R.string.edit_profile),
-            onClick = { onEvent(ProfileEvent.OnEditProfile) },
-            darkTheme=darkTheme
+        item {
+            HeaderInfoProfile(user = uiState.user)
+            Spacer(modifier = Modifier.height(ExtraMediumSpacing))
+            ProfileSwitchItem(
+                icon = Icons.Default.WbSunny,
+                title = stringResource(id = R.string.change_theme),
+                darkTheme = darkTheme,
+                onThemeUpdated = onThemeUpdated
+            )
+        }
+        item {
+            Spacer(modifier = Modifier.height(ExtraMediumSpacing))
+            ProfileItemInfo(
+                icon = Icons.Default.AccountCircle,
+                title = stringResource(id = R.string.edit_profile),
+                onClick = { onEvent(ProfileEvent.OnEditProfile) },
+                darkTheme = darkTheme
+            )
+        }
+        item {
+            Spacer(modifier = Modifier.height(ExtraMediumSpacing))
+            ProfileItemInfo(
+                icon = Icons.Default.AccountBox,
+                title = stringResource(id = R.string.type_users),
+                onClick = { onEvent(ProfileEvent.OnEditUserType) },
+                darkTheme = darkTheme
 
-        )
-        SpacerHeight(ExtraMediumSpacing)
-        ProfileItemInfo(
-            icon = Icons.Default.AccountBox,
-            title = stringResource(id = R.string.type_users),
-            onClick = { onEvent(ProfileEvent.OnEditUserType) },
-            darkTheme=darkTheme
+            )
+        }
+        item {
+            Spacer(modifier = Modifier.height(ExtraMediumSpacing))
+            ProfileItemInfo(
+                icon = Icons.Default.Language,
+                title = stringResource(id = R.string.language),
+                onClick = { onEvent(ProfileEvent.OnEditLanguage) },
+                darkTheme = darkTheme
 
-        )
-        SpacerHeight(ExtraMediumSpacing)
-        ProfileItemInfo(
-            icon = Icons.Default.Language,
-            title = stringResource(id = R.string.language),
-            onClick = { onEvent(ProfileEvent.OnEditLanguage) },
-            darkTheme=darkTheme
-
-        )
-        SpacerHeight(ExtraMediumSpacing)
-        ProfileItemInfo(
-            icon = Icons.Default.Input,
-            title = stringResource(id = R.string.sign_in),
-            onClick = { onEvent(ProfileEvent.OnClickLogin) },
-            darkTheme=darkTheme
-        )
+            )
+        }
+        item {
+            Spacer(modifier = Modifier.height(ExtraMediumSpacing))
+            ProfileItemInfo(
+                icon = Icons.Default.Input,
+                title = stringResource(id = R.string.sign_in),
+                onClick = { onEvent(ProfileEvent.OnClickLogin) },
+                darkTheme = darkTheme
+            )
+        }
     }
 }

@@ -51,7 +51,6 @@ import com.example.animalsworldapp.presentation.theme.MediumSpacing
 import com.example.animalsworldapp.presentation.theme.NiramitMedium
 import com.example.animalsworldapp.presentation.theme.Pink
 import com.example.animalsworldapp.presentation.theme.SmallSpacing
-import com.google.android.exoplayer2.MediaItem
 import kotlinx.coroutines.launch
 
 

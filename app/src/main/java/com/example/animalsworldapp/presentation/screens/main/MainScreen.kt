@@ -21,6 +21,8 @@ import com.example.animalsworldapp.presentation.screens.main.models.HorizontalPa
 import com.example.animalsworldapp.presentation.screens.main.models.LoadingScreenMain
 import com.example.animalsworldapp.presentation.screens.main.models.MainScreenHorizontalFlora
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
+import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
+import com.example.animalsworldapp.presentation.theme.MediumSpacing
 
 
 @Composable
@@ -31,14 +33,14 @@ fun MainScreen(
     navigateToAllMountain: () -> Unit,
     navigateToForest: () -> Unit,
     modifier: Modifier = Modifier,
-    ) {
+) {
     Scaffold(
         topBar = {
-        TabBar(
-            headline = stringResource(id = R.string.hello),
-            alignment = Alignment.TopCenter,
-        )
-    }
+            TabBar(
+                headline = stringResource(id = R.string.hello),
+                alignment = Alignment.TopCenter,
+            )
+        }
     ) { innerPaddings ->
         when (uiState) {
             is MainScreenUiState.Loading -> LoadingScreenMain(
@@ -46,6 +48,7 @@ fun MainScreen(
                     innerPaddings
                 )
             )
+
             is MainScreenUiState.Loaded -> LoadedMainScreen(
                 uiState = uiState,
                 modifier = modifier
@@ -55,8 +58,8 @@ fun MainScreen(
                 navigateToAllFauna = navigateToAllFauna,
                 navigateToAllMountain = navigateToAllMountain,
                 navigateToForest = navigateToForest
-
             )
+
             is MainScreenUiState.Error -> ErrorScreen(message = uiState.message, onClick = {})
         }
     }
@@ -70,17 +73,17 @@ fun LoadedMainScreen(
     navigateToAllFauna: () -> Unit,
     navigateToAllMountain: () -> Unit,
     navigateToForest: () -> Unit,
-
-    ) {
+) {
     LazyColumn(
         modifier = modifier
     ) {
         item {
-            Spacer(modifier = Modifier.height(ExtraLargeSpacing))
+            Spacer(modifier = Modifier.height(ExtraMediumSpacing))
             MainScreenHorizontalFlora(
                 navigateToDetails = { navigateToDetails(ItemDetailType.FLORA, it) },
                 floraList = uiState.flora,
             )
+            Spacer(modifier = Modifier.height(MediumSpacing))
         }
         item {
             HeadingText(text = stringResource(id = R.string.fauna),
@@ -93,8 +96,10 @@ fun LoadedMainScreen(
             )
         }
         item {
-            HeadingText(text = stringResource(id = R.string.mountain),
-                navigateToAllShow = { navigateToAllMountain() })
+            HeadingText(
+                text = stringResource(id = R.string.mountain),
+                navigateToAllShow = { navigateToAllMountain() }
+            )
             HorizontalPagerForMountain(
                 mountainList = uiState.mountain,
                 navigateToDetails = {

@@ -4,8 +4,8 @@ import com.example.animalsworldapp.domain.models.UsersDomain
 
 data class User(
     val about: String,
-    val avatar: String,
-    val contactWithMe: String,
+    val avatar: String?,
+    val contactWithMe: String?,
     val createdAt: String,
     val lastName: String,
     val location: String,

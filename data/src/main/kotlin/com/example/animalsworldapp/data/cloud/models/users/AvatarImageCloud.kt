@@ -12,5 +12,5 @@ data class AvatarImageCloud(
     @SerializedName("__type")
     val type: String,
     @SerializedName("url")
-    val url: String
+    val url: String?
 ) : Parcelable

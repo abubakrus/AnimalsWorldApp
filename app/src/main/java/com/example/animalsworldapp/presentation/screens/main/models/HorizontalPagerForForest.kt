@@ -10,7 +10,6 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -40,7 +39,7 @@ import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 import com.example.animalsworldapp.presentation.theme.LightPlaceholder
 import com.example.animalsworldapp.presentation.theme.MediumSpacing
-import com.example.animalsworldapp.presentation.theme.NobileBold
+import com.example.animalsworldapp.presentation.theme.NobileMedium
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -94,7 +93,8 @@ fun HorizontalPagerForForest(
                         scaleY = infobox
                     }
                     .padding(bottom = ExtraMediumSpacing)
-                    .clip(RoundedCornerShape(35.dp))
+                    .padding(horizontal = MediumSpacing)
+                    .clip(RoundedCornerShape(24.dp))
                     .background(Color.White.copy(alpha = 0.45f))
                     .padding(horizontal = ExtraLargeSpacing),
                     verticalArrangement = Arrangement.Center,
@@ -103,7 +103,7 @@ fun HorizontalPagerForForest(
                         modifier = Modifier,
                         text = forest.name,
                         style = MaterialTheme.typography.titleMedium.copy(
-                            fontSize = 24.sp, color = Color.Black, fontFamily = NobileBold
+                            fontSize = 24.sp, color = Color.Black, fontFamily = NobileMedium
                         )
                     )
                     SpacerHeight(MediumSpacing)
@@ -111,7 +111,7 @@ fun HorizontalPagerForForest(
                         modifier = Modifier,
                         text = forest.location,
                         style = MaterialTheme.typography.titleMedium.copy(
-                            fontSize = 16.sp, color = Color.Black, fontFamily = NobileBold
+                            fontSize = 16.sp, color = Color.Black, fontFamily = NobileMedium
                         )
                     )
                 }

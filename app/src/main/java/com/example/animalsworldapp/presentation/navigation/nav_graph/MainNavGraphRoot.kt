@@ -184,7 +184,10 @@ fun MainNavGraphRoot(
 
                 LoginScreen(
                     uiState = viewModel.uiState.collectAsStateWithLifecycle().value,
-                    onEvent = viewModel::onEvent
+                    onEvent = viewModel::onEvent,
+                    navBackStackEntry = {
+                        navHostController.navigateUp()
+                    }
                 )
             }
             composable(SignUpDestination.route()) {
@@ -196,7 +199,10 @@ fun MainNavGraphRoot(
                 }
                 SignUpScreen(
                     uiState = viewModel.uiState.collectAsStateWithLifecycle().value,
-                    onEvent = viewModel::onEvent
+                    onEvent = viewModel::onEvent,
+                    navBackStackEntry = {
+                        navHostController.navigateUp()
+                    }
                 )
             }
         }

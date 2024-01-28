@@ -30,7 +30,7 @@ import com.example.animalsworldapp.presentation.models.Fauna
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.ExtraSpacing
 import com.example.animalsworldapp.presentation.theme.MediumSpacing
-import com.example.animalsworldapp.presentation.theme.NobileBold
+import com.example.animalsworldapp.presentation.theme.NobileMedium
 import com.example.animalsworldapp.presentation.theme.SmallSpacing
 import kotlin.math.absoluteValue
 
@@ -83,14 +83,8 @@ fun HorizontalPagerDialog(
                     .width(340.dp)
                     .height(120.dp)
                     .padding(bottom = ExtraSpacing)
-                    .clip(
-                        RoundedCornerShape(
-                            topStart = 25.dp,
-                            topEnd = 25.dp,
-                            bottomStart = 25.dp,
-                            bottomEnd = 25.dp
-                        )
-                    )
+                    .padding(horizontal = MediumSpacing)
+                    .clip(RoundedCornerShape(25.dp))
                     .background(Color.White.copy(alpha = 0.45f))
                     .padding(horizontal = ExtraLargeSpacing),
                 verticalArrangement = Arrangement.Center,
@@ -102,7 +96,7 @@ fun HorizontalPagerDialog(
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontSize = 24.sp,
                         color = Color.Black,
-                        fontFamily = NobileBold
+                        fontFamily = NobileMedium
                     )
                 )
                 SpacerHeight(MediumSpacing)
@@ -112,7 +106,7 @@ fun HorizontalPagerDialog(
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontSize = 16.sp,
                         color = Color.Black,
-                        fontFamily = NobileBold
+                        fontFamily = NobileMedium
                     )
                 )
             }

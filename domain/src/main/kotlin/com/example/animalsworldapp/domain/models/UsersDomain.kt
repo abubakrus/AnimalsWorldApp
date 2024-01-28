@@ -2,8 +2,8 @@ package com.example.animalsworldapp.domain.models
 
 data class UsersDomain(
     val about: String,
-    val avatar: String,
-    val contactWithMe: String,
+    val avatar: String?,
+    val contactWithMe: String?,
     val createdAt: String,
     val lastName: String,
     val location: String,

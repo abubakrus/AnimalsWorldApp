@@ -13,7 +13,7 @@ sealed class EditProfileUiState {
         val name: String,
         val lastName: String,
         val nickName: String,
-        val contackWithMe: String,
+        val contackWithMe: String?,
         val about: String,
         val location:String
         ) : EditProfileUiState()

@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -35,12 +37,18 @@ import com.example.animalsworldapp.presentation.theme.MediumSpacing
 fun SignUpScreen(
     uiState: SignUpUiState,
     onEvent: (SignUpEvent) -> Unit,
+    navBackStackEntry: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
         modifier = modifier,
         topBar = {
-            TabBar(title = stringResource(id = R.string.signup))
+            TabBar(
+                title = stringResource(id = R.string.signup),
+
+                startIcon = Icons.Default.ArrowBack,
+                startIconClick = navBackStackEntry
+            )
         }
     ) { innerPaddings ->
         Column(

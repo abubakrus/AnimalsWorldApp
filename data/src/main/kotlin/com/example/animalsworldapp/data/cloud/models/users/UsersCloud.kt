@@ -10,9 +10,9 @@ data class UsersCloud(
     @SerializedName("about")
     val about: String,
     @SerializedName("avatar")
-    val avatar: AvatarImageCloud,
+    val avatar: AvatarImageCloud?,
     @SerializedName("contact_with_me")
-    val contactWithMe: String,
+    val contactWithMe: String?,
     @SerializedName("createdAt")
     val createdAt: String,
     @SerializedName("last_name")

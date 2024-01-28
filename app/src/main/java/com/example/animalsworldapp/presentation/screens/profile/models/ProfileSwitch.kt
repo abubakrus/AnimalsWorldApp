@@ -53,7 +53,7 @@ fun ProfileSwitchItem(
         if (icon != null) Icon(
             modifier = Modifier
                 .padding(start = ExtraMediumSpacing)
-                .size(40.dp),
+                .size(32.dp),
             imageVector = icon,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onBackground
@@ -102,7 +102,7 @@ fun ProfileItemInfo(
         if (icon != null) Icon(
             modifier = Modifier
                 .padding(start = ExtraMediumSpacing)
-                .size(40.dp),
+                .size(32.dp),
             imageVector = icon,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onBackground

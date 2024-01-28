@@ -40,10 +40,10 @@ fun MainScreenHorizontalFlora(
     floraList: List<Flora>,
     navigateToDetails: (String) -> Unit,
     modifier: Modifier = Modifier,
-    ) {
+) {
     val scope = rememberCoroutineScope()
     Box(modifier = modifier) {
-        val pagerState = rememberPagerState(pageCount = { 4 })
+        val pagerState = rememberPagerState(pageCount = { floraList.size })
         LaunchedEffect(Unit) {
             while (true) {
                 delay(4000)

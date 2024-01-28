@@ -28,7 +28,7 @@ fun HeadingText(
 ) {
     Row(
         modifier = modifier
-            .padding(top = ExtraLargeSpacing + MediumSpacing)
+            .padding(top = ExtraLargeSpacing)
             .padding(horizontal = ExtraLargeSpacing)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,

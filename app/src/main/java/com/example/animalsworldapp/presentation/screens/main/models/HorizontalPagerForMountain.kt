@@ -39,7 +39,7 @@ import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 import com.example.animalsworldapp.presentation.theme.ExtraSmallSpacing
 import com.example.animalsworldapp.presentation.theme.LightPlaceholder
 import com.example.animalsworldapp.presentation.theme.MediumSpacing
-import com.example.animalsworldapp.presentation.theme.NobileBold
+import com.example.animalsworldapp.presentation.theme.NobileMedium
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -101,14 +101,8 @@ fun HorizontalPagerForMountain(
                         scaleY = infobox
                     }
                     .padding(bottom = ExtraMediumSpacing)
-                    .clip(
-                        RoundedCornerShape(
-                            topStart = 2.dp,
-                            topEnd = 2.dp,
-                            bottomStart = 35.dp,
-                            bottomEnd = 35.dp
-                        )
-                    )
+                    .padding(horizontal = MediumSpacing)
+                    .clip(RoundedCornerShape(24.dp))
                     .background(Color.White.copy(alpha = 0.45f))
                     .padding(horizontal = ExtraLargeSpacing),
                     verticalArrangement = Arrangement.Center,
@@ -117,7 +111,7 @@ fun HorizontalPagerForMountain(
                         modifier = Modifier,
                         text = mountain.name,
                         style = MaterialTheme.typography.titleMedium.copy(
-                            fontSize = 24.sp, color = Color.Black, fontFamily = NobileBold
+                            fontSize = 24.sp, color = Color.Black, fontFamily = NobileMedium
                         )
                     )
                     SpacerHeight(MediumSpacing)
@@ -125,7 +119,7 @@ fun HorizontalPagerForMountain(
                         modifier = Modifier,
                         text = mountain.name,
                         style = MaterialTheme.typography.titleMedium.copy(
-                            fontSize = 16.sp, color = Color.Black, fontFamily = NobileBold
+                            fontSize = 16.sp, color = Color.Black, fontFamily = NobileMedium
                         )
                     )
                 }
