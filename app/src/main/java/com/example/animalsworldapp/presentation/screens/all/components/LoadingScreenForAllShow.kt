@@ -35,18 +35,18 @@ fun LoadingScreenForAllShow(
             .padding(horizontal = MediumSpacing)
     ) {
         Column {
-            ShowAllShimmer()
+            ShowAllShimmer(modifier = Modifier.height(320.dp))
             Spacer(modifier = Modifier.height(ExtraSmallSpacing))
             ShowAllShimmer(modifier = Modifier.height(260.dp))
             Spacer(modifier = Modifier.height(ExtraSmallSpacing))
-            ShowAllShimmer(modifier = Modifier.height(240.dp))
+            ShowAllShimmer(modifier = Modifier.height(200.dp))
             Spacer(modifier = Modifier.height(ExtraSmallSpacing))
         }
         Spacer(modifier = Modifier.width(16.dp))
         Column {
-            ShowAllShimmer()
+            ShowAllShimmer(modifier = Modifier.height(240.dp))
             Spacer(modifier = Modifier.height(ExtraSmallSpacing))
-            ShowAllShimmer(modifier = Modifier.height(280.dp))
+            ShowAllShimmer(modifier = Modifier.height(260.dp))
             Spacer(modifier = Modifier.height(ExtraSmallSpacing))
             ShowAllShimmer(modifier = Modifier.height(240.dp))
             Spacer(modifier = Modifier.height(ExtraSmallSpacing))
@@ -61,7 +61,7 @@ fun ShowAllShimmer(
 ) {
     Box(
         modifier = modifier
-            .width(200.dp)
+            .width(170.dp)
             .height(220.dp)
             .clip(RoundedCornerShape(25.dp))
             .background(color = Color.LightGray)
