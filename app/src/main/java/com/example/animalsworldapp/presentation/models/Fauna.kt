@@ -4,7 +4,7 @@ import com.example.animalsworldapp.domain.models.FaunaDomain
 
 data class Fauna(
     val objectId: String,
-    val classes: String?,
+    val classes: String,
     val name: String,
     val backgroundImage: String,
     val image: String,
@@ -12,7 +12,7 @@ data class Fauna(
     val aboutFauna: String,
     val location: String,
     val createdAt: String,
-    val locationImage: String?,
+    val locationImage: String,
     val updatedAt: String,
     val voice: String?,
 ) {
@@ -23,7 +23,7 @@ data class Fauna(
     companion object {
         val unknown = Fauna(
             objectId = String(),
-            classes = null,
+            classes = String(),
             name = String(),
             backgroundImage = String(),
             image = String(),
@@ -31,7 +31,7 @@ data class Fauna(
             aboutFauna = String(),
             location = String(),
             createdAt = String(),
-            locationImage = null,
+            locationImage = String(),
             updatedAt = String(),
             voice = null
         )

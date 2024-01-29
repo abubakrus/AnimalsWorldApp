@@ -5,12 +5,17 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,10 +25,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.example.animalsworldapp.presentation.theme.Dark_Gray
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
+import com.example.animalsworldapp.presentation.theme.Light_Gray
 import com.example.animalsworldapp.presentation.theme.NobileBold
+import com.example.animalsworldapp.presentation.theme.NobileMedium
 import com.example.animalsworldapp.presentation.theme.SmallSpacing
 
 
@@ -32,6 +39,7 @@ fun ShowAllItem(
     backgroundImage: String,
     id: String,
     name: String,
+    location: String,
     navigateToDetails: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -57,7 +65,7 @@ fun ShowAllItem(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .height(40.dp)
+                .height(60.dp)
                 .padding(bottom = SmallSpacing)
                 .padding(horizontal = ExtraMediumSpacing)
                 .clip(
@@ -65,17 +73,35 @@ fun ShowAllItem(
                         topStart = 8.dp, topEnd = 8.dp, bottomStart = 8.dp, bottomEnd = 8.dp
                     )
                 )
-                .background(Color.White.copy(alpha = 0.45f)),
+                .background(Color.White),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.Start
         ) {
             Text(
                 modifier = Modifier.padding(SmallSpacing),
                 text = name,
-                style = MaterialTheme.typography.titleMedium.copy(
-                    fontSize = 14.sp, color = Color.Black, fontFamily = NobileBold
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    color = Dark_Gray, fontFamily = NobileBold
                 )
             )
+            Row(
+                modifier = Modifier,
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Icon(
+                    modifier = Modifier.size(12.dp),
+                    imageVector = Icons.Filled.LocationOn,
+                    contentDescription = null,
+                    tint = Light_Gray
+                )
+                Text(
+                    text = location,
+                    style = MaterialTheme.typography.bodySmall.copy(
+                        color = Dark_Gray, fontFamily = NobileMedium
+                    )
+                )
+            }
         }
     }
 }

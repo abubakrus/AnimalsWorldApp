@@ -23,7 +23,7 @@ fun FaunaCloud.toDomain(): FaunaDomain = this.run {
         aboutFauna = aboutFauna,
         location = location,
         createdAt = createdAt,
-        locationImage = image?.url,
+        locationImage = locationImage.url,
         updatedAt = updatedAt,
         voice = voice?.url
     )

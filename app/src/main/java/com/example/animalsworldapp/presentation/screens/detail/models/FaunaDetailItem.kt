@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
+import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 import com.example.animalsworldapp.presentation.theme.LargeSpacing
 import com.example.animalsworldapp.presentation.theme.LexendDeca
 import com.example.animalsworldapp.presentation.theme.MediumSpacing
@@ -62,12 +63,14 @@ fun FaunaDetailItem(
     location: String,
     name: String,
     image: String,
+    locationImage: String,
+    animalsClasses: String,
     about: String,
     interestingFact: String?,
     navigateBackStack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val imageList = listOf(image, backgroundImage)
+    val imageList = listOf(image, backgroundImage, locationImage)
     val imageState = rememberPagerState { imageList.size }
     val detailTab = listOf(about, interestingFact)
     val pagerState = rememberPagerState(pageCount = { detailTab.size })
@@ -94,6 +97,20 @@ fun FaunaDetailItem(
                 }
 
                 imageList[1] -> {
+                    AsyncImage(
+                        modifier = Modifier
+                            .align(Alignment.TopCenter)
+                            .height(520.dp)
+                            .fillMaxWidth()
+                            .padding(MediumSpacing)
+                            .clip(RoundedCornerShape(35.dp)),
+                        model = list,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop
+                    )
+                }
+
+                imageList.last() -> {
                     AsyncImage(
                         modifier = Modifier
                             .align(Alignment.TopCenter)
@@ -135,7 +152,10 @@ fun FaunaDetailItem(
             )
         }
         Column(
-            modifier = Modifier.padding(top = 530.dp, start = LargeSpacing, end = MediumSpacing)
+            modifier = Modifier
+                .padding(top = 525.dp)
+                .padding(horizontal = LargeSpacing),
+            horizontalAlignment = Alignment.Start,
         ) {
             Row(
                 modifier = Modifier
@@ -152,16 +172,24 @@ fun FaunaDetailItem(
                     )
                 )
             }
+
             Text(
-                modifier = Modifier.padding(start = MediumSpacing, top = SmallSpacing),
+                modifier = Modifier.padding(start = SmallSpacing),
                 text = name,
                 style = MaterialTheme.typography.displayMedium.copy(
                     color = MaterialTheme.colorScheme.onBackground, fontFamily = LexendDeca
                 )
             )
+            Text(
+                modifier = Modifier.padding(start = SmallSpacing),
+                text = animalsClasses,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    color = MaterialTheme.colorScheme.onBackground, fontFamily = LexendDeca
+                )
+            )
             ScrollableTabRow(
                 selectedTabIndex = pagerState.currentPage,
-                modifier = modifier.padding(horizontal = 16.dp),
+                modifier = modifier.padding(horizontal = 12.dp),
                 indicator = { tabPositions ->
                     Box(
                         modifier = Modifier
@@ -180,8 +208,9 @@ fun FaunaDetailItem(
             ) {
                 detailTab.forEachIndexed { index, detailTab ->
                     Tab(modifier = Modifier
-                        .padding(12.dp)
-                        .clip(RoundedCornerShape(16.dp)),
+                        .padding(MediumSpacing)
+                        .clip(RoundedCornerShape(16.dp))
+                        .padding(ExtraMediumSpacing),
                         selected = index == pagerState.currentPage,
                         onClick = {
                             scope.launch { pagerState.animateScrollToPage(index) }

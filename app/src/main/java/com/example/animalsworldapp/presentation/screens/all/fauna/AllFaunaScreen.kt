@@ -77,7 +77,8 @@ fun LoadedAllFaunaScreen(
                     name = fauna.name,
                     navigateToDetails = {
                         navigateToDetails(ItemDetailType.FAUNA, it)
-                    }
+                    },
+                    location = fauna.location
                 )
             }
         },

@@ -4,15 +4,20 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,12 +28,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
 import com.example.animalsworldapp.presentation.models.Fauna
+import com.example.animalsworldapp.presentation.theme.Dark_Gray
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.ExtraSpacing
+import com.example.animalsworldapp.presentation.theme.Light_Gray
 import com.example.animalsworldapp.presentation.theme.MediumSpacing
 import com.example.animalsworldapp.presentation.theme.NobileMedium
 import com.example.animalsworldapp.presentation.theme.SmallSpacing
@@ -85,7 +91,7 @@ fun HorizontalPagerDialog(
                     .padding(bottom = ExtraSpacing)
                     .padding(horizontal = MediumSpacing)
                     .clip(RoundedCornerShape(25.dp))
-                    .background(Color.White.copy(alpha = 0.45f))
+                    .background(Color.White)
                     .padding(horizontal = ExtraLargeSpacing),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.Start
@@ -93,22 +99,29 @@ fun HorizontalPagerDialog(
                 Text(
                     modifier = Modifier,
                     text = fauna.name,
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        fontSize = 24.sp,
-                        color = Color.Black,
+                    style = MaterialTheme.typography.titleLarge.copy(
+                        color = Dark_Gray,
                         fontFamily = NobileMedium
                     )
                 )
                 SpacerHeight(MediumSpacing)
-                Text(
+                Row(
                     modifier = Modifier,
-                    text = fauna.location,
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        fontSize = 16.sp,
-                        color = Color.Black,
-                        fontFamily = NobileMedium
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Icon(
+                        modifier = Modifier.size(24.dp),
+                        imageVector = Icons.Filled.LocationOn,
+                        contentDescription = null,
+                        tint = Light_Gray
                     )
-                )
+                    Text(
+                        text = fauna.location, style = MaterialTheme.typography.bodyLarge.copy(
+                            color = Dark_Gray, fontFamily = NobileMedium
+                        )
+                    )
+                }
             }
         }
     }

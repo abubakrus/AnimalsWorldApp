@@ -3,6 +3,7 @@ package com.example.animalsworldapp.data.cloud.models.fauna
 
 import android.os.Parcelable
 import com.example.animalsworldapp.data.cloud.models.common.Image
+import com.example.animalsworldapp.data.cloud.models.common.LocationImage
 import com.example.animalsworldapp.data.cloud.models.common.Voice
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
@@ -13,8 +14,8 @@ data class FaunaCloud(
     val aboutFauna: String,
     @SerializedName("background_image")
     val backgroundImage: Image,
-    @SerializedName("class")
-    val classes: String?,
+    @SerializedName("classes")
+    val classes: String,
     @SerializedName("createdAt")
     val createdAt: String,
     @SerializedName("image")
@@ -24,7 +25,7 @@ data class FaunaCloud(
     @SerializedName("location")
     val location: String,
     @SerializedName("location_image")
-    val locationImage: Image?,
+    val locationImage: LocationImage,
     @SerializedName("name")
     val name: String,
     @SerializedName("voice")

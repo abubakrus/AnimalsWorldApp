@@ -1,8 +1,8 @@
 package com.example.animalsworldapp.domain.models
 
-data class FaunaDomain (
+data class FaunaDomain(
     val objectId: String,
-    val classes: String?,
+    val classes: String,
     val name: String,
     val backgroundImage: String,
     val image: String,
@@ -10,14 +10,14 @@ data class FaunaDomain (
     val aboutFauna: String,
     val location: String,
     val createdAt: String,
-    val locationImage: String?,
+    val locationImage: String,
     val updatedAt: String,
     val voice: String?
-){
-    companion object{
+) {
+    companion object {
         val unknown = FaunaDomain(
             objectId = String(),
-            classes = null,
+            classes = String(),
             name = String(),
             backgroundImage = String(),
             image = String(),
@@ -25,7 +25,7 @@ data class FaunaDomain (
             aboutFauna = String(),
             location = String(),
             createdAt = String(),
-            locationImage = null,
+            locationImage = String(),
             updatedAt = String(),
             voice = null
         )

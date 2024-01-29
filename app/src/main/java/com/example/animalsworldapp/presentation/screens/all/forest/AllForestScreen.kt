@@ -71,7 +71,8 @@ fun LoadedAllMountainScreen(
                     name = forest.name,
                     navigateToDetails = {
                         navigateToDetails(ItemDetailType.FOREST, it)
-                    }
+                    },
+                    location = forest.location
                 )
             }
         },

@@ -110,7 +110,9 @@ fun LoadedDetailScreen(
                     backgroundImage = contentType.backgroundImage,
                     interestingFact = contentType.interestingFact,
                     image = contentType.image,
-                    onClickVoice = { onClickVoice() }
+                    onClickVoice = { onClickVoice() },
+                    locationImage = contentType.locationImage,
+                    animalsClasses = contentType.animalsClasses,
                 )
 
             }

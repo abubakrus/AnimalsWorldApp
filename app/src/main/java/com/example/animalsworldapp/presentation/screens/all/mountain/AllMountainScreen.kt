@@ -77,7 +77,8 @@ fun LoadedAllMountainScreen(
                     name = mountain.name,
                     navigateToDetails = {
                         navigateToDetails(ItemDetailType.MAUNTAIN, it)
-                    }
+                    },
+                    location = mountain.name
                 )
             }
         },

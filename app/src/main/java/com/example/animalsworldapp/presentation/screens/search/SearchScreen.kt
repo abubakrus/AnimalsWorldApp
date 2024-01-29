@@ -92,12 +92,15 @@ fun SearchScreen(
                         horizontalArrangement = Arrangement.spacedBy(4.dp),
                         content = {
                             items(items = uiState.fauna, key = { it.objectId }) { fauna ->
-                                ShowAllItem(backgroundImage = fauna.backgroundImage,
+                                ShowAllItem(
+                                    backgroundImage = fauna.backgroundImage,
                                     id = fauna.objectId,
                                     name = fauna.name,
                                     navigateToDetails = {
                                         navigateToDetails(ItemDetailType.FAUNA, it)
-                                    })
+                                    },
+                                    location = fauna.location
+                                )
                             }
                         },
                     )

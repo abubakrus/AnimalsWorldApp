@@ -10,13 +10,18 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,9 +40,11 @@ import coil.request.ImageRequest
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
 import com.example.animalsworldapp.presentation.models.Forest
 import com.example.animalsworldapp.presentation.theme.DarkPlaceholder
+import com.example.animalsworldapp.presentation.theme.Dark_Gray
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 import com.example.animalsworldapp.presentation.theme.LightPlaceholder
+import com.example.animalsworldapp.presentation.theme.Light_Gray
 import com.example.animalsworldapp.presentation.theme.MediumSpacing
 import com.example.animalsworldapp.presentation.theme.NobileMedium
 
@@ -95,7 +102,7 @@ fun HorizontalPagerForForest(
                     .padding(bottom = ExtraMediumSpacing)
                     .padding(horizontal = MediumSpacing)
                     .clip(RoundedCornerShape(24.dp))
-                    .background(Color.White.copy(alpha = 0.45f))
+                    .background(Color.White)
                     .padding(horizontal = ExtraLargeSpacing),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.Start) {
@@ -107,13 +114,22 @@ fun HorizontalPagerForForest(
                         )
                     )
                     SpacerHeight(MediumSpacing)
-                    Text(
-                        modifier = Modifier,
-                        text = forest.location,
-                        style = MaterialTheme.typography.titleMedium.copy(
-                            fontSize = 16.sp, color = Color.Black, fontFamily = NobileMedium
+                    Row(
+                        modifier = Modifier
+                    ) {
+                        Icon(
+                            modifier = Modifier.size(12.dp),
+                            imageVector = Icons.Filled.LocationOn,
+                            contentDescription = null,
+                            tint = Light_Gray
                         )
-                    )
+                        Text(
+                            text = forest.location,
+                            style = MaterialTheme.typography.titleMedium.copy(
+                                color = Dark_Gray, fontFamily = NobileMedium
+                            )
+                        )
+                    }
                 }
             }
         }
