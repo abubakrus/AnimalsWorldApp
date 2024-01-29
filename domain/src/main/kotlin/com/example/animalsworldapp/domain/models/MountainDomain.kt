@@ -7,6 +7,7 @@ data class MountainDomain (
     val image: String,
     val interestingFact: String,
     val about: String,
+    val location: String,
 ){
     companion object{
         val unknown = MountainDomain(
@@ -15,7 +16,8 @@ data class MountainDomain (
             backgroundImage = String(),
             image = String(),
             interestingFact = String(),
-            about = String()
+            about = String(),
+            location = String()
         )
     }
 }

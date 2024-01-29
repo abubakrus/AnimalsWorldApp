@@ -28,9 +28,9 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.animalsworldapp.presentation.theme.Dark_Gray
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
+import com.example.animalsworldapp.presentation.theme.LexendDeca
 import com.example.animalsworldapp.presentation.theme.Light_Gray
 import com.example.animalsworldapp.presentation.theme.NobileBold
-import com.example.animalsworldapp.presentation.theme.NobileMedium
 import com.example.animalsworldapp.presentation.theme.SmallSpacing
 
 
@@ -65,14 +65,10 @@ fun ShowAllItem(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .height(60.dp)
+                .height(70.dp)
                 .padding(bottom = SmallSpacing)
                 .padding(horizontal = ExtraMediumSpacing)
-                .clip(
-                    RoundedCornerShape(
-                        topStart = 8.dp, topEnd = 8.dp, bottomStart = 8.dp, bottomEnd = 8.dp
-                    )
-                )
+                .clip(RoundedCornerShape(15.dp))
                 .background(Color.White),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.Start
@@ -80,7 +76,7 @@ fun ShowAllItem(
             Text(
                 modifier = Modifier.padding(SmallSpacing),
                 text = name,
-                style = MaterialTheme.typography.bodyMedium.copy(
+                style = MaterialTheme.typography.bodySmall.copy(
                     color = Dark_Gray, fontFamily = NobileBold
                 )
             )
@@ -90,7 +86,7 @@ fun ShowAllItem(
                 horizontalArrangement = Arrangement.Center
             ) {
                 Icon(
-                    modifier = Modifier.size(12.dp),
+                    modifier = Modifier.size(16.dp),
                     imageVector = Icons.Filled.LocationOn,
                     contentDescription = null,
                     tint = Light_Gray
@@ -98,7 +94,7 @@ fun ShowAllItem(
                 Text(
                     text = location,
                     style = MaterialTheme.typography.bodySmall.copy(
-                        color = Dark_Gray, fontFamily = NobileMedium
+                        color = Dark_Gray, fontFamily = LexendDeca
                     )
                 )
             }

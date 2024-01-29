@@ -27,15 +27,13 @@ fun AllMountainScreen(
     navigateToDetails: (ItemDetailType, String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Scaffold(
-        topBar = {
-            TabBar(
-                headlineEnd = stringResource(id = R.string.all_mountain),
-                startIcon = Icons.Default.ArrowBack,
-                startIconClick = navBackStackEntry
-            )
-        }
-    ) { innerPaddings ->
+    Scaffold(topBar = {
+        TabBar(
+            headlineEnd = stringResource(id = R.string.all_mountain),
+            startIcon = Icons.Default.ArrowBack,
+            startIconClick = navBackStackEntry
+        )
+    }) { innerPaddings ->
         when (uiState) {
             is AllMountainUiState.Loading -> LoadingScreenForAllShow(
                 modifier = modifier.padding(innerPaddings)
@@ -49,9 +47,7 @@ fun AllMountainScreen(
                 navigateToDetails = navigateToDetails
             )
 
-            is AllMountainUiState.Error -> ErrorScreen(
-                message = uiState.error,
-                onClick = { })
+            is AllMountainUiState.Error -> ErrorScreen(message = uiState.error, onClick = { })
         }
     }
 }
@@ -67,10 +63,7 @@ fun LoadedAllMountainScreen(
         verticalItemSpacing = 4.dp,
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         content = {
-            items(
-                items = uiState.mountain,
-                key = { it.id }
-            ) { mountain ->
+            items(items = uiState.mountain, key = { it.id }) { mountain ->
                 ShowAllItem(
                     backgroundImage = mountain.backgroundImage,
                     id = mountain.id,
@@ -78,7 +71,7 @@ fun LoadedAllMountainScreen(
                     navigateToDetails = {
                         navigateToDetails(ItemDetailType.MAUNTAIN, it)
                     },
-                    location = mountain.name
+                    location = mountain.location
                 )
             }
         },

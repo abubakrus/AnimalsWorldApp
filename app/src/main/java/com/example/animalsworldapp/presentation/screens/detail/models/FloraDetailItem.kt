@@ -58,6 +58,7 @@ fun FloraDetailItem(
     modifier: Modifier = Modifier,
     backgroundImage: String,
     image: String,
+    location: String,
     name: String,
     about: String,
     interestingFact: String?,
@@ -119,6 +120,21 @@ fun FloraDetailItem(
         Column(
             modifier = Modifier.padding(top = 490.dp, start = LargeSpacing, end = MediumSpacing)
         ) {
+            Row(
+                modifier = Modifier
+            ) {
+                Icon(
+                    modifier = Modifier.size(24.dp),
+                    imageVector = Icons.Filled.LocationOn,
+                    contentDescription = null,
+                    tint = Pink
+                )
+                Text(
+                    text = location, style = MaterialTheme.typography.bodyLarge.copy(
+                        color = Pink, fontFamily = LexendDeca
+                    )
+                )
+            }
             Text(
                 modifier = Modifier.padding(start = MediumSpacing, top = SmallSpacing),
                 text = name,

@@ -80,7 +80,8 @@ fun LoadedDetailScreen(
                     backgroundImage = contentType.backgroundImage,
                     interestingFact = contentType.interestingFact,
                     image = contentType.image,
-                    about = contentType.about
+                    about = contentType.about,
+                    location = contentType.location
                 )
 
                 is ContentType.FloraContent -> FloraDetailItem(
@@ -89,7 +90,8 @@ fun LoadedDetailScreen(
                     backgroundImage = contentType.backgroundImage,
                     interestingFact = contentType.interestingFact,
                     image = contentType.image,
-                    about = contentType.about
+                    about = contentType.about,
+                    location = contentType.name
                 )
 
                 is ContentType.ForestContent -> ForestDetailItem(

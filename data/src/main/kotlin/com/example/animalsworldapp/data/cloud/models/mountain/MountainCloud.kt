@@ -21,6 +21,8 @@ data class MountainCloud(
     val interestingFact: String,
     @SerializedName("name")
     val name: String,
+    @SerializedName("location")
+    val location: String,
     @SerializedName("objectId")
     val objectId: String,
     @SerializedName("updatedAt")

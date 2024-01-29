@@ -118,7 +118,7 @@ fun HorizontalPagerForForest(
                         modifier = Modifier
                     ) {
                         Icon(
-                            modifier = Modifier.size(12.dp),
+                            modifier = Modifier.size(22.dp),
                             imageVector = Icons.Filled.LocationOn,
                             contentDescription = null,
                             tint = Light_Gray

@@ -125,13 +125,13 @@ fun HorizontalPagerForMountain(
                         modifier = Modifier
                     ) {
                         Icon(
-                            modifier = Modifier.size(12.dp),
+                            modifier = Modifier.size(22.dp),
                             imageVector = Icons.Filled.LocationOn,
                             contentDescription = null,
                             tint = Light_Gray
                         )
                         Text(
-                            text = mountain.name, style = MaterialTheme.typography.titleMedium.copy(
+                            text = mountain.location, style = MaterialTheme.typography.titleMedium.copy(
                                 color = Dark_Gray, fontFamily = NobileMedium
                             )
                         )
