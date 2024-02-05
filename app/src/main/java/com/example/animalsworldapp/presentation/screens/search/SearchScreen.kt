@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import com.example.animalsworldapp.presentation.components.NoResultsStub
 import com.example.animalsworldapp.presentation.components.TabBar
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
+import com.example.animalsworldapp.presentation.screens.all.components.LoadingScreenForAllShow
 import com.example.animalsworldapp.presentation.screens.all.components.ShowAllItem
 import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.screens.detail.ItemDetailType
@@ -80,7 +81,7 @@ fun SearchScreen(
                 )
             )
             when {
-                uiState.fauna.isEmpty() -> NoResultsStub()
+                uiState.fauna.isEmpty() -> LoadingScreenForAllShow()
                 uiState.isLoading -> LoadingScreen()
                 else -> {
                     LazyVerticalStaggeredGrid(

@@ -48,6 +48,7 @@ class SignUpViewModel @Inject constructor(
             is SignUpEvent.OnNickNamedChanged -> doOnNickNamedChanged(event)
             is SignUpEvent.OnAboutYouChanged -> doAboutYouChanged(event)
             is SignUpEvent.OnLocationChanged -> doLocationChanged(event)
+            else -> {}
         }
     }
 
@@ -74,6 +75,8 @@ class SignUpViewModel @Inject constructor(
                     navigatorManager.navigateTo(MAIN_NAV_GRAPH_ROUTE, true)
                     Log.i("AnimalsApp", "${result.data}")
                 }
+
+                else -> {}
             }
         }
 

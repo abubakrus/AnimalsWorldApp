@@ -13,4 +13,4 @@ data class Image(
     val type: String,
     @SerializedName("url")
     val url: String
-):Parcelable
+) : Parcelable
