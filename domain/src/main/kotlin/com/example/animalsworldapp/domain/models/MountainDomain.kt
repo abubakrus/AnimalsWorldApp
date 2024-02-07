@@ -4,6 +4,7 @@ data class MountainDomain (
     val id: String,
     val name: String,
     val backgroundImage: String,
+    val locationImage: String,
     val image: String,
     val interestingFact: String,
     val about: String,
@@ -17,7 +18,8 @@ data class MountainDomain (
             image = String(),
             interestingFact = String(),
             about = String(),
-            location = String()
+            location = String(),
+            locationImage = String()
         )
     }
 }

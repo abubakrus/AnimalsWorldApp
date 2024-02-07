@@ -18,8 +18,9 @@ import com.example.animalsworldapp.presentation.components.TabBar
 import com.example.animalsworldapp.presentation.screens.all.components.LoadingScreenForAllShow
 import com.example.animalsworldapp.presentation.screens.all.components.ShowAllItem
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
-import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
 import com.example.animalsworldapp.presentation.screens.detail.ItemDetailType
+import com.example.animalsworldapp.presentation.theme.ExtraDoubleSpacing
+import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 
 @Composable
 fun AllFaunaScreen(
@@ -38,7 +39,10 @@ fun AllFaunaScreen(
         },
     ) { innerPaddings ->
         when (uiState) {
-            is AllFaunaUiState.Loading -> LoadingScreenForAllShow()
+            is AllFaunaUiState.Loading -> LoadingScreenForAllShow(
+                modifier = Modifier.padding(top = ExtraDoubleSpacing + ExtraMediumSpacing)
+            )
+
             is AllFaunaUiState.Loaded -> LoadedAllFaunaScreen(
                 modifier = modifier
                     .padding(innerPaddings)

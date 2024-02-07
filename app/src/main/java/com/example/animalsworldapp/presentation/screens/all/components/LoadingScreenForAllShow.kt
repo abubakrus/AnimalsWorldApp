@@ -31,7 +31,6 @@ fun LoadingScreenForAllShow(
     Row(
         modifier = modifier
             .statusBarsPadding()
-            .padding(top = ExtraSpacing+ExtraSpacing)
             .padding(horizontal = MediumSpacing)
     ) {
         Column {

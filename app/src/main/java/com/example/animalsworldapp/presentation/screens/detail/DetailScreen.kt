@@ -21,6 +21,7 @@ import com.example.animalsworldapp.presentation.screens.detail.models.FaunaDetai
 import com.example.animalsworldapp.presentation.screens.detail.models.FloraDetailItem
 import com.example.animalsworldapp.presentation.screens.detail.models.ForestDetailItem
 import com.example.animalsworldapp.presentation.screens.detail.models.LoadingScreenDetail
+import com.example.animalsworldapp.presentation.screens.detail.models.MountainDetailItem
 
 @Composable
 fun DetailScreen(
@@ -74,14 +75,15 @@ fun LoadedDetailScreen(
         ) {
             when (contentType) {
                 is ContentType.Unknown -> Unknown()
-                is ContentType.MountainContent -> FloraDetailItem(
+                is ContentType.MountainContent -> MountainDetailItem(
                     navigateBackStack = navigateBackStack,
                     name = contentType.name,
                     backgroundImage = contentType.backgroundImage,
                     interestingFact = contentType.interestingFact,
                     image = contentType.image,
                     about = contentType.about,
-                    location = contentType.location
+                    location = contentType.location,
+                    locationImage = contentType.locationImage
                 )
 
                 is ContentType.FloraContent -> FloraDetailItem(

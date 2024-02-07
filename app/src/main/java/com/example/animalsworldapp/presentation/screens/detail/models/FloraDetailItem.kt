@@ -2,7 +2,6 @@ package com.example.animalsworldapp.presentation.screens.detail.models
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -89,7 +88,204 @@ fun FloraDetailItem(
                         contentScale = ContentScale.Crop
                     )
                 }
+
                 imageList[1] -> {
+                    AsyncImage(
+                        modifier = Modifier
+                            .align(Alignment.TopCenter)
+                            .height(480.dp)
+                            .fillMaxWidth()
+                            .padding(MediumSpacing)
+                            .clip(RoundedCornerShape(35.dp)),
+                        model = list,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop
+                    )
+                }
+            }
+        }
+        IconButton(modifier = Modifier
+            .align(Alignment.TopStart)
+            .padding(ExtraLargeSpacing)
+            .clip(CircleShape)
+            .background(Color.Transparent.copy(alpha = 0.25f)),
+            onClick = { navigateBackStack() }) {
+            Icon(
+                modifier = Modifier.size(22.dp),
+                imageVector = Icons.Outlined.ArrowBackIosNew,
+                contentDescription = null,
+                tint = Color.White
+            )
+        }
+        Column(
+            modifier = Modifier.padding(top = 490.dp, start = LargeSpacing, end = MediumSpacing)
+        ) {
+            Row(
+                modifier = Modifier
+            ) {
+                Icon(
+                    modifier = Modifier.size(24.dp),
+                    imageVector = Icons.Filled.LocationOn,
+                    contentDescription = null,
+                    tint = Pink
+                )
+                Text(
+                    text = location, style = MaterialTheme.typography.bodyLarge.copy(
+                        color = Pink, fontFamily = LexendDeca
+                    )
+                )
+            }
+            Text(
+                modifier = Modifier.padding(start = MediumSpacing, top = SmallSpacing),
+                text = name,
+                style = MaterialTheme.typography.displayMedium.copy(
+                    color = MaterialTheme.colorScheme.onBackground, fontFamily = LexendDeca
+                )
+            )
+            ScrollableTabRow(
+                selectedTabIndex = pagerState.currentPage,
+                modifier = modifier.padding(horizontal = 16.dp),
+                indicator = { tabPositions ->
+                    Box(
+                        modifier = Modifier
+                            .tabIndicatorOffset(tabPositions[pagerState.currentPage])
+                            .height(4.dp)
+                            .background(
+                                color = MaterialTheme.colorScheme.onBackground,
+                                shape = RoundedCornerShape(8.dp)
+                            )
+                    )
+                },
+                divider = {
+                    Spacer(modifier = Modifier.height(4.dp))
+                },
+                edgePadding = 0.dp,
+            ) {
+                detailTab.forEachIndexed { index, detailTab ->
+                    Tab(
+                        modifier = Modifier
+                            .padding(12.dp)
+                            .clip(RoundedCornerShape(16.dp)),
+                        selected = index == pagerState.currentPage,
+                        onClick = {
+                            scope.launch { pagerState.animateScrollToPage(index) }
+                        }) {
+                        Text(
+                            text = if (index == 0) {
+                                stringResource(id = R.string.about)
+                            } else {
+                                stringResource(id = R.string.interestingFact)
+                            },
+                            style = MaterialTheme.typography.titleLarge,
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
+                    }
+
+                }
+            }
+            HorizontalPager(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .nestedScroll(remember {
+                        object : NestedScrollConnection {
+                            override fun onPreScroll(
+                                available: Offset, source: NestedScrollSource
+                            ): Offset {
+                                return if (available.y > 0) Offset.Zero else Offset(
+                                    x = 0f, y = -scrollState.dispatchRawDelta(-available.y)
+                                )
+                            }
+                        }
+                    }),
+                state = pagerState,
+            ) { index ->
+                when (val tab = detailTab[index]) {
+                    detailTab[0] -> {
+                        if (tab != null) {
+                            Text(
+                                modifier = Modifier.padding(top = MediumSpacing),
+                                text = tab,
+                                style = MaterialTheme.typography.bodyLarge.copy(
+                                    color = MaterialTheme.colorScheme.onBackground,
+                                    fontFamily = LexendDeca
+                                )
+                            )
+                        }
+                    }
+
+                    detailTab[1] -> {
+                        if (tab != null) {
+                            Text(
+                                modifier = Modifier.padding(top = MediumSpacing),
+                                text = tab,
+                                style = MaterialTheme.typography.bodyLarge.copy(
+                                    color = MaterialTheme.colorScheme.onBackground,
+                                    fontFamily = LexendDeca
+                                )
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun MountainDetailItem(
+    modifier: Modifier = Modifier,
+    backgroundImage: String,
+    image: String,
+    location: String,
+    locationImage: String,
+    name: String,
+    about: String,
+    interestingFact: String?,
+    navigateBackStack: () -> Unit,
+) {
+    val imageList = listOf(image, backgroundImage, locationImage)
+    val imageState = rememberPagerState { imageList.size }
+    val detailTab = listOf(about, interestingFact)
+    val pagerState = rememberPagerState(pageCount = { detailTab.size })
+    val scope = rememberCoroutineScope()
+    val scrollState = rememberScrollState()
+
+    Box(
+        modifier = modifier.fillMaxSize()
+    ) {
+        HorizontalPager(state = imageState) { index ->
+            when (val list = imageList[index]) {
+                imageList[0] -> {
+                    AsyncImage(
+                        modifier = Modifier
+                            .align(Alignment.TopCenter)
+                            .height(480.dp)
+                            .fillMaxWidth()
+                            .padding(MediumSpacing)
+                            .clip(RoundedCornerShape(35.dp)),
+                        model = list,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop
+                    )
+                }
+
+                imageList[1] -> {
+                    AsyncImage(
+                        modifier = Modifier
+                            .align(Alignment.TopCenter)
+                            .height(480.dp)
+                            .fillMaxWidth()
+                            .padding(MediumSpacing)
+                            .clip(RoundedCornerShape(35.dp)),
+                        model = list,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop
+                    )
+                }
+
+                imageList.last() -> {
                     AsyncImage(
                         modifier = Modifier
                             .align(Alignment.TopCenter)

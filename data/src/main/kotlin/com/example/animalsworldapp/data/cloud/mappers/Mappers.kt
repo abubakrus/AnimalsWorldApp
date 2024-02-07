@@ -65,7 +65,8 @@ fun MountainCloud.toDomain(): MountainDomain = this.run {
         image = image.url,
         interestingFact = interestingFact,
         about = about,
-        location = location
+        location = location,
+        locationImage = locationImage.url
     )
 }
 

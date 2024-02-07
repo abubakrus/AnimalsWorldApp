@@ -19,6 +19,7 @@ import com.example.animalsworldapp.presentation.screens.all.components.LoadingSc
 import com.example.animalsworldapp.presentation.screens.all.components.ShowAllItem
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
 import com.example.animalsworldapp.presentation.screens.detail.ItemDetailType
+import com.example.animalsworldapp.presentation.theme.ExtraDoubleSpacing
 
 @Composable
 fun AllMountainScreen(
@@ -36,7 +37,7 @@ fun AllMountainScreen(
     }) { innerPaddings ->
         when (uiState) {
             is AllMountainUiState.Loading -> LoadingScreenForAllShow(
-                modifier = modifier.padding(innerPaddings)
+                modifier = Modifier.padding(top= ExtraDoubleSpacing)
             )
 
             is AllMountainUiState.Loaded -> LoadedAllMountainScreen(

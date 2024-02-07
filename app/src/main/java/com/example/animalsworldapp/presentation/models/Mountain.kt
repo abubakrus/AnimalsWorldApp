@@ -6,6 +6,7 @@ data class Mountain(
     val id: String,
     val name: String,
     val backgroundImage: String,
+    val locationImage: String,
     val image: String,
     val interestingFact: String,
     val about: String,
@@ -24,7 +25,8 @@ data class Mountain(
             image = String(),
             interestingFact = String(),
             about = String(),
-            location = String()
+            location = String(),
+            locationImage = String()
         )
     }
 }
@@ -39,6 +41,7 @@ fun MountainDomain.toMountain() = this.run {
         image = image,
         interestingFact = interestingFact,
         about = about,
-        location = location
+        location = location,
+        locationImage = locationImage
     )
 }

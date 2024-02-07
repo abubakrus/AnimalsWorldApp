@@ -41,11 +41,12 @@ sealed class ContentType(
 
     data class MountainContent(val mountain: Mountain) : ContentType(
         backgroundImage = mountain.backgroundImage,
-        location = mountain.interestingFact,
+        location = mountain.location,
         name = mountain.name,
         about = mountain.about,
         image = mountain.image,
-        interestingFact = mountain.interestingFact
+        interestingFact = mountain.interestingFact,
+        locationImage = mountain.locationImage
     )
 
     data class ForestContent(val forest: Forest) : ContentType(
