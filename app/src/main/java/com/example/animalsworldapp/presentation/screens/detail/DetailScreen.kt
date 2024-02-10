@@ -27,7 +27,7 @@ import com.example.animalsworldapp.presentation.screens.detail.models.MountainDe
 fun DetailScreen(
     uiState: DetailScreenUiState,
     navHostController: NavHostController,
-    onClickVoice: () -> Unit = {},
+    onClickVoice: (String?) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold { innerPaddings ->
@@ -43,7 +43,7 @@ fun DetailScreen(
                     navigateBackStack = { navHostController.navigateUp() },
                     contentType = uiState.contentType,
                     onClickVoice = {
-                        onClickVoice()
+                        onClickVoice(uiState.contentType.voice)
                     },
                 )
             }

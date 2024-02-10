@@ -97,7 +97,7 @@ fun MainNavGraphRoot(
                 DetailScreen(
                     uiState = uiState,
                     navHostController = navHostController,
-                    onClickVoice = {}
+                    onClickVoice = { viewModel.startPlayer(it) }
                 )
             }
             composable(BottomTab.Search.route) {

@@ -45,7 +45,7 @@ class DetailScreenViewModel @Inject constructor(
     private val fetchFloraByIdUseCase: FetchFloraByIdUseCase,
     private val fetchFaunaByIdUseCase: FetchFaunaByIdUseCase,
     private val fetchForestByIdUseCase: FetchForestByIdUseCase,
-//    private val musicServiceHandler: MusicServiceHandler
+    private val musicServiceHandler: MusicServiceHandler
 ) : ViewModel() {
 
     private val _uiStateFlow = MutableStateFlow<DetailScreenUiState>(DetailScreenUiState.Initial)
@@ -101,10 +101,9 @@ class DetailScreenViewModel @Inject constructor(
         }
         _uiStateFlow.tryEmit(state)
     }
+
+    fun startPlayer(uri: String?){
+        musicServiceHandler.addMediaItem(MediaItem.Builder().setUri(uri).build())
+        musicServiceHandler.playOrPause()
+    }
 }
-
-
-
-
-
-
