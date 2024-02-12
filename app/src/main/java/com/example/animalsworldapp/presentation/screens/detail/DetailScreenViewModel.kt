@@ -8,6 +8,7 @@ import com.example.animalsworldapp.domain.usecases.flora_usecase.FetchFloraByIdU
 import com.example.animalsworldapp.domain.usecases.forests.FetchForestByIdUseCase
 import com.example.animalsworldapp.domain.usecases.mountain_usecase.FetchMountainByIdUseCase
 import com.example.animalsworldapp.music_service.MusicServiceHandler
+import com.example.animalsworldapp.presentation.manager.toast.ShowToastUseCase
 import com.example.animalsworldapp.presentation.models.toFauna
 import com.example.animalsworldapp.presentation.models.toFlora
 import com.example.animalsworldapp.presentation.models.toForest
@@ -41,6 +42,7 @@ enum class ItemDetailType(
 
 @HiltViewModel
 class DetailScreenViewModel @Inject constructor(
+    private val showToast: ShowToastUseCase,
     private val fetchMountainByIdUseCase: FetchMountainByIdUseCase,
     private val fetchFloraByIdUseCase: FetchFloraByIdUseCase,
     private val fetchFaunaByIdUseCase: FetchFaunaByIdUseCase,
@@ -102,8 +104,14 @@ class DetailScreenViewModel @Inject constructor(
         _uiStateFlow.tryEmit(state)
     }
 
-    fun startPlayer(uri: String?){
-        musicServiceHandler.addMediaItem(MediaItem.Builder().setUri(uri).build())
-        musicServiceHandler.playOrPause()
+    fun startPlayer(uri: String?) {
+        if (uri != null) {
+            musicServiceHandler.addMediaItem(MediaItem.Builder().setUri(uri).build())
+            musicServiceHandler.playOrPause()
+        } else {
+            showToast.showToast(message = "Эта функция сейчас в разработке")
+            return
+        }
+
     }
 }

@@ -3,7 +3,6 @@ package com.example.animalsworldapp.presentation.screens.profile
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.animalsworldapp.domain.usecases.user.FetchCurrentUserUseCase
-import com.example.animalsworldapp.domain.usecases.user.FetchUserByIdUseCase
 import com.example.animalsworldapp.presentation.extensions.createMutableSharedFlowAsSingleLiveEvent
 import com.example.animalsworldapp.presentation.manager.toast.ShowToastUseCase
 import com.example.animalsworldapp.presentation.models.toUser
@@ -60,12 +59,12 @@ class ProfileViewModel @Inject constructor(
     }
 
     private fun onEditLanguage() {
-        showToast.showToast(message = "Сейчас эта функция не доступна")
+        showToast.showToast(message = "Эта функция сейчас в разработке")
         return
     }
 
     private fun onEditUserType() {
-        showToast.showToast(message = "Сейчас эта функция не доступна")
+        showToast.showToast(message = "Эта функция сейчас в разработке")
         return
     }
 }

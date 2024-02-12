@@ -24,8 +24,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.models.Flora
 import com.example.animalsworldapp.presentation.theme.DarkPlaceholder
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
@@ -75,6 +77,7 @@ fun MainScreenHorizontalFlora(
                         if (isSystemInDarkTheme()) DarkPlaceholder
                         else LightPlaceholder
                     ),
+                placeholder = painterResource(id = if (isSystemInDarkTheme()) R.drawable.dark_image_place_holder else R.drawable.light_image_place_holder)
             )
         }
         Row(

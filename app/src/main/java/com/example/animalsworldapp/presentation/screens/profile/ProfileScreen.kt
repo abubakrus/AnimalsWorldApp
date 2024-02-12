@@ -76,22 +76,13 @@ fun LoadedScreenProfile(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item {
-            HeaderInfoProfile(user = uiState.user)
+            HeaderInfoProfile()
             Spacer(modifier = Modifier.height(ExtraMediumSpacing))
             ProfileSwitchItem(
                 icon = Icons.Default.WbSunny,
                 title = stringResource(id = R.string.change_theme),
                 darkTheme = darkTheme,
                 onThemeUpdated = onThemeUpdated
-            )
-        }
-        item {
-            Spacer(modifier = Modifier.height(ExtraMediumSpacing))
-            ProfileItemInfo(
-                icon = Icons.Default.AccountCircle,
-                title = stringResource(id = R.string.edit_profile),
-                onClick = { onEvent(ProfileEvent.OnEditProfile) },
-                darkTheme = darkTheme
             )
         }
         item {
@@ -112,15 +103,6 @@ fun LoadedScreenProfile(
                 onClick = { onEvent(ProfileEvent.OnEditLanguage) },
                 darkTheme = darkTheme
 
-            )
-        }
-        item {
-            Spacer(modifier = Modifier.height(ExtraMediumSpacing))
-            ProfileItemInfo(
-                icon = Icons.Default.Input,
-                title = stringResource(id = R.string.sign_in),
-                onClick = { onEvent(ProfileEvent.OnClickLogin) },
-                darkTheme = darkTheme
             )
         }
     }

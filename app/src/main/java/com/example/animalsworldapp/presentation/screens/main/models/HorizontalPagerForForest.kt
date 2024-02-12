@@ -33,10 +33,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
 import com.example.animalsworldapp.presentation.models.Forest
 import com.example.animalsworldapp.presentation.theme.DarkPlaceholder
@@ -89,6 +91,8 @@ fun HorizontalPagerForForest(
                         .build(),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
+                    placeholder = painterResource(id = if (isSystemInDarkTheme()) R.drawable.dark_image_place_holder else R.drawable.light_image_place_holder)
+
                 )
 
                 Column(modifier = Modifier

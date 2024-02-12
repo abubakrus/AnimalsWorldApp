@@ -1,6 +1,7 @@
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,8 +28,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.extensions.SpacerHeight
 import com.example.animalsworldapp.presentation.models.Fauna
 import com.example.animalsworldapp.presentation.theme.Dark_Gray
@@ -82,6 +85,7 @@ fun HorizontalPagerDialog(
                             bottomEnd = 25.dp
                         )
                     ),
+                placeholder = painterResource(id = if (isSystemInDarkTheme()) R.drawable.dark_image_place_holder else R.drawable.light_image_place_holder)
             )
             Column(
                 modifier = Modifier

@@ -57,7 +57,7 @@ fun FloraDetailItem(
     modifier: Modifier = Modifier,
     backgroundImage: String,
     image: String,
-    location: String,
+    location: String? = String(),
     name: String,
     about: String,
     interestingFact: String?,
@@ -129,7 +129,7 @@ fun FloraDetailItem(
                     contentDescription = null,
                     tint = Pink
                 )
-                Text(
+                if (location != null)Text(
                     text = location, style = MaterialTheme.typography.bodyLarge.copy(
                         color = Pink, fontFamily = LexendDeca
                     )

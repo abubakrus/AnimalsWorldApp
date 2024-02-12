@@ -33,7 +33,6 @@ fun AppNavGraph(
     ) {
         composable(SplashDestination.route()) {
             val viewModel: SplashViewModel = hiltViewModel()
-            viewModel
             SplashScreen()
         }
         composable(OnBoardingDestination.route()) {
