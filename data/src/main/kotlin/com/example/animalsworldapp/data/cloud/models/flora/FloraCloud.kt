@@ -15,6 +15,8 @@ data class FloraCloud(
     val backgroundImage: BackgroundImage,
     @SerializedName("createdAt")
     val createdAt: String,
+    @SerializedName("location")
+    val location: String,
     @SerializedName("image")
     val image: Image,
     @SerializedName("interesting_fact")

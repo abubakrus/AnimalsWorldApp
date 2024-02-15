@@ -62,7 +62,6 @@ class MainScreenViewModel @Inject constructor(
     }
 
     private suspend fun fetchLimitFauna(state: MainScreenUiState.Loaded.Companion.Builder) {
-        Log.i("Joseph","fetchLimitFauna")
         val faunaLimited = fetchLimitFaunaUseCase.invoke(10)
         val faunaList = faunaLimited.data?.map { it.toFauna() } ?: emptyList()
         state.fauna(fauna = faunaList)
@@ -71,7 +70,6 @@ class MainScreenViewModel @Inject constructor(
     private suspend fun fetchLimitMountain(
         state: MainScreenUiState.Loaded.Companion.Builder
     ) {
-        Log.i("Joseph","fetchLimitMountain")
         val mountainLimited = fetchLimitMountainUseCase.invoke(7)
         val mountain = mountainLimited.data?.map { it.toMountain() } ?: emptyList()
         state.mountain(mountain)
@@ -80,7 +78,6 @@ class MainScreenViewModel @Inject constructor(
     private suspend fun fetchLimitForest(
         state: MainScreenUiState.Loaded.Companion.Builder
     ) {
-        Log.i("Joseph","fetchLimitForest")
         val forestLimited = fetchLimitForestUseCase.invoke(7)
         val forest = forestLimited.data?.map { it.toForest() } ?: emptyList()
         state.forest(forest)
@@ -89,7 +86,6 @@ class MainScreenViewModel @Inject constructor(
     private suspend fun fetchAllFlora(
         state: MainScreenUiState.Loaded.Companion.Builder
     ) {
-        Log.i("Joseph","fetchAllFlora")
         val flora =  fetchAllFloraUseCase().map { it.toFlora() }
         state.flora(flora)
     }

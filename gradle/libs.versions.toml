@@ -31,7 +31,15 @@ parse = "1.17.3"
 exoPlayer_version = "2.17.1"
 systemuicontroller_version = "0.33.2-alpha"
 media_exoPlayer_version = "1.1.1"
+google_map_version = "18.1.0"
+google_map_compose_version = "2.11.4"
 [libraries]
+
+#Google Map
+google-map = { module = "com.google.android.gms:play-services-maps",version.ref = "google_map_version" }
+google-map-compose = { module = "com.google.maps.android:maps-compose", version.ref = "google_map_compose_version" }
+
+
 # Room
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist-pager-indicators" }
 accompanist-pager-indicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanist-pager-indicators" }

@@ -53,7 +53,8 @@ fun FloraCloud.toDomain(): FloraDomain = this.run {
         backgroundImage = backgroundImage.url,
         image = image.url,
         interestingFact = interestingFact,
-        aboutFlora = aboutFlora
+        aboutFlora = aboutFlora,
+        location = location
     )
 }
 

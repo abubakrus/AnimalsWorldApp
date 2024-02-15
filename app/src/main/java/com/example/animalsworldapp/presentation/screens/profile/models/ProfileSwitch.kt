@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.components.ThemeSwitcher
+import com.example.animalsworldapp.presentation.theme.Black
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 import com.example.animalsworldapp.presentation.theme.Inter
@@ -56,7 +57,7 @@ fun ProfileSwitchItem(
                 .size(32.dp),
             imageVector = icon,
             contentDescription = null,
-            tint = MaterialTheme.colorScheme.onBackground
+            tint = Black
         )
         if (title != null) {
             Text(
@@ -65,7 +66,7 @@ fun ProfileSwitchItem(
                 text = title,
                 style = MaterialTheme.typography.titleLarge.copy(
                     fontFamily = Inter,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = Black
                 )
             )
         }
@@ -105,7 +106,7 @@ fun ProfileItemInfo(
                 .size(32.dp),
             imageVector = icon,
             contentDescription = null,
-            tint = MaterialTheme.colorScheme.onBackground
+            tint = Black
         )
         if (title != null) {
             Text(
@@ -114,7 +115,7 @@ fun ProfileItemInfo(
                 text = title,
                 style = MaterialTheme.typography.titleLarge.copy(
                     fontFamily = Inter,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = Black
                 )
             )
         }

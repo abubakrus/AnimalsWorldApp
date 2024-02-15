@@ -28,6 +28,7 @@ fun DetailScreen(
     uiState: DetailScreenUiState,
     navHostController: NavHostController,
     onClickVoice: (String?) -> Unit,
+    navigateToLocation: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold { innerPaddings ->
@@ -45,6 +46,9 @@ fun DetailScreen(
                     onClickVoice = {
                         onClickVoice(uiState.contentType.voice)
                     },
+                    navigateToLocation = {
+                        navigateToLocation(it)
+                    }
                 )
             }
         }
@@ -59,7 +63,9 @@ fun LoadedDetailScreen(
     contentType: ContentType,
     navigateBackStack: () -> Unit,
     onClickVoice: () -> Unit,
-) {
+    navigateToLocation: (String) -> Unit,
+
+    ) {
     BoxWithConstraints(
         modifier = modifier
             .fillMaxSize()
@@ -83,7 +89,9 @@ fun LoadedDetailScreen(
                     image = contentType.image,
                     about = contentType.about,
                     location = contentType.location,
-                    locationImage = contentType.locationImage
+                    locationImage = contentType.locationImage,
+                    navigateToLocation = { navigateToLocation(it) }
+
                 )
 
                 is ContentType.FloraContent -> FloraDetailItem(
@@ -93,7 +101,8 @@ fun LoadedDetailScreen(
                     interestingFact = contentType.interestingFact,
                     image = contentType.image,
                     about = contentType.about,
-                    location = contentType.name
+                    location = contentType.location,
+                    navigateToLocation = { navigateToLocation(it) }
                 )
 
                 is ContentType.ForestContent -> ForestDetailItem(
@@ -103,7 +112,8 @@ fun LoadedDetailScreen(
                     name = contentType.name,
                     backgroundImage = contentType.backgroundImage,
                     interestingFact = contentType.interestingFact,
-                    image = contentType.image
+                    image = contentType.image,
+                    navigateToLocation = { navigateToLocation(it) }
                 )
 
                 is ContentType.FaunaContent -> FaunaDetailItem(
@@ -117,6 +127,8 @@ fun LoadedDetailScreen(
                     onClickVoice = { onClickVoice() },
                     locationImage = contentType.locationImage,
                     animalsClasses = contentType.animalsClasses,
+                    navigateToLocation = { navigateToLocation(it) }
+
                 )
 
             }

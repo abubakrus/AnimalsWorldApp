@@ -23,6 +23,7 @@ import com.example.animalsworldapp.presentation.screens.splash.SplashViewModel
 fun AppNavGraph(
     darkTheme: Boolean,
     onThemeUpdated: () -> Unit,
+    navigateToLocation: (String) -> Unit,
     navHostController: NavHostController,
     modifier: Modifier = Modifier,
 ) {
@@ -42,7 +43,11 @@ fun AppNavGraph(
         composable(MAIN_NAV_GRAPH_ROUTE) {
             MainNavGraphRoot(
                 darkTheme = darkTheme,
-                onThemeUpdated = onThemeUpdated
+                onThemeUpdated = onThemeUpdated,
+                navigateToLocation = {
+                    navigateToLocation(it)
+                }
+
             )
         }
     }

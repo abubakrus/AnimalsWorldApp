@@ -54,6 +54,7 @@ const val MAIN_NAV_GRAPH_ROUTE = "main_nav_graph_route"
 fun MainNavGraphRoot(
     darkTheme: Boolean,
     onThemeUpdated: () -> Unit,
+    navigateToLocation: (String) -> Unit,
 ) {
     val navHostController = rememberNavController()
     Scaffold(bottomBar = {
@@ -97,7 +98,10 @@ fun MainNavGraphRoot(
                 DetailScreen(
                     uiState = uiState,
                     navHostController = navHostController,
-                    onClickVoice = { viewModel.startPlayer(it) }
+                    onClickVoice = { viewModel.startPlayer(it) },
+                    navigateToLocation = {
+                        navigateToLocation(it)
+                    }
                 )
             }
             composable(BottomTab.Search.route) {

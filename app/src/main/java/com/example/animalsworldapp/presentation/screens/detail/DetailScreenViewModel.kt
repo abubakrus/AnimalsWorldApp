@@ -1,5 +1,7 @@
 package com.example.animalsworldapp.presentation.screens.detail
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.MediaItem
@@ -56,6 +58,15 @@ class DetailScreenViewModel @Inject constructor(
     private val handler = CoroutineExceptionHandler { _, throwable ->
         _uiStateFlow.tryEmit(DetailScreenUiState.Error(throwable.localizedMessage ?: ""))
     }
+
+    private val _openGoogleMapsEvent = MutableLiveData<String>()
+    val openGoogleMapsEvent: LiveData<String> get() = _openGoogleMapsEvent
+
+    fun onTextClicked(city: String) {
+        val uri = "geo:0,0?q=$city"
+        _openGoogleMapsEvent.value = uri
+    }
+
 
 
     fun init(type: ItemDetailType?, id: String?) {

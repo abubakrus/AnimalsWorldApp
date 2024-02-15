@@ -9,4 +9,4 @@ import kotlinx.android.parcel.Parcelize
 data class FaunaResponse(
     @SerializedName("results")
     val results: List<FaunaCloud>
-):Parcelable
+) : Parcelable

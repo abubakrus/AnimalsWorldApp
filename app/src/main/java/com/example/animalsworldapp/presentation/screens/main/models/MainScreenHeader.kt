@@ -88,7 +88,7 @@ fun MainScreenHorizontalFlora(
                 .align(Alignment.BottomCenter),
             horizontalArrangement = Arrangement.Center
         ) {
-            repeat(7) { iteration ->
+            repeat(floraList.size) { iteration ->
                 val color =
                     if (pagerState.currentPage == iteration) Color.White else Color.White.copy(alpha = 0.5f)
                 Box(

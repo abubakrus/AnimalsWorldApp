@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.Flow
 fun AnimalsWorldComposeApp(
     darkTheme: Boolean,
     onThemeUpdated: () -> Unit,
+    navigateToLocation: (String) -> Unit,
     destinationFlow: Flow<Pair<String, Boolean>>,
     modifier: Modifier = Modifier
 ) {
@@ -39,7 +40,10 @@ fun AnimalsWorldComposeApp(
         AppNavGraph(
             navHostController = navHostController,
             darkTheme = darkTheme,
-            onThemeUpdated = onThemeUpdated
+            onThemeUpdated = onThemeUpdated,
+            navigateToLocation = {
+                navigateToLocation(it)
+            }
         )
     }
 }

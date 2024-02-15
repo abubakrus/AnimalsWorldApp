@@ -7,7 +7,9 @@ data class FloraDomain (
     val image: String,
     val interestingFact: String,
     val aboutFlora: String,
-){
+    val location: String,
+
+    ){
     companion object{
         val unknown = FloraDomain(
             id = String(),
@@ -15,7 +17,9 @@ data class FloraDomain (
             backgroundImage = String(),
             image = String(),
             interestingFact = String(),
-            aboutFlora = String()
+            aboutFlora = String(),
+        location=String()
+
         )
     }
 }

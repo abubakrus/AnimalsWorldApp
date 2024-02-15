@@ -2,6 +2,7 @@ package com.example.animalsworldapp.presentation.screens.detail.models
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -57,12 +58,14 @@ fun FloraDetailItem(
     modifier: Modifier = Modifier,
     backgroundImage: String,
     image: String,
-    location: String? = String(),
+    location: String?,
     name: String,
     about: String,
     interestingFact: String?,
     navigateBackStack: () -> Unit,
-) {
+    navigateToLocation: (String) -> Unit,
+
+    ) {
     val imageList = listOf(image, backgroundImage)
     val imageState = rememberPagerState { imageList.size }
     val detailTab = listOf(about, interestingFact)
@@ -129,11 +132,14 @@ fun FloraDetailItem(
                     contentDescription = null,
                     tint = Pink
                 )
-                if (location != null)Text(
-                    text = location, style = MaterialTheme.typography.bodyLarge.copy(
+                if (location != null) Text(
+                    text = location,
+                    style = MaterialTheme.typography.bodyLarge.copy(
                         color = Pink, fontFamily = LexendDeca
-                    )
+                    ),
+                    modifier = Modifier.clickable { navigateToLocation(location) }
                 )
+
             }
             Text(
                 modifier = Modifier.padding(start = MediumSpacing, top = SmallSpacing),
@@ -244,6 +250,7 @@ fun MountainDetailItem(
     about: String,
     interestingFact: String?,
     navigateBackStack: () -> Unit,
+    navigateToLocation: (String) -> Unit,
 ) {
     val imageList = listOf(image, backgroundImage, locationImage)
     val imageState = rememberPagerState { imageList.size }
@@ -328,7 +335,8 @@ fun MountainDetailItem(
                 Text(
                     text = location, style = MaterialTheme.typography.bodyLarge.copy(
                         color = Pink, fontFamily = LexendDeca
-                    )
+                    ),
+                    modifier = Modifier.clickable { navigateToLocation(location) }
                 )
             }
             Text(

@@ -2,6 +2,7 @@ package com.example.animalsworldapp.presentation.screens.detail.models
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -69,7 +70,9 @@ fun FaunaDetailItem(
     interestingFact: String?,
     navigateBackStack: () -> Unit,
     modifier: Modifier = Modifier,
-) {
+    navigateToLocation: (String) -> Unit,
+
+    ) {
     val imageList = listOf(image, backgroundImage, locationImage)
     val imageState = rememberPagerState { imageList.size }
     val detailTab = listOf(about, interestingFact)
@@ -169,7 +172,8 @@ fun FaunaDetailItem(
                 Text(
                     text = location, style = MaterialTheme.typography.bodyLarge.copy(
                         color = Pink, fontFamily = LexendDeca
-                    )
+                    ),
+                    modifier = Modifier.clickable { navigateToLocation(location) }
                 )
             }
 

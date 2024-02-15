@@ -28,7 +28,8 @@ import com.example.animalsworldapp.presentation.theme.Blue
 private const val DEFAULT_ICON_SIZE = 56
 
 enum class BottomTab(
-    @DrawableRes val icon: Int,
+    @DrawableRes
+    val icon: Int,
     val title: String,
     val route: String
 ) {

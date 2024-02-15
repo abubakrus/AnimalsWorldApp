@@ -9,6 +9,7 @@ data class Flora(
     val image: String,
     val interestingFact: String,
     val aboutFlora: String,
+    val location: String,
 ) {
 
     fun isUnknown() = this == unknown
@@ -22,7 +23,8 @@ data class Flora(
             backgroundImage = String(),
             image = String(),
             interestingFact = String(),
-            aboutFlora = String()
+            aboutFlora = String(),
+            location = String()
         )
     }
 }
@@ -36,6 +38,7 @@ fun FloraDomain.toFlora() = this.run {
         backgroundImage = backgroundImage,
         image = image,
         interestingFact = interestingFact,
-        aboutFlora = aboutFlora
+        aboutFlora = aboutFlora,
+        location = location
     )
 }
