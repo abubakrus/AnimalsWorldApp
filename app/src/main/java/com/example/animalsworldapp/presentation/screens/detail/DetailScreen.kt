@@ -127,8 +127,8 @@ fun LoadedDetailScreen(
                     onClickVoice = { onClickVoice() },
                     locationImage = contentType.locationImage,
                     animalsClasses = contentType.animalsClasses,
-                    navigateToLocation = { navigateToLocation(it) }
-
+                    navigateToLocation = { navigateToLocation(it) },
+                    videoUri = "ktZ-zfv8Lm8"
                 )
 
             }

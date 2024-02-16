@@ -33,10 +33,11 @@ systemuicontroller_version = "0.33.2-alpha"
 media_exoPlayer_version = "1.1.1"
 google_map_version = "18.1.0"
 google_map_compose_version = "2.11.4"
+player_video_version = "0.28"
 [libraries]
 
 #Google Map
-google-map = { module = "com.google.android.gms:play-services-maps",version.ref = "google_map_version" }
+google-map = { module = "com.google.android.gms:play-services-maps", version.ref = "google_map_version" }
 google-map-compose = { module = "com.google.maps.android:maps-compose", version.ref = "google_map_compose_version" }
 
 
@@ -101,6 +102,9 @@ parse_android = { module = "com.parse:parse-android", version.ref = "parse" }
 
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp-version" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin-version" }
+
+
+player-video = { group = "com.pierfrancescosoffritti.androidyoutubeplayer", name = "chromecast-sender", version.ref = "player_video_version" }
 
 
 [plugins]

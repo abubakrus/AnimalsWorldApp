@@ -68,6 +68,10 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
 
+
+    //videoPlayer
+    implementation(libs.player.video)
+
 //Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)

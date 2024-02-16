@@ -6,6 +6,7 @@ data class FaunaDomain(
     val name: String,
     val backgroundImage: String,
     val image: String,
+    val videoUri: String,
     val interestingFact: String?,
     val aboutFauna: String,
     val location: String,
@@ -27,7 +28,8 @@ data class FaunaDomain(
             createdAt = String(),
             locationImage = String(),
             updatedAt = String(),
-            voice = null
+            voice = null,
+            videoUri = String()
         )
     }
 }

@@ -14,6 +14,7 @@ sealed class ContentType(
     val name: String,
     val about: String,
     val voice: String? = String(),
+    val videoUri: String? = String(),
     val locationImage: String = String(),
     val animalsClasses: String = String()
 ) {
@@ -27,12 +28,13 @@ sealed class ContentType(
         image = fauna.image,
         interestingFact = fauna.interestingFact,
         locationImage = fauna.locationImage,
-        animalsClasses = fauna.classes
+        animalsClasses = fauna.classes,
+        videoUri = fauna.videoUri
     )
 
     data class FloraContent(val flora: Flora) : ContentType(
         backgroundImage = flora.backgroundImage,
-        location = flora.interestingFact,
+        location = flora.location,
         name = flora.name,
         about = flora.aboutFlora,
         image = flora.image,

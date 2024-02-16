@@ -41,8 +41,10 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.LifecycleOwner
 import coil.compose.AsyncImage
 import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
@@ -67,6 +69,7 @@ fun FaunaDetailItem(
     locationImage: String,
     animalsClasses: String,
     about: String,
+    videoUri: String,
     interestingFact: String?,
     navigateBackStack: () -> Unit,
     modifier: Modifier = Modifier,
@@ -75,7 +78,7 @@ fun FaunaDetailItem(
     ) {
     val imageList = listOf(image, backgroundImage, locationImage)
     val imageState = rememberPagerState { imageList.size }
-    val detailTab = listOf(about, interestingFact)
+    val detailTab = listOf(about, interestingFact, videoUri)
     val pagerState = rememberPagerState(pageCount = { detailTab.size })
     val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
@@ -220,10 +223,16 @@ fun FaunaDetailItem(
                             scope.launch { pagerState.animateScrollToPage(index) }
                         }) {
                         Text(
-                            text = if (index == 0) {
-                                stringResource(id = R.string.about)
-                            } else {
-                                stringResource(id = R.string.interestingFact)
+                            text = when (index) {
+                                0 -> {
+                                    stringResource(id = R.string.about)
+                                }
+                                1 -> {
+                                    stringResource(id = R.string.interestingFact)
+                                }
+                                else -> {
+                                    stringResource(id = R.string.view)
+                                }
                             },
                             style = MaterialTheme.typography.titleLarge.copy(
                                 fontFamily = LexendDeca
@@ -251,7 +260,7 @@ fun FaunaDetailItem(
                 state = pagerState,
             ) { index ->
                 when (val tab = detailTab[index]) {
-                    detailTab[0] -> {
+                    detailTab.first() -> {
                         if (tab != null) {
                             Text(
                                 modifier = Modifier.padding(top = MediumSpacing),
@@ -273,6 +282,14 @@ fun FaunaDetailItem(
                                     color = MaterialTheme.colorScheme.onBackground,
                                     fontFamily = NiramitMedium
                                 )
+                            )
+                        }
+                    }
+                    detailTab.last() -> {
+                        if (tab != null) {
+                            VideoPlayer(
+                                videoUri = videoUri,
+                                lifecycleOwner = LocalLifecycleOwner.current
                             )
                         }
                     }
