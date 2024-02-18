@@ -18,6 +18,8 @@ data class FaunaCloud(
     val classes: String,
     @SerializedName("videoUri")
     val videoUri: String,
+    @SerializedName("dharacteristics_detail")
+    val characteristicsDetail: String,
     @SerializedName("createdAt")
     val createdAt: String,
     @SerializedName("image")

@@ -59,16 +59,6 @@ class DetailScreenViewModel @Inject constructor(
         _uiStateFlow.tryEmit(DetailScreenUiState.Error(throwable.localizedMessage ?: ""))
     }
 
-    private val _openGoogleMapsEvent = MutableLiveData<String>()
-    val openGoogleMapsEvent: LiveData<String> get() = _openGoogleMapsEvent
-
-    fun onTextClicked(city: String) {
-        val uri = "geo:0,0?q=$city"
-        _openGoogleMapsEvent.value = uri
-    }
-
-
-
     fun init(type: ItemDetailType?, id: String?) {
         if (type == null || id == null) {
             // TODO: handle

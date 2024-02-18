@@ -128,7 +128,8 @@ fun LoadedDetailScreen(
                     locationImage = contentType.locationImage,
                     animalsClasses = contentType.animalsClasses,
                     navigateToLocation = { navigateToLocation(it) },
-                    videoUri = "ktZ-zfv8Lm8"
+                    videoUri = contentType.videoUri.toString(),
+                    characteristicsDetail = contentType.characteristicsDetail ?: String()
                 )
 
             }

@@ -16,6 +16,7 @@ data class Fauna(
     val updatedAt: String,
     val voice: String?,
     val videoUri: String?,
+    val characteristicsDetail: String?
 ) {
     fun isUnknown() = this == unknown
 
@@ -35,7 +36,8 @@ data class Fauna(
             locationImage = String(),
             updatedAt = String(),
             videoUri = String(),
-            voice = null
+            voice = null,
+            characteristicsDetail = String()
         )
     }
 }
@@ -55,6 +57,7 @@ fun FaunaDomain.toFauna() = this.run {
         locationImage = locationImage,
         updatedAt = updatedAt,
         voice = voice,
-        videoUri = videoUri
+        videoUri = videoUri,
+        characteristicsDetail = characteristicsDetail
     )
 }

@@ -59,11 +59,4 @@ class SearchViewModel @Inject constructor(
     fun onValueChange(value: String) {
         searQueryFlow.tryEmit(value)
     }
-
-    private fun filterMenuListByQuery(
-        faunaList: List<FaunaDomain>,
-        query: String
-    ): List<FaunaDomain> {
-        return faunaList.filter { it.name.contains(query, ignoreCase = true) }
-    }
 }

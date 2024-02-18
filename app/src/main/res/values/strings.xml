@@ -65,5 +65,6 @@
     <string name="interestingFact">Interesting facts</string>
     <string name="profile">Profile</string>
     <string name="view">View</string>
+    <string name="characteristicsDetail">Characteristics</string>
 
 </resources>

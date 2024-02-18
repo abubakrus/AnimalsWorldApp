@@ -13,7 +13,8 @@ data class FaunaDomain(
     val createdAt: String,
     val locationImage: String,
     val updatedAt: String,
-    val voice: String?
+    val voice: String?,
+    val characteristicsDetail: String?
 ) {
     companion object {
         val unknown = FaunaDomain(
@@ -29,7 +30,8 @@ data class FaunaDomain(
             locationImage = String(),
             updatedAt = String(),
             voice = null,
-            videoUri = String()
+            videoUri = String(),
+            characteristicsDetail=String()
         )
     }
 }

@@ -44,7 +44,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.LifecycleOwner
 import coil.compose.AsyncImage
 import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
@@ -67,6 +66,7 @@ fun FaunaDetailItem(
     name: String,
     image: String,
     locationImage: String,
+    characteristicsDetail: String,
     animalsClasses: String,
     about: String,
     videoUri: String,
@@ -74,11 +74,10 @@ fun FaunaDetailItem(
     navigateBackStack: () -> Unit,
     modifier: Modifier = Modifier,
     navigateToLocation: (String) -> Unit,
-
-    ) {
+) {
     val imageList = listOf(image, backgroundImage, locationImage)
     val imageState = rememberPagerState { imageList.size }
-    val detailTab = listOf(about, interestingFact, videoUri)
+    val detailTab = listOf(about, interestingFact, videoUri, characteristicsDetail)
     val pagerState = rememberPagerState(pageCount = { detailTab.size })
     val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
@@ -227,11 +226,17 @@ fun FaunaDetailItem(
                                 0 -> {
                                     stringResource(id = R.string.about)
                                 }
+
                                 1 -> {
                                     stringResource(id = R.string.interestingFact)
                                 }
-                                else -> {
+
+                                2 -> {
                                     stringResource(id = R.string.view)
+                                }
+
+                                else -> {
+                                    stringResource(id = R.string.characteristicsDetail)
                                 }
                             },
                             style = MaterialTheme.typography.titleLarge.copy(
@@ -285,11 +290,25 @@ fun FaunaDetailItem(
                             )
                         }
                     }
-                    detailTab.last() -> {
+
+                    detailTab[2] -> {
                         if (tab != null) {
                             VideoPlayer(
                                 videoUri = videoUri,
                                 lifecycleOwner = LocalLifecycleOwner.current
+                            )
+                        }
+                    }
+
+                    detailTab.last() -> {
+                        if (tab != null) {
+                            Text(
+                                modifier = Modifier.padding(top = MediumSpacing),
+                                text = tab,
+                                style = MaterialTheme.typography.bodyLarge.copy(
+                                    color = MaterialTheme.colorScheme.onBackground,
+                                    fontFamily = NiramitMedium
+                                )
                             )
                         }
                     }

@@ -26,7 +26,8 @@ fun FaunaCloud.toDomain(): FaunaDomain = this.run {
         locationImage = locationImage.url,
         updatedAt = updatedAt,
         voice = voice?.url,
-        videoUri = videoUri
+        videoUri = videoUri,
+        characteristicsDetail = characteristicsDetail
     )
 }
 
