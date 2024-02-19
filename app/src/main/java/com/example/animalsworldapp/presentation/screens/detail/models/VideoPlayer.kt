@@ -29,11 +29,14 @@ fun VideoPlayer(
             YouTubePlayerView(context = context).apply {
                 lifecycleOwner.lifecycle.addObserver(this)
 
-                addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-                    override fun onReady(youTubePlayer: YouTubePlayer) {
-                        youTubePlayer.cueVideo(videoUri, 0f)
-                    }
-                })
+                addYouTubePlayerListener(
+                    object : AbstractYouTubePlayerListener() {
+                        override fun onReady(youTubePlayer: YouTubePlayer) {
+                            youTubePlayer.cueVideo(videoUri, 0f)
+                        }
+                    },
+                )
             }
-        })
+        },
+    )
 }
