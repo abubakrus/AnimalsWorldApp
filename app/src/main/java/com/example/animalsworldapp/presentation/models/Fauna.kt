@@ -11,9 +11,7 @@ data class Fauna(
     val interestingFact: String?,
     val aboutFauna: String,
     val location: String,
-    val createdAt: String,
     val locationImage: String,
-    val updatedAt: String,
     val voice: String?,
     val videoUri: String?,
     val characteristicsDetail: String?
@@ -32,9 +30,7 @@ data class Fauna(
             interestingFact = null,
             aboutFauna = String(),
             location = String(),
-            createdAt = String(),
             locationImage = String(),
-            updatedAt = String(),
             videoUri = String(),
             voice = null,
             characteristicsDetail = String()
@@ -53,9 +49,7 @@ fun FaunaDomain.toFauna() = this.run {
         interestingFact = interestingFact,
         aboutFauna = aboutFauna,
         location = location,
-        createdAt = createdAt,
         locationImage = locationImage,
-        updatedAt = updatedAt,
         voice = voice,
         videoUri = videoUri,
         characteristicsDetail = characteristicsDetail

@@ -17,11 +17,9 @@ data class FaunaCloud(
     @SerializedName("classes")
     val classes: String,
     @SerializedName("videoUri")
-    val videoUri: String,
+    val videoUri: String?,
     @SerializedName("dharacteristics_detail")
-    val characteristicsDetail: String,
-    @SerializedName("createdAt")
-    val createdAt: String,
+    val characteristicsDetail: String?,
     @SerializedName("image")
     val image: Image,
     @SerializedName("interesting_fact")
@@ -36,6 +34,4 @@ data class FaunaCloud(
     val voice: Voice?,
     @SerializedName("objectId")
     val objectId: String,
-    @SerializedName("updatedAt")
-    val updatedAt: String
 ) : Parcelable

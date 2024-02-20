@@ -47,7 +47,7 @@ class FaunaRepositoryImpl @Inject constructor(
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
-            Log.e("Social", e.stackTraceToString())
+            Log.e("FaunaApp", e.stackTraceToString())
             Result.Error(message = e.message ?: e.stackTraceToString())
         }
     }
@@ -59,7 +59,7 @@ class FaunaRepositoryImpl @Inject constructor(
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
-            Log.e("Animal", e.stackTraceToString())
+            Log.e("FaunaApp", e.stackTraceToString())
             Result.Error(message = e.message ?: e.stackTraceToString())
         }
     }

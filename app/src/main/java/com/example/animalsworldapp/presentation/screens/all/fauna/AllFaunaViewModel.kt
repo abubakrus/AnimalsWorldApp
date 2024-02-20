@@ -31,10 +31,7 @@ class AllFaunaViewModel @Inject constructor(
     init {
         viewModelScope.launch(handler + Dispatchers.IO) {
             _uiStateFlow.tryEmit(AllFaunaUiState.Loading)
-            val contentState = AllFaunaUiState.Loaded(
-                fauna = fetchAllFauna()
-            )
-                .copy(fauna = fetchAllFauna())
+            val contentState = AllFaunaUiState.Loaded(fauna = fetchAllFauna())
             _uiStateFlow.tryEmit(contentState)
         }
     }

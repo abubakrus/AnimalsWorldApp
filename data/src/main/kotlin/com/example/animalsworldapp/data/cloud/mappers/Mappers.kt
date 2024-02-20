@@ -22,12 +22,10 @@ fun FaunaCloud.toDomain(): FaunaDomain = this.run {
         interestingFact = interestingFact,
         aboutFauna = aboutFauna,
         location = location,
-        createdAt = createdAt,
         locationImage = locationImage.url,
-        updatedAt = updatedAt,
         voice = voice?.url,
-        videoUri = videoUri,
-        characteristicsDetail = characteristicsDetail
+        videoUri = videoUri ?: String(),
+        characteristicsDetail = characteristicsDetail ?: String()
     )
 }
 

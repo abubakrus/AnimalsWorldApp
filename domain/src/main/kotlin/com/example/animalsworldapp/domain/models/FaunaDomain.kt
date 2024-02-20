@@ -6,13 +6,11 @@ data class FaunaDomain(
     val name: String,
     val backgroundImage: String,
     val image: String,
-    val videoUri: String,
+    val videoUri: String?,
     val interestingFact: String?,
     val aboutFauna: String,
     val location: String,
-    val createdAt: String,
     val locationImage: String,
-    val updatedAt: String,
     val voice: String?,
     val characteristicsDetail: String?
 ) {
@@ -26,9 +24,7 @@ data class FaunaDomain(
             interestingFact = null,
             aboutFauna = String(),
             location = String(),
-            createdAt = String(),
             locationImage = String(),
-            updatedAt = String(),
             voice = null,
             videoUri = String(),
             characteristicsDetail=String()

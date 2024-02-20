@@ -44,7 +44,7 @@ enum class BottomTab(
         route = "main_screen_route"
     ),
     PROFILE(
-        icon = R.drawable.profile_icon,
+        icon = R.drawable.setting_icon,
         title = "Profile",
         route = "profile_screen"
     ),
