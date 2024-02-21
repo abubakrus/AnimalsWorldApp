@@ -47,7 +47,6 @@ fun AppNavGraph(
                 navigateToLocation = {
                     navigateToLocation(it)
                 }
-
             )
         }
     }

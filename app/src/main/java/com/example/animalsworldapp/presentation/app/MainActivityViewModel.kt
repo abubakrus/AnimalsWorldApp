@@ -12,5 +12,4 @@ class MainActivityViewModel @Inject constructor(
 ) : ViewModel() {
 
     val destinationFlow = navigatorManager.destinationFlow()
-
 }
