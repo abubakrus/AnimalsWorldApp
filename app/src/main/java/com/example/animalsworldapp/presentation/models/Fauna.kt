@@ -1,7 +1,10 @@
 package com.example.animalsworldapp.presentation.models
 
+import androidx.compose.runtime.Stable
 import com.example.animalsworldapp.domain.models.FaunaDomain
+import javax.annotation.concurrent.Immutable
 
+@Stable
 data class Fauna(
     val objectId: String,
     val classes: String,

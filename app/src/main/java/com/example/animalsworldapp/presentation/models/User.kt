@@ -1,7 +1,10 @@
 package com.example.animalsworldapp.presentation.models
 
+import androidx.compose.runtime.Stable
 import com.example.animalsworldapp.domain.models.UsersDomain
+import javax.annotation.concurrent.Immutable
 
+@Stable
 data class User(
     val about: String,
     val avatar: String?,

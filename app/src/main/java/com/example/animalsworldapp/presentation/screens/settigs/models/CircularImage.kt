@@ -1,4 +1,4 @@
-package com.example.animalsworldapp.presentation.screens.profile.models
+package com.example.animalsworldapp.presentation.screens.settigs.models
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.size

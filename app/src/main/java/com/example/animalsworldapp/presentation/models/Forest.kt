@@ -1,7 +1,10 @@
 package com.example.animalsworldapp.presentation.models
 
+import androidx.compose.runtime.Stable
 import com.example.animalsworldapp.domain.models.ForestDomain
+import javax.annotation.concurrent.Immutable
 
+@Stable
 data class Forest(
     val about: String,
     val backgroundImage: String,

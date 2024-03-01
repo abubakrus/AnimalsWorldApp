@@ -1,4 +1,4 @@
-package com.example.animalsworldapp.presentation.screens.profile
+package com.example.animalsworldapp.presentation.screens.settigs
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Input
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.material3.MaterialTheme
@@ -22,9 +20,9 @@ import com.example.AnimalsWorldApp.R
 import com.example.animalsworldapp.presentation.components.TabBar
 import com.example.animalsworldapp.presentation.screens.common.ErrorScreen
 import com.example.animalsworldapp.presentation.screens.common.LoadingScreen
-import com.example.animalsworldapp.presentation.screens.profile.models.HeaderInfoProfile
-import com.example.animalsworldapp.presentation.screens.profile.models.ProfileItemInfo
-import com.example.animalsworldapp.presentation.screens.profile.models.ProfileSwitchItem
+import com.example.animalsworldapp.presentation.screens.settigs.models.HeaderInfoProfile
+import com.example.animalsworldapp.presentation.screens.settigs.models.ProfileItemInfo
+import com.example.animalsworldapp.presentation.screens.settigs.models.ProfileSwitchItem
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 
 
@@ -52,7 +50,6 @@ fun ProfileScreen(
             is ProfileUiState.Content -> LoadedScreenProfile(
                 modifier = modifier.padding(innerPaddings),
                 onEvent = onEvent,
-                uiState = uiState,
                 darkTheme = darkTheme,
                 onThemeUpdated = onThemeUpdated
             )
@@ -63,7 +60,6 @@ fun ProfileScreen(
 
 @Composable
 fun LoadedScreenProfile(
-    uiState: ProfileUiState.Content,
     onEvent: (ProfileEvent) -> Unit,
     darkTheme: Boolean,
     onThemeUpdated: () -> Unit,

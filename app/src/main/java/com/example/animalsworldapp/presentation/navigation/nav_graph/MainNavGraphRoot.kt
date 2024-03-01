@@ -24,27 +24,18 @@ import com.example.animalsworldapp.presentation.screens.all.forest.AllForestView
 import com.example.animalsworldapp.presentation.screens.all.mountain.AllMountainDestination
 import com.example.animalsworldapp.presentation.screens.all.mountain.AllMountainScreen
 import com.example.animalsworldapp.presentation.screens.all.mountain.AllMountainViewModel
-import com.example.animalsworldapp.presentation.screens.auth.login.LoginDestination
-import com.example.animalsworldapp.presentation.screens.auth.login.LoginScreen
-import com.example.animalsworldapp.presentation.screens.auth.login.LoginViewModel
-import com.example.animalsworldapp.presentation.screens.auth.signup.SignUpDestination
-import com.example.animalsworldapp.presentation.screens.auth.signup.SignUpScreen
-import com.example.animalsworldapp.presentation.screens.auth.signup.SignUpViewModel
 import com.example.animalsworldapp.presentation.screens.detail.DetailDestination
 import com.example.animalsworldapp.presentation.screens.detail.DetailScreen
 import com.example.animalsworldapp.presentation.screens.detail.DetailScreenViewModel
 import com.example.animalsworldapp.presentation.screens.detail.ID_ARGUMENT_KEY
 import com.example.animalsworldapp.presentation.screens.detail.ItemDetailType
 import com.example.animalsworldapp.presentation.screens.detail.TYPE_ARGUMENT_KEY
-import com.example.animalsworldapp.presentation.screens.edit_profile.EDIT_PROFILE_ROUTE
-import com.example.animalsworldapp.presentation.screens.edit_profile.EditProfileScreen
-import com.example.animalsworldapp.presentation.screens.edit_profile.EditProfileViewModel
 import com.example.animalsworldapp.presentation.screens.main.MainScreen
 import com.example.animalsworldapp.presentation.screens.main.MainScreenViewModel
-import com.example.animalsworldapp.presentation.screens.profile.ProfileScreen
-import com.example.animalsworldapp.presentation.screens.profile.ProfileViewModel
 import com.example.animalsworldapp.presentation.screens.search.SearchScreen
 import com.example.animalsworldapp.presentation.screens.search.SearchViewModel
+import com.example.animalsworldapp.presentation.screens.settigs.ProfileScreen
+import com.example.animalsworldapp.presentation.screens.settigs.ProfileViewModel
 
 
 const val MAIN_NAV_GRAPH_ROUTE = "main_nav_graph_route"
@@ -130,16 +121,7 @@ fun MainNavGraphRoot(
                     onThemeUpdated = onThemeUpdated
                 )
             }
-            composable(EDIT_PROFILE_ROUTE) {
-                val viewModel: EditProfileViewModel = hiltViewModel()
-                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-                EditProfileScreen(
-                    uiState = uiState,
-                    onEvent = viewModel::onEvent,
-                    navHostController = navHostController,
-                )
-            }
             composable(AllFaunaDestination.route()) {
                 val viewModel: AllFaunaViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -178,38 +160,6 @@ fun MainNavGraphRoot(
                     }
                 )
             }
-            composable(LoginDestination.route()) {
-                val viewModel: LoginViewModel = hiltViewModel()
-                val navCommand by viewModel.navCommandFlow.collectAsStateWithLifecycle(initialValue = null)
-
-                LaunchedEffect(key1 = navCommand) {
-                    if (navCommand != null) navHostController.navigate(navCommand!!)
-                }
-
-                LoginScreen(
-                    uiState = viewModel.uiState.collectAsStateWithLifecycle().value,
-                    onEvent = viewModel::onEvent,
-                    navBackStackEntry = {
-                        navHostController.navigateUp()
-                    }
-                )
-            }
-            composable(SignUpDestination.route()) {
-                val viewModel: SignUpViewModel = hiltViewModel()
-                val navCommand by viewModel.navCommandFlow.collectAsStateWithLifecycle(initialValue = null)
-
-                LaunchedEffect(key1 = navCommand) {
-                    if (navCommand != null) navHostController.navigate(navCommand!!)
-                }
-                SignUpScreen(
-                    uiState = viewModel.uiState.collectAsStateWithLifecycle().value,
-                    onEvent = viewModel::onEvent,
-                    navBackStackEntry = {
-                        navHostController.navigateUp()
-                    }
-                )
-            }
         }
-
     }
 }

@@ -1,4 +1,4 @@
-package com.example.animalsworldapp.presentation.screens.profile.models
+package com.example.animalsworldapp.presentation.screens.settigs.models
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
