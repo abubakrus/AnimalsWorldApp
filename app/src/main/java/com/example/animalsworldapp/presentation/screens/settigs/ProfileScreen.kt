@@ -33,8 +33,7 @@ fun ProfileScreen(
     darkTheme: Boolean,
     onThemeUpdated: () -> Unit,
     modifier: Modifier = Modifier,
-
-    ) {
+) {
     Scaffold(
         topBar = {
             TabBar(
@@ -86,7 +85,9 @@ fun LoadedScreenProfile(
             ProfileItemInfo(
                 icon = Icons.Default.AccountBox,
                 title = stringResource(id = R.string.type_users),
-                onClick = { onEvent(ProfileEvent.OnEditUserType) },
+                onClick = {
+                    onEvent(ProfileEvent.OnEditUserType)
+                },
                 darkTheme = darkTheme
 
             )
@@ -96,7 +97,9 @@ fun LoadedScreenProfile(
             ProfileItemInfo(
                 icon = Icons.Default.Language,
                 title = stringResource(id = R.string.language),
-                onClick = { onEvent(ProfileEvent.OnEditLanguage) },
+                onClick = {
+                    onEvent(ProfileEvent.OnEditLanguage)
+                },
                 darkTheme = darkTheme
 
             )

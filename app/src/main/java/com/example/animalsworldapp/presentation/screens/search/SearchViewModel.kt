@@ -2,9 +2,7 @@ package com.example.animalsworldapp.presentation.screens.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.animalsworldapp.domain.models.FaunaDomain
 import com.example.animalsworldapp.domain.usecases.fauna_usecase.FetchAllFaunaUseCase
-import com.example.animalsworldapp.domain.usecases.fauna_usecase.SearchByQueryFaunaUseCase
 import com.example.animalsworldapp.presentation.models.toFauna
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,11 +18,8 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val fetchAllFaunaUseCase: FetchAllFaunaUseCase,
-    private val searchByQueryFaunaUseCase: SearchByQueryFaunaUseCase
 ) : ViewModel() {
-
     private val searQueryFlow = MutableStateFlow("")
-
 
     private val _uiStateFlow = MutableStateFlow(SearchUiState())
     val uiState: StateFlow<SearchUiState> = _uiStateFlow.asStateFlow()

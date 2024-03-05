@@ -20,7 +20,6 @@ import com.example.animalsworldapp.presentation.screens.main.models.HorizontalPa
 import com.example.animalsworldapp.presentation.screens.main.models.HorizontalPagerForMountain
 import com.example.animalsworldapp.presentation.screens.main.models.LoadingScreenMain
 import com.example.animalsworldapp.presentation.screens.main.models.MainScreenHorizontalFlora
-import com.example.animalsworldapp.presentation.theme.ExtraLargeSpacing
 import com.example.animalsworldapp.presentation.theme.ExtraMediumSpacing
 import com.example.animalsworldapp.presentation.theme.MediumSpacing
 

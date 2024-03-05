@@ -13,10 +13,8 @@ class OnBoardingViewModel @Inject constructor(
     private val navigatorManager: NavigatorManager,
     private val setOnBoardingShowedUseCase: SetOnBoardingShowedUseCase
 ) : ViewModel() {
-
     fun onBoardingFinished() {
         setOnBoardingShowedUseCase.invoke()
         navigatorManager.navigateTo(MAIN_NAV_GRAPH_ROUTE, true)
     }
-
 }

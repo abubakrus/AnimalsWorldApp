@@ -1,9 +1,6 @@
 package com.example.animalsworldapp.presentation.screens.settigs
 
-import com.example.animalsworldapp.presentation.models.User
-
 sealed class ProfileUiState {
-
     data object Initial : ProfileUiState()
 
     data object Loading : ProfileUiState()
@@ -11,5 +8,4 @@ sealed class ProfileUiState {
     data class Error(val message: String) : ProfileUiState()
 
     data object Content : ProfileUiState()
-
 }

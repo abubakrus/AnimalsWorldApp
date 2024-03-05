@@ -35,14 +35,12 @@ class MainScreenViewModel @Inject constructor(
     private val fetchLimitMountainUseCase: FetchLimitMountainUseCase,
     private val fetchLimitForestUseCase: FetchLimitForestUseCase
 ) : ViewModel() {
-
     private val _uiStateFlow = MutableStateFlow<MainScreenUiState>(MainScreenUiState.Loading)
     val uiState: StateFlow<MainScreenUiState> = _uiStateFlow.asStateFlow()
 
     private val handler = CoroutineExceptionHandler { _, throwable ->
         _uiStateFlow.tryEmit(MainScreenUiState.Error(throwable.localizedMessage ?: ""))
     }
-
     init {
         viewModelScope.launch(handler + Dispatchers.IO) {
             _uiStateFlow.tryEmit(MainScreenUiState.Loading)
@@ -60,13 +58,11 @@ class MainScreenViewModel @Inject constructor(
             _uiStateFlow.tryEmit(contentState.build())
         }
     }
-
     private suspend fun fetchLimitFauna(state: MainScreenUiState.Loaded.Companion.Builder) {
         val faunaLimited = fetchLimitFaunaUseCase.invoke(10)
         val faunaList = faunaLimited.data?.map { it.toFauna() } ?: emptyList()
         state.fauna(fauna = faunaList)
     }
-
     private suspend fun fetchLimitMountain(
         state: MainScreenUiState.Loaded.Companion.Builder
     ) {
@@ -74,7 +70,6 @@ class MainScreenViewModel @Inject constructor(
         val mountain = mountainLimited.data?.map { it.toMountain() } ?: emptyList()
         state.mountain(mountain)
     }
-
     private suspend fun fetchLimitForest(
         state: MainScreenUiState.Loaded.Companion.Builder
     ) {
@@ -82,7 +77,6 @@ class MainScreenViewModel @Inject constructor(
         val forest = forestLimited.data?.map { it.toForest() } ?: emptyList()
         state.forest(forest)
     }
-
     private suspend fun fetchAllFlora(
         state: MainScreenUiState.Loaded.Companion.Builder
     ) {

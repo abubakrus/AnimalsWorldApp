@@ -1,13 +1,9 @@
 package com.example.animalsworldapp.presentation.screens.settigs
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.animalsworldapp.domain.usecases.user.FetchCurrentUserUseCase
 import com.example.animalsworldapp.presentation.extensions.createMutableSharedFlowAsSingleLiveEvent
 import com.example.animalsworldapp.presentation.manager.toast.ShowToastUseCase
-import com.example.animalsworldapp.presentation.models.toUser
-import com.example.animalsworldapp.presentation.screens.main.MainScreenUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -21,8 +17,6 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val showToast: ShowToastUseCase,
 ) : ViewModel() {
-
-
     private val _uiState = MutableStateFlow<ProfileUiState>(ProfileUiState.Initial)
     val uiState: StateFlow<ProfileUiState> = _uiState.asStateFlow()
 

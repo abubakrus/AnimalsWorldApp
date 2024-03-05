@@ -1,6 +1,5 @@
 package com.example.animalsworldapp.presentation.screens.splash
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.animalsworldapp.domain.usecases.ShouldOnBoardingPassedUseCase
@@ -19,7 +18,6 @@ class SplashViewModel @Inject constructor(
     private val shouldOnBoardingPassedUseCase: ShouldOnBoardingPassedUseCase,
     private val navigatorManager: NavigatorManager
 ) : ViewModel() {
-
     init {
         val isOnBoardingPassed = shouldOnBoardingPassedUseCase()
         viewModelScope.launch {
@@ -30,7 +28,5 @@ class SplashViewModel @Inject constructor(
             }
             navigatorManager.navigateTo(destination, true)
         }
-
     }
-
 }

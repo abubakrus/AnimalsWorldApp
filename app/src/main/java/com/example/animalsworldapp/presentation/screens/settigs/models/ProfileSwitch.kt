@@ -89,7 +89,6 @@ fun ProfileItemInfo(
     darkTheme: Boolean = false,
     modifier: Modifier = Modifier,
 ) {
-
     Row(
         modifier = modifier
             .fillMaxWidth()

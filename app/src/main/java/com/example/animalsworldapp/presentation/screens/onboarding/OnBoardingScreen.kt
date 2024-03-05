@@ -61,7 +61,6 @@ fun OnBoardingScreen(
     val pagerState = rememberPagerState(pageCount = { onBoardings.size })
     val scope = rememberCoroutineScope()
     val onBoardings = OnBoardingPagerItem.onBoardingItem()
-
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -127,7 +126,6 @@ fun OnBoardingAnimatedTextFiled(
     modifier: Modifier = Modifier
 ) {
     var startAnimation by remember { mutableStateOf(false) }
-
     Box(modifier = modifier
         .padding(horizontal = 16.dp)
         .height(52.dp)
