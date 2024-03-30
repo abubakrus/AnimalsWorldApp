@@ -6,6 +6,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import javax.inject.Inject
 
+
+
 interface NavigatorManager {
     fun destinationFlow(): Flow<Pair<String, Boolean>>
 

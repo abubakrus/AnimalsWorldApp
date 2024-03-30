@@ -52,8 +52,8 @@ fun SearchScreen(
     }) { innerPaddings ->
         Column(
             modifier = modifier
-                .padding(innerPaddings)
                 .fillMaxSize()
+                .padding(innerPaddings)
                 .background(MaterialTheme.colorScheme.background),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -84,7 +84,6 @@ fun SearchScreen(
             )
             when {
                 uiState.fauna.isEmpty() -> LoadingScreenForAllShow()
-                uiState.isLoading -> LoadingScreen()
                 else -> {
                     LazyVerticalStaggeredGrid(
                         modifier = modifier

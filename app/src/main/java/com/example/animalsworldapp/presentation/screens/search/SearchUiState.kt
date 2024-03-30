@@ -22,5 +22,5 @@ import com.example.animalsworldapp.presentation.models.Fauna
 data class SearchUiState(
     val query: String = "",
     val fauna: List<Fauna> = emptyList(),
-    val isLoading: Boolean = false
+    val isLoading: Boolean = true
 )

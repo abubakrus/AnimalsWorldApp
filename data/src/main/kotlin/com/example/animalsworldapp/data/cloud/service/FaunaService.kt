@@ -4,7 +4,9 @@ import com.example.animalsworldapp.data.cloud.models.fauna.FaunaResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
+import javax.annotation.concurrent.Immutable
 
+@Immutable
 interface FaunaService {
     @GET("Fauna")
     suspend fun getLimitedData(

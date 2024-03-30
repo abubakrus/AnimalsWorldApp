@@ -3,7 +3,10 @@ package com.example.animalsworldapp.data.cloud.service
 import com.example.animalsworldapp.data.cloud.models.forests.ForestsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
+import javax.annotation.concurrent.Immutable
 
+
+@Immutable
 interface ForestService {
     @GET("Forest")
     suspend fun getLimitedData(
