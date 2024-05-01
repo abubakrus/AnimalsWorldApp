@@ -1,10 +1,10 @@
 [versions]
 accompanist-pager-indicators = "0.30.1"
-activity-compose = "1.8.0"
-agp-version = "8.3.1"
+activity-compose = "1.9.0"
+agp-version = "8.1.4"
 androidx-junit = "1.1.5"
 coil-compose = "2.4.0"
-core-ktx = "1.12.0"
+core-ktx = "1.13.0"
 espresso-core = "3.5.1"
 foundation = "1.6.0-alpha08"
 gson = "2.9.0"
@@ -28,7 +28,7 @@ androidxLifecycle = "2.6.2"
 room_version = "2.6.0"
 materialIconsExtended = "1.5.4"
 parse = "1.17.3"
-exoPlayer_version = "2.17.1"
+exoPlayer_version = "2.19.1"
 systemuicontroller_version = "0.33.2-alpha"
 media_exoPlayer_version = "1.1.1"
 google_map_version = "18.1.0"
@@ -36,9 +36,6 @@ google_map_compose_version = "2.11.4"
 player_video_version = "0.28"
 [libraries]
 
-#Google Map
-google-map = { module = "com.google.android.gms:play-services-maps", version.ref = "google_map_version" }
-google-map-compose = { module = "com.google.maps.android:maps-compose", version.ref = "google_map_compose_version" }
 
 
 # Room

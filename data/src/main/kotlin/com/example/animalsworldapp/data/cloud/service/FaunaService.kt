@@ -7,7 +7,7 @@ import retrofit2.http.Query
 import javax.annotation.concurrent.Immutable
 
 @Immutable
-interface FaunaService {
+interface   FaunaService {
     @GET("Fauna")
     suspend fun getLimitedData(
         @Query("limit") limit: Int

@@ -23,6 +23,7 @@ kapt {
 }
 dependencies {
     implementation(project(":domain"))
+
     //Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

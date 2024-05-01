@@ -62,7 +62,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
 
-//Room
+    //Room
     ksp(libs.room.compiler)
     ksp(libs.room.ktx.compiler)
     implementation(libs.room.runtime)
@@ -72,25 +72,25 @@ dependencies {
     //videoPlayer
     implementation(libs.player.video)
 
-//Retrofit
+    //Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
 
-//Coil
+    //Coil
     implementation(libs.coil.compose)
 
-//Coroutines
+    //Coroutines
     implementation(libs.kotlinx.coroutines.android)
 
-//Hilt
+    //Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
-//Navigation
+    //Navigation
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
-//ExoPlayer
+    //ExoPlayer
     implementation(libs.exoPlayer)
     implementation(libs.exoPlayer.core)
     implementation(libs.exoPlayer.ui)
@@ -99,11 +99,11 @@ dependencies {
     implementation(libs.exoPlayer.session)
 
 
-// Pager
+    // Pager
     implementation(libs.accompanist.pager)
     implementation(libs.accompanist.pager.indicators)
 
-// Lottie
+    // Lottie
     implementation(libs.lottie.compose)
 
     implementation(libs.foundation)
