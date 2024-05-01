@@ -22,6 +22,8 @@ server (https://parse-dashboard.back4app.com/apps/e045620e-42ac-4f44-b6b7-6d4fd9
 [<img src="meta/screenshots/screenshot_profile_light.png" width=160>](meta/screenshots/screenshot_profile_light.png)
 [<img src="meta/screenshots/screenshot_profile_dark.png" width=160>](meta/screenshots/screenshot_profile_dark.png)
 [<img src="meta/screenshots/screenshot_search.png" width=160>](meta/screenshots/screenshot_search.png)
+[![Название скриншота](meta/screenshots/screenshot_splach.png)](meta/screenshots/screenshot_splach.png)
+
 ## Libraries
 
 * [Jetpack Compose](https://developer.android.com/jetpack/compose) Jetpack Compose is Android’s
