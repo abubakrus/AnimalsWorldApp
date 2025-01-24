@@ -6,7 +6,6 @@ plugins{
 dependencies{
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.retrofit)
-
     testImplementation(libs.junit)
 }
 
